@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:orientation="vertical"
+              android:background="#06799F"
+    >
+
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.7"
+            android:orientation="vertical"
+            android:padding="10dip"
+            >
+
+        <!--  View Title Label -->
+        <ImageView
+                android:id="@+id/image_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/bicycle" />
+
+        <TextView
+                style="@color/white"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dip"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="LOGIN"
+                android:textColor="@color/white"
+                android:textSize="35dp"
+                android:textStyle="bold"
+                android:typeface="normal" />
+
+        <!--  Email Label -->
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Email:"
+                android:textSize="20dp" />
+        <!--  Email TextField -->
+
+        <EditText
+                android:id="@+id/txtEmail"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edittext"
+                android:inputType="textEmailAddress"
+                android:textSize="20dp" />
+
+        <!--  Password Label -->
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dip"
+                android:text="Password:"
+                android:textSize="20dp" />
+        <!--  Password TextField -->
+
+        <EditText
+                android:id="@+id/txtPwd"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edittext"
+                android:inputType="textPassword"
+                android:password="true"
+                android:textSize="20dp" />
+
+
+
+        <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnLogin"
+                android:background="@drawable/button"
+                android:text="Login"
+                android:layout_marginTop="35dip"
+                android:textSize="35dp"/>
+    </LinearLayout>
+
+</LinearLayout>

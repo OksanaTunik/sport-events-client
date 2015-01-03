@@ -1,0 +1,44 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="appTheme" parent="android:style/Theme.Holo.Light">     
+       <item name="android:actionBarStyle">@style/Theme.MyAppTheme.ActionBar</item> 
+       <item name="android:buttonStyle">@style/Theme.MyAppTheme.Widget.Holo.Button</item>  
+       <item name="android:textSize">21dp</item>   
+      </style>
+    
+       <style name="Theme.MyAppTheme.ActionBar" parent="android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:background">@color/titlebar</item>
+         <item name="android:titleTextStyle">@style/Theme.MyAppTheme.ActionBar.TitleTextStyle</item>
+    </style>
+    
+   <style name="Theme.MyAppTheme.ActionBar.TitleTextStyle" parent="android:style/TextAppearance.Holo.Widget.ActionBar.Title">
+        <item name="android:textColor">#fff</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:typeface">monospace</item>
+    </style>
+    
+    <style name="Theme.MyAppTheme.Widget.Holo.Button" parent="android:style/Widget.Button">
+        <item name="android:background">#8F918E</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+        <item name="android:textColor">#fff</item>
+         <item name="android:padding">8dip</item> 
+    </style>
+    
+          
+    <style name="ListView">    
+        <item name="android:cacheColorHint">@color/off_white</item>
+        <item name="android:listSelector">@drawable/list_selector</item>
+    </style>
+    
+    
+     <style name="edit_text" parent="@android:style/Widget.EditText">  
+       <item name="android:background">#cbccce</item>  
+       <item name="android:paddingTop">10dip</item>
+       <item name="android:paddingBottom">10dip</item>
+       
+   </style>  
+ 
+
+
+</resources>

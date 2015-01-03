@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+<color name="off_white">#E3E3E3</color>
+<color name="green">#14CF00</color>
+<color name="green_click">#4dea3d</color>
+<color name="black">#000</color>
+<color name="titlebar">#5fb336</color>
+<color name="titlebartextcolor">#FFFFFF</color>
+<color name="white">#fcfcfc</color>
+</resources>
