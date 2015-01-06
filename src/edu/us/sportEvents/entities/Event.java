@@ -1,16 +1,12 @@
-package com.example.ukradlimirower.entities;
+package edu.us.sportEvents.entities;
 
 public class Event {
-
-    String id;
-
-    String title;
-
-    String description;
-
-    String address;
-
-    String sport;
+    protected String id;
+    protected String title;
+    protected String description;
+    protected String address;
+    protected String sport;
+    protected Float lat, lng;
 
     public void setId(String id) {
         this.id = id;
@@ -59,6 +55,7 @@ public class Event {
         this.address = address;
         this.sport = sport;
     }
+
     public Event(String title, String description, String address, String sport) {
         this.id = null;
         this.title = title;
@@ -67,4 +64,19 @@ public class Event {
         this.sport = sport;
     }
 
+    public Float getLat() {
+        return lat;
+    }
+
+    public void setLat(Float lat) {
+        this.lat = lat;
+    }
+
+    public Float getLng() {
+        return lng;
+    }
+
+    public void setLng(Float lng) {
+        this.lng = lng;
+    }
 }

@@ -1,4 +1,4 @@
-package com.example.ukradlimirower.activities;
+package edu.us.sportEvents.activities;
 
 import android.app.Activity;
 

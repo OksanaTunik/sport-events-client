@@ -1,6 +1,5 @@
-package com.example.ukradlimirower.activities;
+package edu.us.sportEvents.activities;
 
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -8,8 +7,9 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import edu.us.sportEvents.api.AccountApiClient;
+import edu.us.sportEvents.api.BaseActivity;
 import com.example.ukradlimirower.R;
-import com.example.ukradlimirower.com.example.api.BaseActivity;
 
 public class SignUpActivity extends BaseActivity implements OnClickListener {
     EditText txtEmail;
@@ -69,7 +69,7 @@ public class SignUpActivity extends BaseActivity implements OnClickListener {
     public class SignupTask extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... params) {
-            return com.example.ukradlimirower.com.example.api.AccountApiClient.signUp(params[0], params[1], params[2]);
+            return AccountApiClient.signUp(params[0], params[1], params[2]);
         }
 
         @Override

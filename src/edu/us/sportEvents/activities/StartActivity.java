@@ -1,20 +1,13 @@
-package com.example.ukradlimirower.activities;
+package edu.us.sportEvents.activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
+import edu.us.sportEvents.api.AccountApiClient;
+import edu.us.sportEvents.api.BaseActivity;
 import com.example.ukradlimirower.R;
-import com.example.ukradlimirower.com.example.api.BaseActivity;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.Scanner;
 
 /**
  * Created by Oksana on 01.12.2014.
@@ -59,12 +52,13 @@ public class StartActivity extends BaseActivity {
     public class RestoreSessionTask extends AsyncTask<String, Void, Boolean> {
         @Override
         protected Boolean doInBackground(String... params) {
-            return com.example.ukradlimirower.com.example.api.AccountApiClient.checkLogIn(params[0]);
+            return AccountApiClient.checkLogIn(params[0]);
         }
 
         @Override
         protected void onPostExecute(Boolean result) {
             if (result) {
+                //chooseKindOfSportActivity();
                 showNewEvent();
             } else {
                 showAsUsual();

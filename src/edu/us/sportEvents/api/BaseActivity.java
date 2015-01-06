@@ -1,4 +1,4 @@
-package com.example.ukradlimirower.com.example.api;
+package edu.us.sportEvents.api;
 
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -21,10 +21,11 @@ import android.net.Uri;
 import android.os.Environment;
 import android.os.Parcelable;
 import android.provider.MediaStore;
-import com.example.ukradlimirower.activities.*;
+import edu.us.sportEvents.activities.*;
 
 public abstract class BaseActivity extends Activity {
     protected Uri outputFileUri;
+    protected String apiKey;
 
     protected int getIntentId() {
         return 1;
@@ -188,13 +189,16 @@ public abstract class BaseActivity extends Activity {
     }
 
     protected String readApiKey() {
-        String result = null;
+        if (apiKey != null) {
+            return apiKey;
+        }
+
         File file = getApiKeyFile();
 
         try {
             FileInputStream fis = new FileInputStream(file);
             Scanner reader = new Scanner(fis);
-            result = reader.next();
+            apiKey = reader.next();
             fis.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -202,6 +206,6 @@ public abstract class BaseActivity extends Activity {
             e.printStackTrace();
         }
 
-        return result;
+        return apiKey;
     }
 }

@@ -1,4 +1,4 @@
-package com.example.ukradlimirower.activities;
+package edu.us.sportEvents.activities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Toast;
-import com.example.ukradlimirower.ImageAdapter;
+import edu.us.sportEvents.ImageAdapter;
 import com.example.ukradlimirower.R;
 
 import java.util.ArrayList;

@@ -1,6 +1,5 @@
-package com.example.ukradlimirower.activities;
+package edu.us.sportEvents.activities;
 
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -8,8 +7,9 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import edu.us.sportEvents.api.AccountApiClient;
+import edu.us.sportEvents.api.BaseActivity;
 import com.example.ukradlimirower.R;
-import com.example.ukradlimirower.com.example.api.BaseActivity;
 
 public class SignInActivity extends BaseActivity {
     EditText txtUserName;
@@ -67,7 +67,7 @@ public class SignInActivity extends BaseActivity {
     public class SignInTask extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... params) {
-            return com.example.ukradlimirower.com.example.api.AccountApiClient.logIn(params[0], params[1]);
+            return AccountApiClient.logIn(params[0], params[1]);
         }
 
         @Override

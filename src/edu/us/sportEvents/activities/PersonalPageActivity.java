@@ -1,17 +1,15 @@
-package com.example.ukradlimirower.activities;
+package edu.us.sportEvents.activities;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.*;
+import edu.us.sportEvents.api.BaseActivity;
 import com.example.ukradlimirower.R;
-import com.example.ukradlimirower.com.example.api.AccountApiClient;
-import com.example.ukradlimirower.com.example.api.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;

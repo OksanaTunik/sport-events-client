@@ -1,4 +1,4 @@
-package com.example.ukradlimirower.com.example.api;
+package edu.us.sportEvents.api;
 
 public class BaseApiClient {
     protected static String publicUrl = "http://sport-events.herokuapp.com";

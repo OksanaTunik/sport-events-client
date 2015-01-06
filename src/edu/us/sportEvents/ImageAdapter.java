@@ -1,4 +1,4 @@
-package com.example.ukradlimirower;
+package edu.us.sportEvents;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.example.ukradlimirower.R;
 
 import java.util.ArrayList;
 

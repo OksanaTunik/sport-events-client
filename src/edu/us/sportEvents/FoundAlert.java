@@ -1,6 +1,6 @@
-package com.example.ukradlimirower;
+package edu.us.sportEvents;
 
-import com.example.ukradlimirower.entities.BaseEvent;
+import edu.us.sportEvents.entities.BaseEvent;
 
 /**
  * Created by shybovycha on 23.11.14.

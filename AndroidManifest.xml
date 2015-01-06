@@ -21,20 +21,21 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-        <activity android:name=".activities.SignInActivity" android:label="@string/app_name"/>
-        <activity android:name=".activities.SignUpActivity" android:label="@string/app_name" />
-        <activity android:name=".activities.PersonalPageActivity" android:label="@string/app_name" />
-        <activity android:name=".activities.EventListActivity" android:label="@string/app_name" />
-        <activity android:name=".activities.ChooseKindOfSportActivity" android:label="@string/app_name" />
-        <activity android:name=".activities.CreateEventActivity" android:label="@string/app_name" />
-        <activity android:name=".activities.DetailEventActivity" android:label="@string/app_name" />
+        <activity android:name="edu.us.sportEvents.activities.SignInActivity" android:label="@string/app_name"/>
+        <activity android:name="edu.us.sportEvents.activities.SignUpActivity" android:label="@string/app_name" />
+        <activity android:name="edu.us.sportEvents.activities.PersonalPageActivity" android:label="@string/app_name" />
+        <activity android:name="edu.us.sportEvents.activities.EventListActivity" android:label="@string/app_name" />
+        <activity android:name="edu.us.sportEvents.activities.ChooseKindOfSportActivity" android:label="@string/app_name" />
+        <activity android:name="edu.us.sportEvents.activities.CreateEventActivity" android:label="@string/app_name" />
+        <activity android:name="edu.us.sportEvents.activities.DetailEventActivity" android:label="@string/app_name" />
 
-        <activity android:name=".activities.StartActivity">
+        <activity android:name="edu.us.sportEvents.activities.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name="edu.us.sportEvents.activities.Interests"/>
     </application>
 
 </manifest>

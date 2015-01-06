@@ -1,4 +1,4 @@
-package com.example.ukradlimirower.entities;
+package edu.us.sportEvents.entities;
 
 import android.graphics.Bitmap;
 

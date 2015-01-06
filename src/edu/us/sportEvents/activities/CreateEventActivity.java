@@ -1,25 +1,19 @@
-package com.example.ukradlimirower.activities;
+package edu.us.sportEvents.activities;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.*;
+import edu.us.sportEvents.api.AccountApiClient;
+import edu.us.sportEvents.api.BaseActivity;
+import edu.us.sportEvents.api.EventsApiClient;
+import edu.us.sportEvents.entities.Event;
 import com.example.ukradlimirower.R;
-import com.example.ukradlimirower.com.example.api.BaseActivity;
-import com.example.ukradlimirower.entities.Event;
-
-import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by shybovycha on 23.11.14.
@@ -58,7 +52,6 @@ public class CreateEventActivity extends BaseActivity {
         public void onActivityResult(int requestCode, int resultCode, Intent data) {
             super.onActivityResult(requestCode, resultCode, data);
             if (resultCode == Activity.RESULT_OK) {
-            //    notebookId = data.getStringExtra("NOTEBOOK_ID");
             }
         }
 
@@ -71,45 +64,46 @@ public class CreateEventActivity extends BaseActivity {
                     String address = txtAddress.getText().toString();
                     String sport = txtSport.getText().toString();
 
+                    if (txtTitle.getText().length() == 0)
+                        txtTitle.setError("please enter the title");
+
+                    if (txtDescription.getText().length() == 0)
+                        txtDescription.setError("please enter the description");
+
+                    if (txtAddress.getText().length() == 0)
+                        txtAddress.setError("please enter the address");
+
                     Event event = new Event(title,description,address,sport);
                     new SaveEventTask().execute(event);
-
                     return true;
 
                 default:
                     return super.onOptionsItemSelected(item);
-
-
             }
         }
 
-        private void saveEvent(Event event) {
-            finish();
-        }
-
-        class SaveEventTask extends AsyncTask<Event, Void, Event> {
-
+        class SaveEventTask extends AsyncTask<Event, Void, Boolean> {
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
             }
 
             @Override
-            protected void onPostExecute(Event event) {
-                saveEvent(event);
+            protected void onPostExecute(Boolean res) {
+                if(res)
+                    showEventList();
+
             }
 
             @Override
-            protected Event doInBackground(Event... params) {
-                Event event = null;
+            protected Boolean doInBackground(Event... params) {
                 try {
-                   // event = Storage.Current().Note().createNote(params[0]);
-
+                    return EventsApiClient.createEvent(CreateEventActivity.this.readApiKey(), params[0]);
                 } catch (Exception e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
-                return event;
+                return true;
             }
         }
 

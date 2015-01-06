@@ -1,10 +1,9 @@
-package com.example.ukradlimirower.com.example.api;
+package edu.us.sportEvents.api;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.ukradlimirower.http.HttpClientHelper;
-import org.apache.http.HttpEntity;
+import edu.us.sportEvents.http.HttpClientHelper;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
