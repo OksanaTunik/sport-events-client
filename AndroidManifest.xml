@@ -19,15 +19,16 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
+        android:label="Sport Events"
         android:theme="@style/AppTheme" >
-        <activity android:name="edu.us.sportEvents.activities.SignInActivity" android:label="@string/app_name"/>
-        <activity android:name="edu.us.sportEvents.activities.SignUpActivity" android:label="@string/app_name" />
-        <activity android:name="edu.us.sportEvents.activities.PersonalPageActivity" android:label="@string/app_name" />
-        <activity android:name="edu.us.sportEvents.activities.EventListActivity" android:label="@string/app_name" />
-        <activity android:name="edu.us.sportEvents.activities.ChooseKindOfSportActivity" android:label="@string/app_name" />
-        <activity android:name="edu.us.sportEvents.activities.CreateEventActivity" android:label="@string/app_name" />
-        <activity android:name="edu.us.sportEvents.activities.DetailEventActivity" android:label="@string/app_name" />
+        <activity android:name="edu.us.sportEvents.activities.SignInActivity" android:label="Sport Events"/>
+        <activity android:name="edu.us.sportEvents.activities.SignUpActivity" android:label="Sport Events" />
+        <activity android:name="edu.us.sportEvents.activities.PersonalPageActivity" android:label="Sport Events" />
+        <activity android:name="edu.us.sportEvents.activities.EventListActivity" android:label="Sport Events" />
+        <activity android:name="edu.us.sportEvents.activities.ChooseKindOfSportActivity" android:label="Sport Events" />
+        <activity android:name="edu.us.sportEvents.activities.CreateEventActivity" android:label="Sport Events" />
+        <activity android:name="edu.us.sportEvents.activities.DetailEventActivity" android:label="Sport Events" />
+        <activity android:name="edu.us.sportEvents.activities.TabTest" android:label="Sport Events" />
 
         <activity android:name="edu.us.sportEvents.activities.StartActivity">
             <intent-filter>

@@ -42,7 +42,7 @@
             android:text="Title (for ex. bike model):"
             android:textSize="20dp" />
 
-        <EditText
+        <TextView
             android:id="@+id/txtTitle"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"

@@ -58,8 +58,8 @@ public class StartActivity extends BaseActivity {
         @Override
         protected void onPostExecute(Boolean result) {
             if (result) {
-                //chooseKindOfSportActivity();
-                showNewEvent();
+                tabActivity();
+               // chooseKindOfSportActivity();
             } else {
                 showAsUsual();
             }

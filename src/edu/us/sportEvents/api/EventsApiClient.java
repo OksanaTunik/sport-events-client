@@ -5,6 +5,8 @@ import edu.us.sportEvents.entities.Event;
 import edu.us.sportEvents.http.HttpClientHelper;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -13,7 +15,7 @@ import java.util.List;
 
 public class EventsApiClient extends BaseApiClient {
 
-    public static List<Event> getEvents(String apiKey, Float lat, Float lng, Float radius, Iterable <String> sports ) {
+  /*  public static List<Event> getEvents(String apiKey, Float lat, Float lng, Float radius, Iterable <String> sports ) {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
 
         params.add(new BasicNameValuePair("lat", lat.toString()));
@@ -22,10 +24,19 @@ public class EventsApiClient extends BaseApiClient {
         params.add(new BasicNameValuePair("sports", TextUtils.join(",", sports)));
 
         String url = getUrl("/events");
-        JSONObject res = HttpClientHelper.post(url, params);
+        JSONObject res = HttpClientHelper.get(url);
+        JSONArray array = new JSONArray(params);
+        List<Event> list = new ArrayList<Event>();
 
+      for (int i = 0; i < array.length(); i++) {
+            JSONObject json = array.getJSONObject(i);
 
-    }
+            Event event = convertEvent(json);
+            list.add(event);
+        }
+
+        return list;
+    }*/
 
     public static boolean createEvent(String apiKey, Event event) {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
@@ -48,6 +59,19 @@ public class EventsApiClient extends BaseApiClient {
 
         return result;
     }
+
+    private static Event convertEvent(JSONObject json) throws JSONException {
+
+        String id = json.get("Id").toString();
+        String title = json.get("title").toString();
+        String description = json.get("description").toString();
+        String address = json.get("address").toString();
+
+        Event event = new Event(id, title, description, address);
+
+        return event;
+    }
+
     //  public void deleteEvent(String eventId){}
 //public void updateEvent(String eventId){}
 

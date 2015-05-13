@@ -96,6 +96,11 @@ public abstract class BaseActivity extends Activity {
         Intent intent = new Intent(this, ChooseKindOfSportActivity.class);
         startActivity(intent);
     }
+    public void tabActivity()
+    {
+        Intent intent = new Intent(this, TabTest.class);
+        startActivity(intent);
+    }
 
     public double getLon() {
         if (getLocation() == null) {
@@ -189,7 +194,8 @@ public abstract class BaseActivity extends Activity {
     }
 
     protected String readApiKey() {
-        if (apiKey != null) {
+        return "moofoo";
+        /*if (apiKey != null) {
             return apiKey;
         }
 
@@ -206,6 +212,6 @@ public abstract class BaseActivity extends Activity {
             e.printStackTrace();
         }
 
-        return apiKey;
+        return apiKey;*/
     }
 }
