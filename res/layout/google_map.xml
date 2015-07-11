@@ -1,0 +1,47 @@
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+    <fragment
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    <ImageButton android:id="@+id/clom_searchButton"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_alignParentBottom="true"
+                 android:layout_toRightOf="@+id/clom_cancelButton"
+                 android:src="@drawable/ic_action_search"
+                 android:background="@drawable/map_round_button"
+                 android:layout_marginLeft="9dip"
+                 android:layout_marginRight="7dip"
+                 android:layout_marginBottom="10dip"
+
+            />
+
+    <ImageButton android:id="@+id/clom_okButton"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_alignParentBottom="true"
+                 android:src="@drawable/ic_action_accept"
+                 android:background="@drawable/map_round_button"
+                 android:layout_marginLeft="9dip"
+                 android:layout_marginRight="7dip"
+                 android:layout_marginBottom="10dip"
+            />
+    <ImageButton android:id="@+id/clom_cancelButton"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_alignParentBottom="true"
+                 android:layout_toRightOf="@+id/clom_okButton"
+                 android:src="@drawable/ic_action_cancel"
+                 android:layout_marginLeft="9dip"
+                 android:layout_marginRight="7dip"
+                 android:layout_marginBottom="10dip"
+
+                 android:background="@drawable/ic_action_accept"/>
+</RelativeLayout>
+

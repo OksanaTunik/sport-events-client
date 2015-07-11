@@ -9,9 +9,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 import edu.us.sportEvents.api.AccountApiClient;
 import edu.us.sportEvents.api.BaseActivity;
-import com.example.ukradlimirower.R;
+import edu.us.sportEvents.R;
 
-public class SignInActivity extends BaseActivity {
+public class LogInActivity extends BaseActivity {
     EditText txtUserName;
     EditText txtPassword;
     Button btnSignIn;
@@ -23,7 +23,7 @@ public class SignInActivity extends BaseActivity {
     }
 
     protected void showAsUsual() {
-        setContentView(R.layout.login);
+        setContentView(R.layout.start_page);
 
         txtUserName = (EditText) findViewById(R.id.txtEmail);
         txtPassword = (EditText) findViewById(R.id.txtPwd);

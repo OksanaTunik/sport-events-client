@@ -3,19 +3,18 @@ package edu.us.sportEvents.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.*;
 import android.widget.*;
 import android.widget.AdapterView.OnItemClickListener;
 import edu.us.sportEvents.api.BaseActivity;
+import edu.us.sportEvents.api.EventsApiClient;
 import edu.us.sportEvents.entities.Event;
-import com.example.ukradlimirower.R;
+import edu.us.sportEvents.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class EventListActivity extends BaseActivity {
+public class ListEventActivity extends BaseActivity {
     ListView lvMain = null;
 
     EventAdapter adapter;
@@ -25,7 +24,7 @@ public class EventListActivity extends BaseActivity {
 
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.events);
+        setContentView(R.layout.events_tab);
 
         lvMain = (ListView) findViewById(R.id.lvMain);
 
@@ -37,15 +36,23 @@ public class EventListActivity extends BaseActivity {
             public void onItemClick(AdapterView<?> arg0, View view,
                                     int position, long id) {
 
-                String notebookId = (String) view.getTag();
-                Toast.makeText(getBaseContext(), notebookId, Toast.LENGTH_LONG)
+                String event = (String) view.getTag();
+                Toast.makeText(getBaseContext(), event, Toast.LENGTH_LONG)
                         .show();
 
                 showEvent();
 
             }
         });
-        new EventsTask().execute();
+
+        List<String> sports = new ArrayList<String>();
+        sports.add("fff");
+        ListEventsParams params = new ListEventsParams();
+        params.lat = 3.14f;
+        params.lng = 5.f;
+        params.radius = 10000.f;
+        params.sports = sports;
+        new ListEventsTask().execute(params);
     }
 
         private void showEvent() {
@@ -137,77 +144,16 @@ public class EventListActivity extends BaseActivity {
         }
     }
 
-    class NewEventTask extends AsyncTask<Event, Void, Event> {
+    class ListEventsParams {
+        public Float lat;
+        public Float lng;
+        public Float radius;
+        public Iterable <String> sports;
 
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
-        protected void onPostExecute(Event event) {
-            saveEvent(event);
-        }
-
-        @Override
-        protected Event doInBackground(Event... params) {
-            Event notebook = null;
-            try {
-           //     notebook = Storage.Current().Notebook().createNotebook(params[0]);
-
-            } catch (Exception e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-            return notebook;
-        }
+        public ListEventsParams() {}
     }
 
-
-    class UpdateEventTask extends AsyncTask<Event, Void, Event> {
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
-        protected void onPostExecute(Event event) {
-            updateEvent(event);
-        }
-
-        @Override
-        protected Event doInBackground(Event... params) {
-            Event event = null;
-            try {
-              //  event = Storage.Current().Notebook().updateNotebook(params[0]);
-            } catch (Exception e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-            return event;
-        }
-    }
-
-    class DeleteEventTask extends AsyncTask<String, Void, Void> {
-
-        @Override
-        protected Void doInBackground(String... params) {
-            // TODO Auto-generated method stub
-            try {
-                //Storage.Current().Notebook().deleteNotebook(params[1]);
-
-            } catch (Exception e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-            return null;
-        }
-
-    }
-
-
-    class EventsTask extends AsyncTask<String, Void, List<Event>> {
+    class ListEventsTask extends AsyncTask<ListEventsParams, Void, List<Event>> {
 
         @Override
         protected void onPreExecute() {
@@ -221,20 +167,56 @@ public class EventListActivity extends BaseActivity {
         };
 
         @Override
-        protected List<Event> doInBackground(String... params) {
-            List<Event> notebooks = new ArrayList<Event>();
+        protected List<Event> doInBackground(ListEventsParams... params) {
+            List<Event> events = new ArrayList<Event>();
 
             try {
-           //     notebooks = Storage.Current().Notebook().getNotebooks();
+                return EventsApiClient.getEvents(ListEventActivity.this.readApiKey(), params[0].lat, params[0].lng, params[0].radius, params[0].sports);
             } catch (Exception e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
 
-            return notebooks;
+            return events;
         }
 
     }
+
+    public void showEditEvent(Event event) {
+
+        Intent intent = new Intent(this, EditEventActivity.class);
+  //      intent.putExtra("NOTE_ID", note.getId());
+        startActivity(intent);
+
+    }
+
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item
+                .getMenuInfo();
+
+        Event selectedItem = (Event) adapter.getItem(info.position);
+        switch (item.getItemId()) {
+            case R.id.edit:
+                Toast.makeText(getBaseContext(), "edit", Toast.LENGTH_LONG).show();
+
+                showEditEvent(selectedItem);
+
+                return true;
+            case R.id.delete:
+                Toast.makeText(getBaseContext(), "delete", Toast.LENGTH_LONG)
+                        .show();
+
+           //     new DeleteEventTask().execute(token, selectedItem.getId());
+
+                adapter.remove(selectedItem);
+                adapter.notifyDataSetChanged();
+
+                return true;
+            default:
+                return super.onContextItemSelected((android.view.MenuItem) item);
+        }
+    }
+
 }
 
    /* ListView lvMain = null;

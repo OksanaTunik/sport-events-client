@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.ukradlimirower"
+    package="edu.us.sportEvents"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -21,14 +21,15 @@
         android:icon="@drawable/ic_launcher"
         android:label="Sport Events"
         android:theme="@style/AppTheme" >
-        <activity android:name="edu.us.sportEvents.activities.SignInActivity" android:label="Sport Events"/>
+        <activity android:name=".activities.LogInActivity" android:label="Sport Events"/>
         <activity android:name="edu.us.sportEvents.activities.SignUpActivity" android:label="Sport Events" />
         <activity android:name="edu.us.sportEvents.activities.PersonalPageActivity" android:label="Sport Events" />
-        <activity android:name="edu.us.sportEvents.activities.EventListActivity" android:label="Sport Events" />
+        <activity android:name=".activities.ListEventActivity" android:label="Sport Events" />
         <activity android:name="edu.us.sportEvents.activities.ChooseKindOfSportActivity" android:label="Sport Events" />
         <activity android:name="edu.us.sportEvents.activities.CreateEventActivity" android:label="Sport Events" />
         <activity android:name="edu.us.sportEvents.activities.DetailEventActivity" android:label="Sport Events" />
-        <activity android:name="edu.us.sportEvents.activities.TabTest" android:label="Sport Events" />
+        <activity android:name=".activities.MainTabActivity" android:label="Sport Events" />
+        <activity android:name="edu.us.sportEvents.activities.maps.ChooseLocationOnMap" android:label="Sport Events" />
 
         <activity android:name="edu.us.sportEvents.activities.StartActivity">
             <intent-filter>
@@ -37,6 +38,10 @@
             </intent-filter>
         </activity>
         <activity android:name="edu.us.sportEvents.activities.Interests"/>
+
+        <meta-data
+                android:name="com.google.android.maps.v2.API_KEY"
+                android:value="AIzaSyCvfqv87mHwj2bZzwEAhMbPGIqiQSeDO3c  " />
     </application>
 
 </manifest>

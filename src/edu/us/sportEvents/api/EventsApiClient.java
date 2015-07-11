@@ -15,7 +15,7 @@ import java.util.List;
 
 public class EventsApiClient extends BaseApiClient {
 
-  /*  public static List<Event> getEvents(String apiKey, Float lat, Float lng, Float radius, Iterable <String> sports ) {
+    public static List<Event> getEvents(String apiKey, Float lat, Float lng, Float radius, Iterable <String> sports ) {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
 
         params.add(new BasicNameValuePair("lat", lat.toString()));
@@ -23,20 +23,25 @@ public class EventsApiClient extends BaseApiClient {
         params.add(new BasicNameValuePair("radius", radius.toString()));
         params.add(new BasicNameValuePair("sports", TextUtils.join(",", sports)));
 
-        String url = getUrl("/events");
-        JSONObject res = HttpClientHelper.get(url);
-        JSONArray array = new JSONArray(params);
         List<Event> list = new ArrayList<Event>();
 
-      for (int i = 0; i < array.length(); i++) {
-            JSONObject json = array.getJSONObject(i);
+        try {
+            String url = getUrl("/events/");
+            JSONObject res = HttpClientHelper.get(url, params);
+            JSONArray array = res.getJSONArray("events");
 
-            Event event = convertEvent(json);
-            list.add(event);
+
+            for (int i = 0; i < array.length(); i++) {
+                JSONObject json = array.getJSONObject(i);
+                Event event = convertEvent(json);
+                list.add(event);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
         return list;
-    }*/
+    }
 
     public static boolean createEvent(String apiKey, Event event) {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
@@ -60,9 +65,37 @@ public class EventsApiClient extends BaseApiClient {
         return result;
     }
 
+   /* public static Event updateEvent(String apiKey,Event event) throws Exception {
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+
+        params.add(new BasicNameValuePair("title", event.getTitle()));
+        params.add(new BasicNameValuePair("description", event.getDescription()));
+        params.add(new BasicNameValuePair("address", event.getAddress()));
+        params.add(new BasicNameValuePair("sport", event.getSport()));
+        params.add(new BasicNameValuePair("api_key", apiKey));
+        String url = getUrl("/events/update");
+
+        JSONObject res = HttpClientHelper.put(url, params);
+
+        boolean result = false;
+
+        try {
+            result = res.getBoolean("success");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }*/
+
+    public static void deleteEvent(String apiKey,Event event) throws Exception
+    {
+
+    }
+
     private static Event convertEvent(JSONObject json) throws JSONException {
 
-        String id = json.get("Id").toString();
+        String id = json.get("id").toString();
         String title = json.get("title").toString();
         String description = json.get("description").toString();
         String address = json.get("address").toString();
@@ -71,9 +104,5 @@ public class EventsApiClient extends BaseApiClient {
 
         return event;
     }
-
-    //  public void deleteEvent(String eventId){}
-//public void updateEvent(String eventId){}
-
 
 }

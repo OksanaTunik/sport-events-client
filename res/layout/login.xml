@@ -1,4 +1,110 @@
-<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".MainActivity" >
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/start_page_background1"
+            android:orientation="vertical" >
+
+        <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="95dp"
+                android:gravity="center"
+                android:text="Sport Events"
+                android:textAlignment="center"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/blue"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:typeface="serif"></TextView>
+        <View
+                android:layout_width="fill_parent"
+                android:layout_height="2dp"
+                android:layout_marginBottom="10dp"
+                android:background="#C0C0C0"/>
+
+
+        <EditText
+                android:id="@+id/txtEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Email Address"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="20dp"
+                android:textColor="#fff"
+                android:textSize="20dp"
+                android:inputType="textEmailAddress" >
+            <requestFocus />
+        </EditText>
+
+        <EditText
+                android:id="@+id/txtPwd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Password"
+
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
+                android:textColor="#fff"
+                android:textSize="20dp"
+                android:inputType="textPassword" />
+
+        <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:background="@color/blue"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
+                android:textColor="#fff"
+                android:textStyle="bold"
+                android:text="Log In" />
+
+        <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:gravity="center"
+                android:text="Forget your password?"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    </LinearLayout>
+    <TextView
+            android:id="@+id/textView3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Sign in"
+            android:padding="50px"
+            android:textColor="#ffffff"
+            android:gravity="left"
+            android:layout_gravity="bottom"
+            android:textStyle="bold"
+            android:layout_alignParentBottom="true"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+</RelativeLayout>
+
+
+<!--<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
@@ -14,7 +120,6 @@
             android:padding="10dip"
             >
 
-        <!--  View Title Label -->
         <ImageView
                 android:id="@+id/image_view"
                 android:layout_width="wrap_content"
@@ -36,13 +141,11 @@
                 android:textStyle="bold"
                 android:typeface="normal" />
 
-        <!--  Email Label -->
         <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="Email:"
                 android:textSize="20dp" />
-        <!--  Email TextField -->
 
         <EditText
                 android:id="@+id/txtEmail"
@@ -52,14 +155,12 @@
                 android:inputType="textEmailAddress"
                 android:textSize="20dp" />
 
-        <!--  Password Label -->
         <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dip"
                 android:text="Password:"
                 android:textSize="20dp" />
-        <!--  Password TextField -->
 
         <EditText
                 android:id="@+id/txtPwd"
@@ -82,4 +183,4 @@
                 android:textSize="35dp"/>
     </LinearLayout>
 
-</LinearLayout>
+</LinearLayout>-->

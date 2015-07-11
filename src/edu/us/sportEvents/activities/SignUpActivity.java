@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 import edu.us.sportEvents.api.AccountApiClient;
 import edu.us.sportEvents.api.BaseActivity;
-import com.example.ukradlimirower.R;
+import edu.us.sportEvents.R;
 
 public class SignUpActivity extends BaseActivity implements OnClickListener {
     EditText txtEmail;
@@ -76,7 +76,7 @@ public class SignUpActivity extends BaseActivity implements OnClickListener {
         protected void onPostExecute(String result) {
             if (result != null) {
                 storeApiKey(result);
-                chooseKindOfSportActivity();
+                //chooseKindOfSportActivity();showListEvent();
             } else {
                 Toast.makeText(getApplicationContext(), "Wrong username/password", Toast.LENGTH_SHORT).show();
                 showSignUp();

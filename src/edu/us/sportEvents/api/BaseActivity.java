@@ -5,7 +5,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import android.app.Activity;
 import android.content.ComponentName;
@@ -72,22 +71,22 @@ public abstract class BaseActivity extends Activity {
     }
 
     public void showSignIn() {
-        Intent intent = getIntent(SignInActivity.class);
+        Intent intent = getIntent(LogInActivity.class);
         startActivity(intent);
     }
 
     public void showSignUp() {
-            Intent intent = getIntent(SignUpActivity.class, true);
-            startActivity(intent);
-        }
+        Intent intent = getIntent(SignUpActivity.class, true);
+        startActivity(intent);
+    }
 
     public void showNewEvent() {
         Intent intent = getIntent(CreateEventActivity.class);
         startActivity(intent);
     }
 
-    public void showEventList() {
-        Intent intent = getIntent(EventListActivity.class);
+    public void showListEvent() {
+        Intent intent = getIntent(ListEventActivity.class);
         startActivity(intent);
     }
 
@@ -98,7 +97,7 @@ public abstract class BaseActivity extends Activity {
     }
     public void tabActivity()
     {
-        Intent intent = new Intent(this, TabTest.class);
+        Intent intent = new Intent(this, MainTabActivity.class);
         startActivity(intent);
     }
 
@@ -170,7 +169,7 @@ public abstract class BaseActivity extends Activity {
         return intent;
     }
 
-    protected File getApiKeyFile() {
+    protected static File getApiKeyFile() {
         File root = new File(Environment.getExternalStorageDirectory() + File.separator + "ukradli-mi-rower-data" + File.separator);
         root.mkdirs();
         String fname = "APIKEY";
@@ -178,7 +177,7 @@ public abstract class BaseActivity extends Activity {
         return new File(root, fname);
     }
 
-    protected void storeApiKey(String apiKey) {
+    public static void storeApiKey(String apiKey) {
         File file = getApiKeyFile();
         FileOutputStream fos;
 
@@ -193,7 +192,7 @@ public abstract class BaseActivity extends Activity {
         }
     }
 
-    protected String readApiKey() {
+    public static String readApiKey() {
         return "moofoo";
         /*if (apiKey != null) {
             return apiKey;

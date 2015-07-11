@@ -8,17 +8,17 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.*;
-import edu.us.sportEvents.api.AccountApiClient;
+import android.widget.EditText;
+import android.widget.Toast;
+import edu.us.sportEvents.R;
 import edu.us.sportEvents.api.BaseActivity;
 import edu.us.sportEvents.api.EventsApiClient;
 import edu.us.sportEvents.entities.Event;
-import edu.us.sportEvents.R;
 
 /**
  * Created by shybovycha on 23.11.14.
  */
-public class CreateEventActivity extends BaseActivity {
+public class  EditEventActivity extends BaseActivity {
         EditText txtTitle;
         EditText txtDescription;
         EditText txtAddress;
@@ -32,7 +32,7 @@ public class CreateEventActivity extends BaseActivity {
             Intent intent = getIntent();
             String sport = intent.getStringExtra("SportName");
             txtSport = (EditText) findViewById(R.id.txtSport);
-            Toast.makeText(CreateEventActivity.this, sport, Toast.LENGTH_SHORT).show();
+            Toast.makeText(EditEventActivity.this, sport, Toast.LENGTH_SHORT).show();
             txtSport.setText(sport);
             txtSport.addTextChangedListener(new MyTextWatcher());
 
@@ -98,7 +98,7 @@ public class CreateEventActivity extends BaseActivity {
             @Override
             protected Boolean doInBackground(Event... params) {
                 try {
-                    return EventsApiClient.createEvent(CreateEventActivity.this.readApiKey(), params[0]);
+                    return EventsApiClient.createEvent(EditEventActivity.this.readApiKey(), params[0]);
                 } catch (Exception e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();

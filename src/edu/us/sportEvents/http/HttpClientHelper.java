@@ -13,6 +13,7 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -73,6 +74,12 @@ public class HttpClientHelper {
         }
 
         return jObject;
+    }
+
+    public static JSONObject get(String url, List<NameValuePair> params) {
+        String paramsUri = URLEncodedUtils.format(params, "utf-8");
+
+        return get(url + "?" + paramsUri);
     }
 
     public static JSONObject get(String url) {

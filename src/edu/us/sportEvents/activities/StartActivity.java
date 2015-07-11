@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import edu.us.sportEvents.api.AccountApiClient;
 import edu.us.sportEvents.api.BaseActivity;
-import com.example.ukradlimirower.R;
+import edu.us.sportEvents.R;
 
 /**
  * Created by Oksana on 01.12.2014.
@@ -25,9 +25,9 @@ public class StartActivity extends BaseActivity {
     }
 
     protected void showAsUsual() {
-        setContentView(R.layout.start_page);
-        btnSignUp = (Button) this.findViewById(R.id.btnSignUp);
-        btnSignIn = (Button) this.findViewById(R.id.btnSingIn);
+        setContentView(R.layout.signup);
+        btnSignUp = (Button) this.findViewById(R.id.btnSignup);
+       // btnSignIn = (Button) this.findViewById(R.id.btnSingIn);
 
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
@@ -37,16 +37,16 @@ public class StartActivity extends BaseActivity {
                 startActivity(i);
             }
         });
-        btnSignIn.setOnClickListener(new View.OnClickListener() {
+     /*   btnSignIn.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 Intent i = new Intent(StartActivity.this,
-                        SignInActivity.class);
+                        LogInActivity.class);
 
                 startActivity(i);
             }
-        });
+        });*/
     }
 
     public class RestoreSessionTask extends AsyncTask<String, Void, Boolean> {
@@ -58,8 +58,9 @@ public class StartActivity extends BaseActivity {
         @Override
         protected void onPostExecute(Boolean result) {
             if (result) {
-                tabActivity();
-               // chooseKindOfSportActivity();
+              //  tabActivity();
+              //  showListEvent();
+                chooseKindOfSportActivity();
             } else {
                 showAsUsual();
             }

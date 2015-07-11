@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.example.ukradlimirower.R;
+import edu.us.sportEvents.R;
 
 import java.util.ArrayList;
 

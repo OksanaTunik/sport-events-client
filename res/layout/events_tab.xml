@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:gravity="center"
+              android:orientation="vertical" >
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:orientation="vertical"
+                  android:layout_width="fill_parent"
+                  android:layout_height="fill_parent"
+                  android:background="@color/white">
+
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="0dp">
+
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content"
+                    android:layout_width="fill_parent"
+                    android:paddingTop="6dp"
+                    android:paddingLeft="6dp"
+                    android:paddingRight="6dp">
+
+                <EditText
+                        android:id="@+id/findUserInput"
+                        android:layout_marginTop="1dp"
+                        android:layout_width="fill_parent"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:textSize="16sp"
+                        android:autoText="false"
+                        android:capitalize="none"
+                        android:imeOptions="actionSearch"
+                        android:hint="search_user"/>
+
+                <Button
+                        android:id="@+id/findUserButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@color/blue">
+                </Button>
+
+            </LinearLayout>
+
+            <TextView
+                    android:id="@+id/numberConnections"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ffffff"
+                    android:paddingBottom="6dp"
+                    android:paddingLeft="6dp"
+                    android:paddingRight="6dp"/>
+
+        </LinearLayout>
+
+        <ListView
+                android:id="@+id/lvMain"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:scrollbars="vertical"
+                android:divider="@color/blue"
+                android:dividerHeight="1dip"
+                android:listSelector="@drawable/list_selector"
+                android:cacheColorHint="#00000000"
+                android:fadeScrollbars="true"/>
+
+    </LinearLayout>
+
+</LinearLayout>

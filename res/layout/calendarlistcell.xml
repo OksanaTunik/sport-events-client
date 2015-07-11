@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <View
+        android:layout_height="fill_parent"
+        android:layout_width="3dp"
+        android:background="#3F4E5E" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent"
+        android:paddingLeft="3dp">
+        <TextView
+            android:id="@+id/cal_cell_title_tv"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent" />
+        <TextView
+            android:id="@+id/cal_cell_time_tv"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:textColor="#D5DAE3"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            />
+        <TextView
+            android:id="@+id/cal_cell_location_tv"
+            android:textSize="14sp"
+            android:textColor="#afafaf"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent" />
+    </LinearLayout>
+</LinearLayout>
