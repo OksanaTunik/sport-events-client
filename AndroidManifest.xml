@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="edu.us.sportEvents"
+    package="edu.us.sports4u"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -19,25 +19,24 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:label="Sport Events"
+        android:label="Sports4U"
         android:theme="@style/AppTheme" >
-        <activity android:name=".activities.LogInActivity" android:label="Sport Events"/>
-        <activity android:name="edu.us.sportEvents.activities.SignUpActivity" android:label="Sport Events" />
-        <activity android:name="edu.us.sportEvents.activities.PersonalPageActivity" android:label="Sport Events" />
-        <activity android:name=".activities.ListEventActivity" android:label="Sport Events" />
-        <activity android:name="edu.us.sportEvents.activities.ChooseKindOfSportActivity" android:label="Sport Events" />
-        <activity android:name="edu.us.sportEvents.activities.CreateEventActivity" android:label="Sport Events" />
-        <activity android:name="edu.us.sportEvents.activities.DetailEventActivity" android:label="Sport Events" />
-        <activity android:name=".activities.MainTabActivity" android:label="Sport Events" />
-        <activity android:name="edu.us.sportEvents.activities.maps.ChooseLocationOnMap" android:label="Sport Events" />
+        <activity android:name="edu.us.sports4u.activities.autorization.LogInActivity" android:label="Sports4U"/>
+        <activity android:name="edu.us.sports4u.activities.autorization.SignUpActivity" android:label="Sports4U" />
+        <activity android:name="edu.us.sports4u.activities.ListEventActivity" android:label="Sport Events" />
+        <activity android:name="edu.us.sports4u.activities.ChooseKindOfSportActivity" android:label="Sports4U" />
+        <activity android:name="edu.us.sports4u.activities.CreateEventActivity" android:label="Sports4U" />
+        <activity android:name="edu.us.sports4u.activities.DetailEventActivity" android:label="Sports4U" />
+        <activity android:name="edu.us.sports4u.activities.MainTabActivity" android:label="Sports4U" />
+        <activity android:name="edu.us.sports4u.activities.maps.ChooseLocationOnMap" android:label="Sports4U" />
 
-        <activity android:name="edu.us.sportEvents.activities.StartActivity">
+        <activity android:name="edu.us.sports4u.activities.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name="edu.us.sportEvents.activities.Interests"/>
+        <activity android:name="edu.us.sports4u.activities.Interests"/>
 
         <meta-data
                 android:name="com.google.android.maps.v2.API_KEY"
