@@ -10,6 +10,7 @@ import edu.us.sports4u.api.BaseActivity;
 import edu.us.sports4u.api.EventsApiClient;
 import edu.us.sports4u.entities.Event;
 import edu.us.sports4u.R;
+import edu.us.sports4u.entities.ListEventsParams;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,13 +46,13 @@ public class ListEventActivity extends BaseActivity {
             }
         });
 
-        List<String> sports = new ArrayList<String>();
-        sports.add("fff");
+//        List<String> sports = new ArrayList<String>();
+//        sports.add("fff");
         ListEventsParams params = new ListEventsParams();
-        params.lat = 3.14f;
-        params.lng = 5.f;
+//        params.lat = 3.14f;
+//        params.lng = 5.f;
         params.radius = 10000.f;
-        params.sports = sports;
+//        params.sports = sports;
         new ListEventsTask().execute(params);
     }
 
@@ -144,15 +145,6 @@ public class ListEventActivity extends BaseActivity {
         }
     }
 
-    class ListEventsParams {
-        public Float lat;
-        public Float lng;
-        public Float radius;
-        public Iterable <String> sports;
-
-        public ListEventsParams() {}
-    }
-
     class ListEventsTask extends AsyncTask<ListEventsParams, Void, List<Event>> {
 
         @Override
@@ -171,7 +163,7 @@ public class ListEventActivity extends BaseActivity {
             List<Event> events = new ArrayList<Event>();
 
             try {
-                return EventsApiClient.getEvents(ListEventActivity.this.readApiKey(), params[0].lat, params[0].lng, params[0].radius, params[0].sports);
+                return EventsApiClient.getEvents(ListEventActivity.this.readApiKey(), params[0].query, params[0].address, params[0].radius, params[0].sports);
             } catch (Exception e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();

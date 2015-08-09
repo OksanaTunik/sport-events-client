@@ -12,6 +12,7 @@ import edu.us.sports4u.activities.DetailEventActivity;
 import edu.us.sports4u.api.BaseActivity;
 import edu.us.sports4u.api.EventsApiClient;
 import edu.us.sports4u.entities.Event;
+import edu.us.sports4u.entities.ListEventsParams;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,23 +36,22 @@ public class EventsTab extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> arg0, View view,
                                     int position, long id) {
-
                 String eventId = (String) view.getTag();
                 Toast.makeText(getActivity().getBaseContext(), eventId, Toast.LENGTH_LONG)
                         .show();
 
                 showEvent();
-
             }
         });
 
-        List<String> sports = new ArrayList<String>();
-        sports.add("fff");
+        EditText etSearchQuery = (EditText) fragmentView.findViewById(R.id.findEventsQuery);
+
         ListEventsParams params = new ListEventsParams();
-        params.lat = 3.14f;
-        params.lng = 5.f;
-        params.radius = 10000.f;
-        params.sports = sports;
+        params.address = BaseActivity.getUserAccount().getAddress();
+        //params.radius = 10000.f;
+        params.query = etSearchQuery.getText().toString();
+        //params.addSport("");
+
         new ListEventsTask().execute(params);
 
         return fragmentView;
@@ -63,7 +63,6 @@ public class EventsTab extends Fragment {
     }
 
     private void saveEvent(Event event) {
-
         adapter.add(event);
         adapter.notifyDataSetChanged();
     }
@@ -121,6 +120,7 @@ public class EventsTab extends Fragment {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             View view = convertView;
+
             if (view == null) {
                 view = lInflater.inflate(R.layout.events_list_item, parent, false);
             }
@@ -137,16 +137,6 @@ public class EventsTab extends Fragment {
         }
     }
 
-    class ListEventsParams {
-        public Float lat;
-        public Float lng;
-        public Float radius;
-        public Iterable<String> sports;
-
-        public ListEventsParams() {
-        }
-    }
-
     private void bindEvents(List<Event> events) {
         adapter = new EventAdapter(getActivity(), R.id.lvMain,
                 new ArrayList<Event>(events));
@@ -155,10 +145,8 @@ public class EventsTab extends Fragment {
     }
 
     class ListEventsTask extends AsyncTask<ListEventsParams, Void, List<Event>> {
-
         @Override
         protected void onPreExecute() {
-
         }
 
         @Override
@@ -172,7 +160,7 @@ public class EventsTab extends Fragment {
             List<Event> events = new ArrayList<Event>();
 
             try {
-                return EventsApiClient.getEvents(BaseActivity.readApiKey(), params[0].lat, params[0].lng, params[0].radius, params[0].sports);
+                return EventsApiClient.getEvents(BaseActivity.readApiKey(), params[0].query, params[0].address, params[0].radius, params[0].sports);
             } catch (Exception e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
@@ -180,11 +168,9 @@ public class EventsTab extends Fragment {
 
             return events;
         }
-
     }
 
     class DeleteEventsTask extends AsyncTask<String, Void, Void> {
-
         @Override
         protected Void doInBackground(String... params) {
             // TODO Auto-generated method stub
@@ -194,9 +180,8 @@ public class EventsTab extends Fragment {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
+
             return null;
         }
-
     }
-
 }

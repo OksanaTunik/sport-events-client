@@ -27,7 +27,7 @@
                     android:paddingRight="6dp">
 
                 <EditText
-                        android:id="@+id/findUserInput"
+                        android:id="@+id/findEventsQuery"
                         android:layout_marginTop="1dp"
                         android:layout_width="fill_parent"
                         android:layout_weight="1"
@@ -37,14 +37,14 @@
                         android:autoText="false"
                         android:capitalize="none"
                         android:imeOptions="actionSearch"
-                        android:hint="search_user"/>
+                        android:hint="Find events"/>
 
-                <Button
-                        android:id="@+id/findUserButton"
+                <ImageButton
+                        android:id="@+id/findEventsButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:drawableLeft="@color/blue">
-                </Button>
+                        android:src="@drawable/ic_action_search"
+                        android:drawableLeft="@color/blue" />
 
             </LinearLayout>
 

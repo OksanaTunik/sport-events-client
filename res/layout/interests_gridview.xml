@@ -2,13 +2,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"    
-    tools:context=".MainActivity" >
+    tools:context=".MainActivity"
+    android:background="#B7B7B7"
+        >
 
     <GridView
         android:id="@+id/gridView"
+        android:background="#B7B7B7"
         android:layout_width="fill_parent"
 android:layout_height="fill_parent"
-        android:layout_margin="3dp"
+        android:layout_margin="10dp"
         android:columnWidth="85dp"
         android:gravity="center"
         android:numColumns="auto_fit"

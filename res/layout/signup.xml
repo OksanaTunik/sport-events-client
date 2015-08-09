@@ -1,7 +1,8 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:context=".MainActivity" >
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical"
+        >
     <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -10,9 +11,10 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:background="@drawable/start_page_background1"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:weightSum="1">
 
-        <TextView
+        <ImageView
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -20,32 +22,22 @@
                 android:layout_marginRight="15dp"
                 android:layout_marginLeft="95dp"
                 android:gravity="center"
-                android:text="Sports4U"
-                android:textAlignment="center"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/blue"
-                android:textSize="25sp"
-                android:textStyle="bold"
-                android:typeface="serif" />
+                android:src="@drawable/logo" />
 
-        <View
-                android:layout_width="fill_parent"
-                android:layout_height="2dp"
-                android:layout_marginBottom="10dp"
-                android:background="#C0C0C0"/>
-
-        <EditText
+            <EditText
                 android:id="@+id/txtDisplayName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Name"
+                android:textColorHint="#f9fbfc"
                 android:layout_marginRight="15dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="20dp"
                 android:textColor="#AEAEAE"
                 android:textSize="20dp"
-                android:inputType="text" >
+                android:inputType="text"
+                android:layout_weight="0.10">
             <requestFocus />
         </EditText>
 
@@ -55,12 +47,15 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Email Address"
+
+                android:textColorHint="#f9fbfc"
                 android:layout_marginRight="15dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="20dp"
                 android:textColor="#AEAEAE"
                 android:textSize="20dp"
-                android:inputType="textEmailAddress" >
+                android:inputType="textEmailAddress"
+                android:layout_weight="0.06">
         </EditText>
 
         <EditText
@@ -69,12 +64,14 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Password"
-                android:layout_marginTop="8dp"
+
+                android:textColorHint="#f9fbfc"
                 android:layout_marginRight="15dp"
                 android:layout_marginLeft="15dp"
                 android:textColor="#AEAEAE"
                 android:textSize="20dp"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:layout_weight="0.12"/>
 
         <Button
                 android:id="@+id/btnSignup"
@@ -102,4 +99,4 @@
             android:textStyle="bold"
             android:layout_alignParentBottom="true"
             android:textAppearance="?android:attr/textAppearanceLarge" />
-</RelativeLayout>
+</ScrollView>

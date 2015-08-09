@@ -3,82 +3,114 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
+    android:background="#B7B7B7"
 >
 
     <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.4"
+            android:layout_weight="0.05"
             android:orientation="vertical"
+            android:layout_margin="15dp"
+            android:background="#f9fbfc"
         >
 
-        <HorizontalScrollView
-                android:layout_width="fill_parent"
+        <TableLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-        >
-            <LinearLayout
-                    android:id="@+id/images"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_weight="0.2"
-                    >
-            </LinearLayout>
-        </HorizontalScrollView>
+                >
 
-        <TextView
-            android:id="@+id/tvTitle"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.2"
-            android:textColor="#000000"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:text="title"
-            android:gravity="center"
-            android:padding="5dp"
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="match_parent"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="title"
+                android:gravity="center"
+                android:layout_height="45dp"/>
+
+            <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                <ImageView
+                        android:layout_width="65dp"
+                        android:layout_height="170dp"
+                        android:id="@+id/imageView"
+                        android:src="@drawable/clock"/>
+
+                <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:inputType="date"
+                        android:ems="10"
+                        android:id="@+id/etDay"
+                        android:text="29th"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Monday"
+                        android:id="@+id/tvDayMonth"/>
+            </TableRow>
+
+            <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imgClock"
+                        android:src="@drawable/clock"/>
+
+                <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:inputType="time"
+                        android:ems="10"
+                        android:id="@+id/etTime"
+                        android:text="5:00pm"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Krakow"
+                        android:id="@+id/tvlocation"/>
+            </TableRow>
+        </TableLayout>
+
+        <ImageButton
+                android:id="@+id/btnJoin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:background="#f30000"
+                android:textAllCaps="true"
+                android:textSize="35dp"
+                android:src="@drawable/join"
         />
 
         <TextView
                 android:id="@+id/tvDescription"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.5"
+                android:layout_weight="0.03"
                 android:textColor="#000000"
                 android:textSize="20sp"
                 android:text="description"
                 android:padding="5dp"
         />
-    </LinearLayout>
 
-    <!--<VerticalScrollView-->
-            <!--android:layout_width="fill_parent"-->
-            <!--android:layout_height="0dp"-->
-            <!--android:layout_weight="0.5"-->
-            <!-->-->
-        <ListView
-                android:id="@+id/found_alerts"
-                android:layout_width="fill_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.5"
-        />
-    <!--</VerticalScrollView>-->
+    </LinearLayout>
 
     <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.1"
+            android:layout_height="wrap_content"
             android:gravity="bottom"
     >
-        <Button
-                android:id="@+id/btnFound"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="found it!"
-                android:background="#f30000"
-                android:textAllCaps="true"
-                android:textSize="35dp"
-        />
     </LinearLayout>
 </LinearLayout>

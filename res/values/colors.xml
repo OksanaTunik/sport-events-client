@@ -6,9 +6,12 @@
 <color name="black">#000</color>
 <color name="titlebar">#5fb336</color>
 <color name="titlebartextcolor">#FFFFFF</color>
-<color name="white">#fcfcfc</color>
 
-    <color name="bluee">#60CEFD</color>
-    <color name="blue">#00f</color>
+
+    <color name="blue">#0097f6</color>
     <color name="red">#f00</color>
+
+    <color name="grey">#B7B7B7</color>
+    <color name="white">#f9fbfc</color>
+    <color name="orange">#ff9900</color>
 </resources>

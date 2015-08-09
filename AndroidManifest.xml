@@ -11,6 +11,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-feature android:name="android.hardware.camera" />
@@ -21,14 +22,13 @@
         android:icon="@drawable/ic_launcher"
         android:label="Sports4U"
         android:theme="@style/AppTheme" >
-        <activity android:name="edu.us.sports4u.activities.autorization.LogInActivity" android:label="Sports4U"/>
-        <activity android:name="edu.us.sports4u.activities.autorization.SignUpActivity" android:label="Sports4U" />
+        <activity android:name="edu.us.sports4u.activities.autorization.LogInActivity" />
+        <activity android:name="edu.us.sports4u.activities.autorization.SignUpActivity"  />
         <activity android:name="edu.us.sports4u.activities.ListEventActivity" android:label="Sport Events" />
         <activity android:name="edu.us.sports4u.activities.ChooseKindOfSportActivity" android:label="Sports4U" />
         <activity android:name="edu.us.sports4u.activities.CreateEventActivity" android:label="Sports4U" />
         <activity android:name="edu.us.sports4u.activities.DetailEventActivity" android:label="Sports4U" />
         <activity android:name="edu.us.sports4u.activities.MainTabActivity" android:label="Sports4U" />
-        <activity android:name="edu.us.sports4u.activities.maps.ChooseLocationOnMap" android:label="Sports4U" />
 
         <activity android:name="edu.us.sports4u.activities.StartActivity">
             <intent-filter>

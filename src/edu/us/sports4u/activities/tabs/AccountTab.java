@@ -10,6 +10,7 @@ import android.widget.*;
 import edu.us.sports4u.R;
 import edu.us.sports4u.activities.autorization.LogInActivity;
 import edu.us.sports4u.api.BaseActivity;
+import edu.us.sports4u.entities.UserAccount;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,36 +30,42 @@ public class AccountTab extends Fragment {
         View fragmentView = inflater.inflate(R.layout.account_tab, container, false);
 
         // now grab the separate child views from inside it
-        mDrawerListView = (ListView) fragmentView.findViewById(R.id.nav_listView);
-        mDrawerImage = (ImageView) fragmentView.findViewById(R.id.nav_image);
+        //mDrawerListView = (ListView) fragmentView.findViewById(R.id.nav_listView);
+        //mDrawerImage = (ImageView) fragmentView.findViewById(R.id.nav_image);
         //mDrawerText = (TextView) fragmentView.findViewById(R.id.nav_text);
 
         imagesToUpload = new ArrayList<Bitmap>();
 
         Button btnDone = (Button) fragmentView.findViewById(R.id.btnDone);
-        Button btnAddImage = (Button) fragmentView.findViewById(R.id.btnAddImage);
+        ImageButton btnAddImage = (ImageButton) fragmentView.findViewById(R.id.btnAddImage);
         Button signOutBtn = (Button) fragmentView.findViewById(R.id.btnSignout);
 
-        btnAddImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-            //    openImageIntent();
-            }
-        });
+//        btnAddImage.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//            //    openImageIntent();
+//            }
+//        });
 
         btnDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TextView txtName = (TextView) view.findViewById(R.id.nav_text);
+                EditText txtName = (EditText) view.findViewById(R.id.txtName);
+                EditText txtAddress = (EditText) view.findViewById(R.id.txtAddress);
 
-            /*    String name = txtName.getText().toString();
+                String name = txtName.getText().toString();
+                String address = txtAddress.getText().toString();
 
-                Bundle bundle = getIntent().getExtras();
-                String alertId = bundle.getString("alertId");
+                UserAccount newAccount = new UserAccount();
+                newAccount.setName(name);
+                newAccount.setAddress(address);
+                BaseActivity.setUserAccount(newAccount);
 
-                setContentView(R.layout.waiting);
+//                Bundle bundle = getIntent().getExtras();
+//                String alertId = bundle.getString("alertId");
 
-                new CreateFoundAlertTask(readApiKey(), alertId, title, description, lat, lon).execute();*/
+//                setContentView(R.layout.waiting);
+//                new CreateFoundAlertTask(readApiKey(), alertId, title, description, lat, lon).execute();*/
             }
         });
 

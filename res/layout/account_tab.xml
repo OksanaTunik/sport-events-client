@@ -10,74 +10,58 @@
     <!-- a separate section to go above the list -->
     <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="264dp"
             android:padding="10dp"
+
+            android:layout_margin="15dp"
             android:orientation="horizontal"
             android:weightSum="1">
 
         <!-- your image, you can set it later (see NavDrawerFrag) -->
-        <ImageView
-                android:id="@+id/nav_image"
+        <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="15dp"
-                android:src="@android:drawable/ic_menu_myplaces"
-                />
+                android:layout_height="174dp">
 
-        <Button
-                android:id="@+id/btnAddImage"
-                android:layout_width="168dp"
-                android:layout_height="wrap_content"
-                android:text="Add image"
-                />
+            <ImageButton
+                    android:id="@+id/btnAddImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    android:src="@drawable/profile"
+                    />
 
-        <Button
-                android:id="@+id/btnSignout"
-                android:layout_width="168dp"
-                android:layout_height="wrap_content"
-                android:text="Sign out"
-                />
+        </LinearLayout>
+
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="157dp"
+                android:weightSum="1">
+
+            <EditText
+                    android:id="@+id/txtName"
+                    android:layout_width="202dp"
+                    android:layout_height="62dp"
+                    android:gravity="center_vertical"
+                    android:hint="Name"
+                    android:layout_weight="0.34"/>
+
+            <EditText
+                    android:id="@+id/txtAddress"
+                    android:layout_width="196dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:hint="Address"
+                    android:layout_weight="0.38"/>
+
+        </LinearLayout>
 
         <!-- a bit of test or a title to go with it -->
 
     </LinearLayout>
 
     <!-- some divider thing -->
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:orientation="horizontal">
-
-        <EditText
-                android:id="@+id/name"
-                android:layout_width="match_parent"
-                android:layout_height="47dp"
-                android:gravity="center_vertical"
-                android:hint="Name"/>
-        <EditText
-                android:id="@+id/address"
-                android:layout_width="match_parent"
-                android:layout_height="47dp"
-                android:gravity="center_vertical"
-                android:hint="Address"/>
-    </LinearLayout>
-
-    <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:padding="20dp"
-            android:background="#000000"/>
-
-    <!-- your ListView is now a child View -->
-    <ListView
-            android:id="@+id/nav_listView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:choiceMode="singleChoice"
-            android:divider="@android:color/transparent"
-            android:dividerHeight="0dp"/>
     <Button
             android:id="@+id/btnDone"
             android:layout_width="fill_parent"
@@ -88,5 +72,36 @@
             android:textColor="#fff"
             android:background="#f30000"
             />
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:padding="10dp"
+            android:orientation="horizontal">
+
+    </LinearLayout>
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:padding="20dp"
+            android:background="#000000"/>
+
+    <!-- your ListView is now a child View -->
+    <Button
+            android:id="@+id/btnSignout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign out"
+            android:layout_gravity="right"/>
+
+    <ListView
+            android:id="@+id/nav_listView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:choiceMode="singleChoice"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="0dp"/>
 
 </LinearLayout>

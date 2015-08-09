@@ -13,12 +13,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EventsApiClient extends BaseApiClient {
-
-    public static List<Event> getEvents(String apiKey, Float lat, Float lng, Float radius, Iterable <String> sports ) {
+    public static List<Event> getEvents(String apiKey, String query, String address, Float radius, Iterable <String> sports ) {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
 
-        params.add(new BasicNameValuePair("lat", lat.toString()));
-        params.add(new BasicNameValuePair("lng", lng.toString()));
+        params.add(new BasicNameValuePair("api_key", apiKey));
+        params.add(new BasicNameValuePair("query", query));
+        params.add(new BasicNameValuePair("address", address));
         params.add(new BasicNameValuePair("radius", radius.toString()));
         params.add(new BasicNameValuePair("sports", TextUtils.join(",", sports)));
 
@@ -28,7 +28,6 @@ public class EventsApiClient extends BaseApiClient {
             String url = getUrl("/events/");
             JSONObject res = HttpClientHelper.get(url, params);
             JSONArray array = res.getJSONArray("events");
-
 
             for (int i = 0; i < array.length(); i++) {
                 JSONObject json = array.getJSONObject(i);

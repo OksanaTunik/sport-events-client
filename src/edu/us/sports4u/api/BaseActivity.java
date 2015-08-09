@@ -12,13 +12,36 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.location.LocationManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Environment;
 import edu.us.sports4u.activities.*;
 import edu.us.sports4u.activities.autorization.LogInActivity;
 import edu.us.sports4u.activities.autorization.SignUpActivity;
+import edu.us.sports4u.entities.UserAccount;
 
 public abstract class BaseActivity extends Activity {
     protected static String apiKey;
+    protected static UserAccount userAccount;
+
+    public static UserAccount getUserAccount() {
+        if (userAccount == null) {
+            userAccount = new UserAccount();
+        }
+
+        return userAccount;
+    }
+
+    public static void setUserAccount(UserAccount newAccount) {
+        userAccount = newAccount;
+    }
+
+    public boolean isNetworkAvailable() {
+        ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo info = connMgr.getActiveNetworkInfo();
+
+        return (info != null && info.isConnected());
+    }
 
     public void showLogin() {
         Intent intent = getIntent(LogInActivity.class);
