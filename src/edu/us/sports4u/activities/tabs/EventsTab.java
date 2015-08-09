@@ -22,9 +22,7 @@ public class EventsTab extends Fragment {
     protected ListView lvMain;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View fragmentView = inflater.inflate(R.layout.events_tab, container, false);
 
         lvMain = (ListView) fragmentView.findViewById(R.id.lvMain);
@@ -32,29 +30,34 @@ public class EventsTab extends Fragment {
         registerForContextMenu(lvMain);
 
         lvMain.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
             @Override
-            public void onItemClick(AdapterView<?> arg0, View view,
-                                    int position, long id) {
+            public void onItemClick(AdapterView<?> arg0, View view, int position, long id) {
                 String eventId = (String) view.getTag();
-                Toast.makeText(getActivity().getBaseContext(), eventId, Toast.LENGTH_LONG)
-                        .show();
-
+                Toast.makeText(getActivity().getBaseContext(), eventId, Toast.LENGTH_LONG).show();
                 showEvent();
             }
         });
 
-        EditText etSearchQuery = (EditText) fragmentView.findViewById(R.id.findEventsQuery);
+        ((ImageButton) fragmentView.findViewById(R.id.findEventsButton)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EventsTab.this.runSearch(fragmentView);
+            }
+        });
 
+        runSearch(fragmentView);
+
+        return fragmentView;
+    }
+
+    private void runSearch(View fragmentView) {
         ListEventsParams params = new ListEventsParams();
         params.address = BaseActivity.getUserAccount().getAddress();
         //params.radius = 10000.f;
-        params.query = etSearchQuery.getText().toString();
-        //params.addSport("");
+        params.query = ((EditText) fragmentView.findViewById(R.id.findEventsQuery)).getText().toString();
+        params.addSports(BaseActivity.getUserAccount().getSportFavorites());
 
         new ListEventsTask().execute(params);
-
-        return fragmentView;
     }
 
     private void showEvent() {
@@ -126,10 +129,10 @@ public class EventsTab extends Fragment {
             }
 
             Event event = getItem(position);
-            ((TextView) view.findViewById(R.id.title)).setText(event
-                    .getTitle());
-            ((TextView) view.findViewById(R.id.description)).setText(event
-                    .getDescription());
+
+            ((TextView) view.findViewById(R.id.title)).setText(event.getTitle());
+            ((TextView) view.findViewById(R.id.description)).setText(event.getDescription());
+            ((TextView) view.findViewById(R.id.startsAt)).setText(event.getStartsAt().toString());
 
             view.setTag(event.getId());
 
@@ -138,9 +141,7 @@ public class EventsTab extends Fragment {
     }
 
     private void bindEvents(List<Event> events) {
-        adapter = new EventAdapter(getActivity(), R.id.lvMain,
-                new ArrayList<Event>(events));
-
+        adapter = new EventAdapter(getActivity(), R.id.lvMain, new ArrayList<Event>(events));
         lvMain.setAdapter(adapter);
     }
 

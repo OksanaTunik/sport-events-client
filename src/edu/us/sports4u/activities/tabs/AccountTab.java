@@ -50,8 +50,8 @@ public class AccountTab extends Fragment {
         btnDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EditText txtName = (EditText) view.findViewById(R.id.txtName);
-                EditText txtAddress = (EditText) view.findViewById(R.id.txtAddress);
+                EditText txtName = (EditText) fragmentView.findViewById(R.id.txtName);
+                EditText txtAddress = (EditText) fragmentView.findViewById(R.id.txtAddress);
 
                 String name = txtName.getText().toString();
                 String address = txtAddress.getText().toString();

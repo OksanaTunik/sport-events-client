@@ -1,6 +1,6 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
                 android:scrollbars="vertical"
         >
     <LinearLayout
@@ -99,4 +99,4 @@
             android:textStyle="bold"
             android:layout_alignParentBottom="true"
             android:textAppearance="?android:attr/textAppearanceLarge" />
-</ScrollView>
+</RelativeLayout>

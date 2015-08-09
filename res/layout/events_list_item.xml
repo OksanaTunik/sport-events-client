@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-        >
+                android:layout_height="wrap_content">
 
     <ImageView
             android:id="@+id/imageView1"
@@ -10,24 +9,30 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-
             android:src="@drawable/ic_launcher" />
 
     <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="23dp"
-            android:layout_marginTop="10dp"
             android:layout_toRightOf="@+id/imageView1"
             android:text="title"
+            android:textSize="16sp" />
+
+    <TextView
+            android:id="@+id/startsAt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title"
+            android:layout_toRightOf="@+id/imageView1"
+            android:text="starts at"
             android:textSize="16sp" />
 
     <TextView
             android:id="@+id/description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/imageView1"
+            android:layout_below="@+id/startsAt"
             android:layout_toRightOf="@+id/imageView1"
             android:layout_alignLeft="@+id/textView1"
             android:text="description" />

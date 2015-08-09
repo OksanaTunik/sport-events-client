@@ -173,7 +173,7 @@ public abstract class BaseActivity extends Activity {
     }
 
     public static String readApiKey() {
-        return null;
+        return "moofoo";
 
 //        if (apiKey != null) {
 //            return apiKey;

@@ -1,7 +1,9 @@
 package edu.us.sports4u.entities;
 
 import android.graphics.Bitmap;
-import android.media.Image;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Oksana on 09.08.2015.
@@ -10,11 +12,13 @@ public class UserAccount {
     private String name;
     private String address;
     private Bitmap photo;
+    private List<String> sports;
 
     public UserAccount() {
         name = "";
         address = "";
         photo = null;
+        sports = new ArrayList<>();
     }
 
     public String getName() {
@@ -39,5 +43,13 @@ public class UserAccount {
 
     public void setPhoto(Bitmap photo) {
         this.photo = photo;
+    }
+
+    public List<String> getSportFavorites() {
+        return sports;
+    }
+
+    public void setSportFavorites(List<String> sports) {
+        this.sports = sports;
     }
 }

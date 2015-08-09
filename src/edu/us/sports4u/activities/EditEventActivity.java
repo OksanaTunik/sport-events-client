@@ -15,6 +15,8 @@ import edu.us.sports4u.api.BaseActivity;
 import edu.us.sports4u.api.EventsApiClient;
 import edu.us.sports4u.entities.Event;
 
+import java.util.Date;
+
 /**
  * Created by shybovycha on 23.11.14.
  */
@@ -73,7 +75,7 @@ public class  EditEventActivity extends BaseActivity {
                     if (txtAddress.getText().length() == 0)
                         txtAddress.setError("please enter the address");
 
-                    Event event = new Event(title,description,address,sport);
+                    Event event = new Event(title, description, address, sport, new Date());
                     new SaveEventTask().execute(event);
                     return true;
 

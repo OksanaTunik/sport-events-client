@@ -9,11 +9,15 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class EventsApiClient extends BaseApiClient {
-    public static List<Event> getEvents(String apiKey, String query, String address, Float radius, Iterable <String> sports ) {
+    public static List<Event> getEvents(String apiKey, String query, String address, Float radius, Iterable<String> sports) {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
 
         params.add(new BasicNameValuePair("api_key", apiKey));
@@ -21,6 +25,35 @@ public class EventsApiClient extends BaseApiClient {
         params.add(new BasicNameValuePair("address", address));
         params.add(new BasicNameValuePair("radius", radius.toString()));
         params.add(new BasicNameValuePair("sports", TextUtils.join(",", sports)));
+
+        List<Event> list = new ArrayList<Event>();
+
+        try {
+            String url = getUrl("/events/");
+            JSONObject res = HttpClientHelper.get(url, params);
+            JSONArray array = res.getJSONArray("events");
+
+            for (int i = 0; i < array.length(); i++) {
+                JSONObject json = array.getJSONObject(i);
+                Event event = convertEvent(json);
+                list.add(event);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return list;
+    }
+
+    public static List<Event> getCalendarEvents(String apiKey, String address, Float radius, Iterable<String> sports) {
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        String groupBy = "week";
+
+        params.add(new BasicNameValuePair("api_key", apiKey));
+        params.add(new BasicNameValuePair("address", address));
+        params.add(new BasicNameValuePair("radius", radius.toString()));
+        params.add(new BasicNameValuePair("sports", TextUtils.join(",", sports)));
+        params.add(new BasicNameValuePair("group_by", groupBy));
 
         List<Event> list = new ArrayList<Event>();
 
@@ -91,14 +124,22 @@ public class EventsApiClient extends BaseApiClient {
 
     }
 
-    private static Event convertEvent(JSONObject json) throws JSONException {
-
+    private static Event convertEvent(JSONObject json) throws JSONException, ParseException {
         String id = json.get("id").toString();
         String title = json.get("title").toString();
         String description = json.get("description").toString();
         String address = json.get("address").toString();
+        String sport = json.get("sport").toString();
+        String group = json.get("group").toString();
 
-        Event event = new Event(id, title, description, address);
+        if (group.isEmpty() || group.equals("null"))
+            group = null;
+
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date plannedAt = format.parse(json.get("starts_at").toString());
+        Date createdAt = format.parse(json.get("created_at").toString());
+
+        Event event = new Event(id, title, description, address, sport, createdAt, plannedAt, group);
 
         return event;
     }

@@ -22,4 +22,6 @@ public class ListEventsParams {
     public void addSport(String sport) {
         sports.add(sport);
     }
+
+    public void addSports(List<String> sports) { sports.addAll(sports); }
 }

@@ -2,6 +2,7 @@ package edu.us.sports4u.activities.tabs;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,18 +11,20 @@ import android.view.ViewGroup;
 import android.widget.*;
 import edu.us.sports4u.R;
 import edu.us.sports4u.activities.DetailEventActivity;
+import edu.us.sports4u.api.BaseActivity;
+import edu.us.sports4u.api.EventsApiClient;
 import edu.us.sports4u.entities.Event;
+import edu.us.sports4u.entities.ListEventsParams;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CalendarTab extends Fragment {
     protected EventAdapter adapter;
     protected ListView lvCalendar;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View fragmentView = inflater.inflate(R.layout.calendar_tab, container, false);
 
         lvCalendar = (ListView) fragmentView.findViewById(R.id.lvCalendar);
@@ -29,19 +32,21 @@ public class CalendarTab extends Fragment {
         registerForContextMenu(lvCalendar);
 
         lvCalendar.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
             @Override
-            public void onItemClick(AdapterView<?> arg0, View view,
-                                    int position, long id) {
-
+            public void onItemClick(AdapterView<?> arg0, View view, int position, long id) {
                 String eventId = (String) view.getTag();
-                Toast.makeText(getActivity().getBaseContext(), eventId, Toast.LENGTH_LONG)
-                        .show();
+                Toast.makeText(getActivity().getBaseContext(), eventId, Toast.LENGTH_LONG).show();
 
                 showCalendar();
-
             }
         });
+
+        ListEventsParams params = new ListEventsParams();
+        params.address = BaseActivity.getUserAccount().getAddress();
+        //params.radius = 10000.f;
+        params.addSports(BaseActivity.getUserAccount().getSportFavorites());
+
+        new ListEventsTask().execute(params);
 
         return fragmentView;
     }
@@ -57,6 +62,11 @@ public class CalendarTab extends Fragment {
         adapter.notifyDataSetChanged();
     }
 
+    private void bindEvents(List<Event> events) {
+        adapter = new EventAdapter(getActivity(), R.id.lvCalendar, new ArrayList<Event>(events));
+        lvCalendar.setAdapter(adapter);
+    }
+
     class EventAdapter extends ArrayAdapter<Event> {
         Context ctx;
         LayoutInflater lInflater;
@@ -69,8 +79,7 @@ public class CalendarTab extends Fragment {
 
             ctx = context;
             this.events = events;
-            lInflater = (LayoutInflater) ctx
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            lInflater = (LayoutInflater) ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         }
 
         public void remove(Event event) {
@@ -104,19 +113,52 @@ public class CalendarTab extends Fragment {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             View view = convertView;
+
             if (view == null) {
-                view = lInflater.inflate(R.layout.events_list_item, parent, false);
+                view = lInflater.inflate(R.layout.calendar_list_item, parent, false);
             }
 
             Event event = getItem(position);
-            ((TextView) view.findViewById(R.id.title)).setText(event
-                    .getTitle());
-            ((TextView) view.findViewById(R.id.description)).setText(event
-                    .getDescription());
+
+            if (event.getGroup() != null) {
+                TextView groupTitle = (TextView) view.findViewById(R.id.groupTitle);
+                groupTitle.setVisibility(View.VISIBLE);
+                groupTitle.setText(event.getGroup());
+            }
+
+            ((TextView) view.findViewById(R.id.title)).setText(event.getTitle());
+            ((TextView) view.findViewById(R.id.startsAt)).setText(event.getStartsAt().toString());
+            ((TextView) view.findViewById(R.id.visitors)).setText("Who's going: unknown");
 
             view.setTag(event.getId());
 
             return view;
+        }
+    }
+
+    class ListEventsTask extends AsyncTask<ListEventsParams, Void, List<Event>> {
+        @Override
+        protected void onPreExecute() {
+        }
+
+        @Override
+        protected void onPostExecute(List<Event> result) {
+            // binding
+            bindEvents(result);
+        }
+
+        @Override
+        protected List<Event> doInBackground(ListEventsParams... params) {
+            List<Event> events = new ArrayList<Event>();
+
+            try {
+                return EventsApiClient.getCalendarEvents(BaseActivity.readApiKey(), params[0].address, params[0].radius, params[0].sports);
+            } catch (Exception e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+
+            return events;
         }
     }
 }

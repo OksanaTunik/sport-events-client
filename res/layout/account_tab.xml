@@ -64,13 +64,14 @@
     <!-- some divider thing -->
     <Button
             android:id="@+id/btnDone"
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Done"
             android:textSize="35dp"
+            android:layout_gravity="center"
             android:padding="10dp"
             android:textColor="#fff"
-            android:background="#f30000"
+            android:background="#ff77f3c8"
             />
 
     <LinearLayout
