@@ -45,7 +45,7 @@ public class  EditEventActivity extends BaseActivity {
 
         @Override
         public boolean onCreateOptionsMenu(Menu menu) {
-            getMenuInflater().inflate(R.menu.create_event_menu, menu);
+            getMenuInflater().inflate(R.menu.save_event_menu, menu);
             return true;
 
         }

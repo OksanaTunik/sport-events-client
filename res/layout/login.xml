@@ -8,10 +8,10 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
             android:background="@drawable/start_page_background1"
             android:orientation="vertical"
-            android:weightSum="1">
+            android:weightSum="1"
+            android:layout_alignParentTop="true">
 
         <ImageView
                 android:id="@+id/textView4"
@@ -33,10 +33,11 @@
                 android:layout_marginRight="15dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="20dp"
-                android:textColor="#AEAEAE"
+                android:textColor="@color/white"
+                android:textColorHint="#f9fbfc"
                 android:textSize="20dp"
                 android:inputType="textEmailAddress"
-                android:layout_weight="0.16">
+                android:layout_weight="0.04">
             <requestFocus />
         </EditText>
 
@@ -46,14 +47,14 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Password"
-
+                android:textColorHint="#f9fbfc"
                 android:layout_marginTop="8dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginLeft="15dp"
-                android:textColor="#AEAEAE"
+                android:textColor="@color/white"
                 android:textSize="20dp"
                 android:inputType="textPassword"
-                android:layout_weight="0.17"/>
+                android:layout_weight="0.04"/>
 
         <Button
                 android:id="@+id/btnLogin"
@@ -64,7 +65,8 @@
                 android:layout_marginLeft="15dp"
                 android:textColor="#fff"
                 android:textStyle="bold"
-                android:text="Log In" />
+                android:text="Log In"
+                android:layout_weight="0.09"/>
 
         <TextView
                 android:id="@+id/textView2"

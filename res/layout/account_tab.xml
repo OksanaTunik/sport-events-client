@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:id="@+id/scrollView">
 <!-- the root view is now a LinearLayout, all other Views are children of this -->
 <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:background="#cccc"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:weightSum="1">
 
     <!-- a separate section to go above the list -->
     <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="264dp"
+            android:layout_height="173dp"
             android:padding="10dp"
 
             android:layout_margin="15dp"
@@ -61,48 +67,72 @@
 
     </LinearLayout>
 
+
     <!-- some divider thing -->
-    <Button
-            android:id="@+id/btnDone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Done"
-            android:textSize="35dp"
-            android:layout_gravity="center"
-            android:padding="10dp"
-            android:textColor="#fff"
-            android:background="#ff77f3c8"
-            />
-
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:padding="10dp"
-            android:orientation="horizontal">
-
-    </LinearLayout>
-
     <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:padding="20dp"
             android:background="#000000"/>
 
-    <!-- your ListView is now a child View -->
+        <!-- your ListView is now a child View -->
+
+        <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Account"
+                android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+    <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/button1"
+            android:text="@string/selectedcountries"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_gravity="center_horizontal"/>
+
+    <edu.us.sports4u.activities.ChipsMultiAutoCompleteEditText
+            android:id="@+id/multiAutoCompleteTextView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:ems="10"
+            android:layout_weight="0.04"/>
+
     <Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/multiAutoCompleteTextView1"
+            android:onClick="buttonClicked"
+            android:text="@string/getvalue" />
+
+    <Button
+                android:id="@+id/btnDone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Done"
+                android:textSize="35dp"
+                android:padding="10dp"
+                android:textColor="#fff"
+                android:background="#f30000"
+                android:layout_gravity="right"/>
+
+    <!--<Button
             android:id="@+id/btnSignout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sign out"
-            android:layout_gravity="right"/>
+            android:layout_weight="0.34"
+            android:layout_gravity="center_horizontal"/>-->
 
-    <ListView
-            android:id="@+id/nav_listView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:choiceMode="singleChoice"
-            android:divider="@android:color/transparent"
-            android:dividerHeight="0dp"/>
 
-</LinearLayout>
+</LinearLayout></ScrollView>
