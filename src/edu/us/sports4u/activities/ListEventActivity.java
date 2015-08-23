@@ -30,6 +30,7 @@ public class ListEventActivity extends BaseActivity {
         lvMain = (ListView) findViewById(R.id.lvMain);
 
         registerForContextMenu(lvMain);
+        Button btnDone = (Button) findViewById(R.id.btnDone);
 
         lvMain.setOnItemClickListener(new OnItemClickListener() {
 

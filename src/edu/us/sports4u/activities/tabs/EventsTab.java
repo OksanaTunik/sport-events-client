@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.*;
 import android.widget.*;
 import edu.us.sports4u.R;
+import edu.us.sports4u.activities.CreateEventActivity;
 import edu.us.sports4u.activities.DetailEventActivity;
 import edu.us.sports4u.api.BaseActivity;
 import edu.us.sports4u.api.EventsApiClient;
@@ -23,11 +24,22 @@ public class EventsTab extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View fragmentView = inflater.inflate(R.layout.events_tab, container, false);
+        final View fragmentView = inflater.inflate(R.layout.events_tab, container, false);
 
         lvMain = (ListView) fragmentView.findViewById(R.id.lvMain);
 
         registerForContextMenu(lvMain);
+
+        Button btnDone = (Button) fragmentView.findViewById(R.id.create);
+
+        btnDone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(getActivity(), CreateEventActivity.class);
+                startActivity(intent);
+            }
+        });
 
         lvMain.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

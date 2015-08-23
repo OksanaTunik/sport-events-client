@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:layout_margin="15dp">
 
     <ImageView
             android:id="@+id/imageView1"
@@ -9,14 +11,15 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:src="@drawable/ic_launcher" />
+            android:src="@drawable/ic_launcher"
+            android:layout_marginRight="15dp"/>
 
     <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/imageView1"
-            android:text="title"
+            android:text="title of the event"
             android:textSize="16sp" />
 
     <TextView
@@ -24,6 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/title"
+            android:layout_marginTop="10dp"
             android:layout_toRightOf="@+id/imageView1"
             android:text="starts at"
             android:textSize="16sp" />
@@ -35,32 +39,7 @@
             android:layout_below="@+id/startsAt"
             android:layout_toRightOf="@+id/imageView1"
             android:layout_alignLeft="@+id/textView1"
-            android:text="description" />
+            android:text="description of the event"
+            android:textStyle="italic"/>
 
 </RelativeLayout>
-<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:padding="10dp">
-
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/image"
-        android:paddingBottom="7dp"
-        android:textColor="#CC0033"
-        android:textSize="20dp"
-        android:text="title"/>
-
-    <TextView
-        android:id="@+id/description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/title"
-        android:layout_toRightOf="@+id/image"
-        android:paddingLeft="10dp"
-        android:textColor="#000"
-        android:textSize="14dp"
-        android:text="description" />
-</RelativeLayout>-->

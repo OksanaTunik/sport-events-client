@@ -2,13 +2,12 @@
     <ScrollView
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="fill_parent"
             android:scrollbars="vertical"
-            android:fillViewport="true"
             android:scrollbarStyle="outsideOverlay">
     <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
             android:background="@drawable/start_page_background1"
 
             android:orientation="vertical"
@@ -31,9 +30,10 @@
                 android:ems="10"
                 android:hint="Name"
                 android:textColorHint="#f9fbfc"
+                android:background="@drawable/edit_text_login_signin"
                 android:layout_marginRight="15dp"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="8dp"
                 android:textColor="#AEAEAE"
                 android:textSize="20dp"
                 android:inputType="text"
@@ -47,11 +47,11 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Email Address"
-
+                android:background="@drawable/edit_text_login_signin"
                 android:textColorHint="#f9fbfc"
                 android:layout_marginRight="15dp"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="8dp"
                 android:textColor="#AEAEAE"
                 android:textSize="20dp"
                 android:inputType="textEmailAddress"
@@ -64,26 +64,52 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Password"
-
+                android:background="@drawable/edit_text_login_signin"
                 android:textColorHint="#f9fbfc"
                 android:layout_marginRight="15dp"
                 android:layout_marginLeft="15dp"
+                android:layout_marginTop="8dp"
                 android:textColor="#AEAEAE"
                 android:textSize="20dp"
                 android:inputType="textPassword"
                 android:layout_weight="0.12"/>
 
+
         <Button
                 android:id="@+id/btnSignup"
                 android:layout_width="fill_parent"
                 android:layout_height="40dp"
-                android:background="@color/blue"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginLeft="15dp"
                 android:textColor="#fff"
                 android:textStyle="bold"
-                android:text="Sign Up" />
+                android:text="Sign Up"
+                android:layout_weight="0.09"/>
+
+        <TextView
+                android:id="@+id/tvOR"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="OR"
+                android:textColor="#fff"
+                android:textStyle="bold"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+
+        <Button
+                android:id="@+id/btnFacebook"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:background="@color/blue"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
+                android:textColor="#fff"
+                android:textStyle="bold"
+                android:text="Facebook" />
+
 
         <Button
                 android:id="@+id/btnLogin"

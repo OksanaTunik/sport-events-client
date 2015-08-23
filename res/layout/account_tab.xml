@@ -9,58 +9,52 @@
 <LinearLayout
         android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:background="#cccc"
+        android:background="@color/background_app"
         android:orientation="vertical"
         android:weightSum="1">
 
     <!-- a separate section to go above the list -->
     <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="173dp"
-            android:padding="10dp"
-
-            android:layout_margin="15dp"
-            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="240dp"
+            android:orientation="vertical"
             android:weightSum="1">
 
         <!-- your image, you can set it later (see NavDrawerFrag) -->
-        <LinearLayout
-                android:orientation="vertical"
+
+        <ImageButton
+                android:id="@+id/btnAddImage"
                 android:layout_width="wrap_content"
-                android:layout_height="174dp">
-
-            <ImageButton
-                    android:id="@+id/btnAddImage"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="15dp"
-                    android:src="@drawable/profile"
-                    />
-
-        </LinearLayout>
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/profile"
+                />
 
         <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="157dp"
-                android:weightSum="1">
-
+                android:orientation="horizontal"
+                android:layout_width="270dp"
+                android:layout_marginTop="10dp"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center_horizontal">
             <EditText
                     android:id="@+id/txtName"
                     android:layout_width="202dp"
-                    android:layout_height="62dp"
+                    android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:hint="Name"
+                    android:textColorHint="@color/white"
                     android:layout_weight="0.34"/>
-
             <EditText
                     android:id="@+id/txtAddress"
                     android:layout_width="196dp"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
+
+                    android:textColorHint="@color/white"
                     android:hint="Address"
                     android:layout_weight="0.38"/>
-
         </LinearLayout>
 
         <!-- a bit of test or a title to go with it -->
@@ -77,12 +71,14 @@
 
         <!-- your ListView is now a child View -->
 
-        <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Account"
-                android:textAppearance="?android:attr/textAppearanceLarge"/>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1"
+
+            android:padding="10dp"
+            android:layout_margin="15dp">
 
     <TextView
             android:id="@+id/textView1"
@@ -91,48 +87,30 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/button1"
-            android:text="@string/selectedcountries"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:layout_gravity="center_horizontal"/>
+            android:text="Sports"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_gravity="left"/>
 
     <edu.us.sports4u.activities.ChipsMultiAutoCompleteEditText
             android:id="@+id/multiAutoCompleteTextView1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
             android:layout_alignParentLeft="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"
             android:ems="10"
+            android:background="@drawable/edittext"
             android:layout_weight="0.04"/>
 
-    <Button
-            android:id="@+id/button1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/multiAutoCompleteTextView1"
-            android:onClick="buttonClicked"
-            android:text="@string/getvalue" />
-
-    <Button
-                android:id="@+id/btnDone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Done"
-                android:textSize="35dp"
-                android:padding="10dp"
-                android:textColor="#fff"
-                android:background="#f30000"
-                android:layout_gravity="right"/>
-
-    <!--<Button
-            android:id="@+id/btnSignout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Sign out"
-            android:layout_weight="0.34"
-            android:layout_gravity="center_horizontal"/>-->
+            <Switch
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Allow notification"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_marginTop="15dp"
+                    android:id="@+id/switch1" android:layout_gravity="center_horizontal" android:checked="false"/>
 
 
-</LinearLayout></ScrollView>
+</LinearLayout>
+        </LinearLayout></ScrollView>

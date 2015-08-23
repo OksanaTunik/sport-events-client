@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-<color name="green">#14CF00</color>
-<color name="green_click">#4dea3d</color>
-<color name="black">#000</color>
-<color name="titlebar">#5fb336</color>
-<color name="titlebartextcolor">#FFFFFF</color>
+    <color name="green">#14CF00</color>
+    <color name="green_click">#4dea3d</color>
+    <color name="black">#000</color>
+    <color name="titlebar">#5fb336</color>
+    <color name="titlebartextcolor">#FFFFFF</color>
 
 
     <color name="blue">#0097f6</color>
@@ -14,4 +14,5 @@
     <color name="grey">#B7B7B7</color>
     <color name="white">#f9fbfc</color>
     <color name="orange">#ff9900</color>
+    <color name="background_app">#EAEAEA</color>
 </resources>

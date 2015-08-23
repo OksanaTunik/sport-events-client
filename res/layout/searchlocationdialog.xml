@@ -15,7 +15,8 @@
             android:id="@+id/searchLocationTextField"
             android:layout_width="297dp"
             android:layout_height="wrap_content"
-            android:inputType="textPostalAddress" >
+            android:inputType="textPostalAddress"
+                android:background="@drawable/edittext">
 
             <requestFocus />
         </EditText>

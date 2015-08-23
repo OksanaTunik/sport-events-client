@@ -37,6 +37,7 @@
                 android:textColorHint="#f9fbfc"
                 android:textSize="20dp"
                 android:inputType="textEmailAddress"
+                android:background="@drawable/edit_text_login_signin"
                 android:layout_weight="0.04">
             <requestFocus />
         </EditText>
@@ -52,6 +53,7 @@
                 android:layout_marginRight="15dp"
                 android:layout_marginLeft="15dp"
                 android:textColor="@color/white"
+                android:background="@drawable/edit_text_login_signin"
                 android:textSize="20dp"
                 android:inputType="textPassword"
                 android:layout_weight="0.04"/>
@@ -69,6 +71,29 @@
                 android:layout_weight="0.09"/>
 
         <TextView
+                android:id="@+id/tvOR"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="OR"
+                android:textColor="#fff"
+                android:textStyle="bold"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+
+        <Button
+                android:id="@+id/btnFacebook"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:background="@color/blue"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
+                android:textColor="#fff"
+                android:textStyle="bold"
+                android:text="Facebook" />
+
+        <TextView
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -78,6 +103,7 @@
                 android:textColor="#fff"
                 android:textStyle="bold"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
+
 
     </LinearLayout>
 

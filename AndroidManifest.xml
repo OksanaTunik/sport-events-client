@@ -6,7 +6,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="14"
+        android:minSdkVersion="16"
         android:targetSdkVersion="21" />
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -21,12 +21,10 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <!-- Creating Permission to receive Google Maps -->
-    <permission
-            android:name="edu.us.sports4u.map.permission.MAPS_RECEIVE"
-            android:protectionLevel="signature" />
+    <permission android:name="edu.us.sports4u.permission.MAPS_RECEIVE" android:protectionLevel="signature" />
 
     <!-- Permission to receive Google Maps -->
-    <uses-permission android:name="edu.us.sports4u.mappermission.MAPS_RECEIVE" />
+    <uses-permission android:name="edu.us.sports4u.permission.MAPS_RECEIVE" />
 
     <!-- Maps API needs OpenGL ES 2.0. -->
     <uses-feature
@@ -35,20 +33,18 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
-        android:label="Sports4U"
+        android:icon="@drawable/logo"
         android:theme="@style/AppTheme" >
 
         <uses-library android:name="com.google.android.maps" />
-        <activity android:name="edu.us.sports4u.activities.autorization.LogInActivity" />
+        <activity android:name="edu.us.sports4u.activities.autorization.LogInActivity" android:icon="" />
         <activity android:name="edu.us.sports4u.activities.autorization.SignUpActivity"  />
-        <activity android:name="edu.us.sports4u.activities.ListEventActivity" android:label="Sport Events" />
-        <activity android:name="edu.us.sports4u.activities.ChooseKindOfSportActivity" android:label="Sports4U" />
-        <activity android:name="edu.us.sports4u.activities.CreateEventActivity" android:label="Sports4U" />
-        <activity android:name="edu.us.sports4u.activities.DetailEventActivity" android:label="Sports4U" />
-        <activity android:name="edu.us.sports4u.activities.MainTabActivity" android:label="Sports4U" />
-        <activity android:name="edu.us.sports4u.activities.maps.ChooseLocationOnMap" android:label="Sports4U" />
-
+        <activity android:name="edu.us.sports4u.activities.ListEventActivity"  />
+        <activity android:name="edu.us.sports4u.activities.ChooseKindOfSportActivity" />
+        <activity android:name="edu.us.sports4u.activities.CreateEventActivity"  />
+        <activity android:name="edu.us.sports4u.activities.DetailEventActivity" />
+        <activity android:name="edu.us.sports4u.activities.MainTabActivity"  />
+        <activity android:name="edu.us.sports4u.activities.maps.ChooseLocationOnMap" />
 
         <activity android:name="edu.us.sports4u.activities.StartActivity">
             <intent-filter>
@@ -56,16 +52,13 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
         <activity android:name="edu.us.sports4u.activities.Interests"/>
 
-        <meta-data
-                android:name="com.google.android.geo.API_KEY"
-                android:value="AIzaSyCvfqv87mHwj2bZzwEAhMbPGIqiQSeDO3c"/>
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="@string/google_maps_key"/>
 
-        <meta-data
-                android:name="com.google.android.gms.version"
-                android:value="@integer/google_play_services_version" />
-
+        <!-- Meta data required for Google Play Services -->
+        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
     </application>
 
 </manifest>
