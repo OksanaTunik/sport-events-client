@@ -3,11 +3,15 @@
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
-            android:scrollbars="vertical"
-            android:scrollbarStyle="outsideOverlay">
+            android:fillViewport="true">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
     <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:background="@drawable/start_page_background1"
 
             android:orientation="vertical"
@@ -29,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Name"
-                android:textColorHint="#f9fbfc"
+                android:textColorHint="@color/textHint"
                 android:background="@drawable/edit_text_login_signin"
                 android:layout_marginRight="15dp"
                 android:layout_marginLeft="15dp"
@@ -38,7 +42,7 @@
                 android:textSize="20dp"
                 android:inputType="text"
                 android:layout_weight="0.10">
-            <requestFocus />
+
         </EditText>
 
         <EditText
@@ -48,7 +52,7 @@
                 android:ems="10"
                 android:hint="Email Address"
                 android:background="@drawable/edit_text_login_signin"
-                android:textColorHint="#f9fbfc"
+                android:textColorHint="@color/textHint"
                 android:layout_marginRight="15dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="8dp"
@@ -65,7 +69,7 @@
                 android:ems="10"
                 android:hint="Password"
                 android:background="@drawable/edit_text_login_signin"
-                android:textColorHint="#f9fbfc"
+                android:textColorHint="@color/textHint"
                 android:layout_marginRight="15dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="8dp"
@@ -102,7 +106,7 @@
                 android:id="@+id/btnFacebook"
                 android:layout_width="fill_parent"
                 android:layout_height="40dp"
-                android:background="@color/blue"
+                android:background="@color/facebook"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginLeft="15dp"
@@ -125,6 +129,6 @@
                 android:layout_alignParentBottom="true"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
     </LinearLayout>
-
+</LinearLayout>
 
 </ScrollView>

@@ -20,7 +20,6 @@ public class LogInActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.waiting);
 
         setContentView(R.layout.login);
 
@@ -29,6 +28,8 @@ public class LogInActivity extends BaseActivity {
 
         btnLogin = (Button) this.findViewById(R.id.btnLogin);
         btnSignup = (Button) this.findViewById(R.id.btnSignup);
+
+        txtUserName.requestFocus();
 
         btnLogin.setOnClickListener(new OnClickListener() {
             @Override

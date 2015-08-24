@@ -6,10 +6,12 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent">
 
+
     <FrameLayout
             android:id="@+id/map_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
 
         <fragment
                 android:id="@+id/map"
@@ -18,4 +20,32 @@
                 android:name="com.google.android.gms.maps.SupportMapFragment"/>
 
     </FrameLayout>
+
+
+    <TextView
+            android:id="@+id/latlongLocation"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:layout_alignParentBottom="true"
+            android:background="#ff058fff"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:textColor="#ffffffff"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp" />
+
+
+        <EditText
+                android:id="@+id/find"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="bottom"
+                android:background="@color/blue"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:textColor="#ffffffff"
+                android:text="Enter address..."
+                android:layout_marginTop="35dp"
+                android:paddingRight="5dp" />
 </FrameLayout>

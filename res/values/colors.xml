@@ -7,6 +7,7 @@
     <color name="titlebar">#5fb336</color>
     <color name="titlebartextcolor">#FFFFFF</color>
 
+    <color name="facebook">#ff222f80</color>
 
     <color name="blue">#0097f6</color>
     <color name="red">#f00</color>
@@ -15,4 +16,6 @@
     <color name="white">#f9fbfc</color>
     <color name="orange">#ff9900</color>
     <color name="background_app">#EAEAEA</color>
+
+    <color name="textHint">#ff808080</color>
 </resources>

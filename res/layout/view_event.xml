@@ -1,87 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical"
-    android:background="#EAEAEA"
->
-
-    <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.05"
-            android:orientation="vertical"
-            android:layout_margin="15dp"
-            android:background="#EAEAEA"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:background="#EAEAEA"
         >
+    <LinearLayout android:layout_margin="15dp" android:layout_width="fill_parent" android:layout_height="fill_parent"
+                  android:orientation="vertical">
 
-        <TableLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                >
-
-            <TextView
+        <TextView
                 android:id="@+id/tvTitle"
                 android:layout_width="match_parent"
-                android:textColor="#000000"
+                android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:text="title"
                 android:gravity="center"
                 android:layout_height="45dp"/>
 
-            <TableRow
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent">
+        <LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+                      android:orientation="vertical"
+                android:background="@drawable/img_06_b">
 
-                <ImageView
-                        android:layout_width="65dp"
-                        android:layout_height="170dp"
-                        android:id="@+id/imageView"
-                        android:src="@drawable/clock"/>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.25"
+                    android:orientation="horizontal">
+
 
                 <EditText
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_weight="0.33"
+                        android:adjustViewBounds="true"
                         android:inputType="date"
                         android:ems="10"
                         android:id="@+id/etDay"
-                        android:text="29th"/>
+                        android:textColor="@color/white"
+                        android:text="29th"
+                        android:textSize="34dp"
+                        android:textAppearance="?android:attr/textAppearanceLarge"/>
 
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:text="Monday"
-                        android:id="@+id/tvDayMonth"/>
-            </TableRow>
-
-            <TableRow
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent">
 
                 <ImageView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_weight="0.33"
                         android:id="@+id/imgClock"
                         android:src="@drawable/clock"/>
 
                 <EditText
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_weight="0.33"
                         android:inputType="time"
                         android:ems="10"
                         android:id="@+id/etTime"
                         android:text="5:00pm"/>
 
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.25"
+                    android:orientation="horizontal">
                 <TextView
-                        android:layout_width="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="November"
+                        android:textColor="@color/white"
+                        android:id="@+id/tvDayMonth"
+
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_weight="0.33"
+                        android:adjustViewBounds="true"/>
+
+
+                <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.33"
+                        android:id="@+id/imgLocation"
+                        android:src="@drawable/location"/>
+
+                <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.33"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:text="Krakow"
                         android:id="@+id/tvlocation"/>
-            </TableRow>
-        </TableLayout>
+            </LinearLayout>
+        </LinearLayout>
+
 
         <ImageButton
                 android:id="@+id/btnJoin"
@@ -93,7 +107,7 @@
                 android:textSize="35dp"
                 android:layout_marginTop="10dp"
                 android:src="@drawable/join"
-        />
+                />
 
         <TextView
                 android:id="@+id/tvDescription"
@@ -104,14 +118,6 @@
                 android:textSize="20sp"
                 android:text="description"
                 android:padding="5dp"
-        />
-
-    </LinearLayout>
-
-    <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="bottom"
-    >
+                />
     </LinearLayout>
 </LinearLayout>

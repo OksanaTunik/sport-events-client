@@ -50,7 +50,7 @@ public class AccountTab extends Fragment {
 
         setHasOptionsMenu(true); //the options appear in your Toolbar
 
-        Button btnDone = (Button) fragmentView.findViewById(R.id.btnDone);
+       // Button btnDone = (Button) fragmentView.findViewById(R.id.btnDone);
 
         txtName = (EditText) fragmentView.findViewById(R.id.txtName);
         txtAddress = (EditText) fragmentView.findViewById(R.id.txtAddress);

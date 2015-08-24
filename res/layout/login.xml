@@ -1,7 +1,8 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:context=".MainActivity" >
+                tools:context=".MainActivity">
     <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -21,10 +22,10 @@
                 android:layout_marginRight="15dp"
                 android:layout_marginLeft="95dp"
                 android:gravity="center"
-                android:src="@drawable/logo" />
+                android:src="@drawable/logo"/>
 
 
-            <EditText
+        <EditText
                 android:id="@+id/txtEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -33,13 +34,12 @@
                 android:layout_marginRight="15dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="20dp"
-                android:textColor="@color/white"
-                android:textColorHint="#f9fbfc"
+                android:textColor="@color/black"
+                android:textColorHint="@color/textHint"
                 android:textSize="20dp"
                 android:inputType="textEmailAddress"
                 android:background="@drawable/edit_text_login_signin"
                 android:layout_weight="0.04">
-            <requestFocus />
         </EditText>
 
         <EditText
@@ -48,11 +48,11 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Password"
-                android:textColorHint="#f9fbfc"
+                android:textColorHint="@color/textHint"
                 android:layout_marginTop="8dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginLeft="15dp"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:background="@drawable/edit_text_login_signin"
                 android:textSize="20dp"
                 android:inputType="textPassword"
@@ -78,20 +78,20 @@
                 android:text="OR"
                 android:textColor="#fff"
                 android:textStyle="bold"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
 
 
         <Button
                 android:id="@+id/btnFacebook"
                 android:layout_width="fill_parent"
                 android:layout_height="40dp"
-                android:background="@color/blue"
+                android:background="@color/facebook"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginLeft="15dp"
                 android:textColor="#fff"
                 android:textStyle="bold"
-                android:text="Facebook" />
+                android:text="Facebook"/>
 
         <TextView
                 android:id="@+id/textView2"
@@ -102,7 +102,7 @@
                 android:text="Forget your password?"
                 android:textColor="#fff"
                 android:textStyle="bold"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
 
 
     </LinearLayout>
@@ -119,6 +119,6 @@
             android:layout_gravity="bottom"
             android:textStyle="bold"
             android:layout_alignParentBottom="true"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
 
 </RelativeLayout>

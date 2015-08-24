@@ -1,6 +1,8 @@
 package edu.us.sports4u.activities;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.media.Image;
 import android.os.AsyncTask;
@@ -12,11 +14,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
 import edu.us.sports4u.activities.maps.ChooseLocationOnMap;
+import edu.us.sports4u.activities.maps.MyLocationListener;
 import edu.us.sports4u.api.BaseActivity;
 import edu.us.sports4u.api.EventsApiClient;
 import edu.us.sports4u.entities.Event;
 import edu.us.sports4u.R;
 
+import java.text.DateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -28,9 +33,38 @@ public class CreateEventActivity extends BaseActivity {
         EditText txtAddress;
         EditText txtSport;
         ImageButton locationBtn;
+        TextView lblDateAndTime;
+    ImageButton btnDate;
+    ImageButton btnTime;
 
     private static final int BACK_FROM_LOCATION_CHOOSING = 1;
     private static final int BACK_FROM_SPECIFYING_DAYS = 2;
+
+    //Date and Time
+    DateFormat fmtDateAndTime = DateFormat.getDateTimeInstance();
+    final Calendar myCalendar = Calendar.getInstance();
+
+    DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
+        public void onDateSet(DatePicker view, int year, int monthOfYear,
+                              int dayOfMonth) {
+            myCalendar.set(Calendar.YEAR, year);
+            myCalendar.set(Calendar.MONTH, monthOfYear);
+            myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+            updateLabel();
+        }
+    };
+
+    TimePickerDialog.OnTimeSetListener t = new TimePickerDialog.OnTimeSetListener() {
+        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+            myCalendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
+            myCalendar.set(Calendar.MINUTE, minute);
+            updateLabel();
+        }
+    };
+
+        private void updateLabel() {
+          lblDateAndTime.setText(fmtDateAndTime.format(myCalendar.getTime()));
+        }
 
         @Override
         public void onCreate(Bundle savedInstanceState) {
@@ -47,7 +81,7 @@ public class CreateEventActivity extends BaseActivity {
             txtTitle = (EditText) findViewById(R.id.txtTitle);
             txtDescription = (EditText) findViewById(R.id.txtDescription);
             txtAddress = (EditText) findViewById(R.id.txtAddress);
-            locationBtn = (ImageButton) findViewById(R.id.locationBtn);
+            locationBtn = (ImageButton) findViewById(R.id.imgLocation);
 
             locationBtn.setOnClickListener(new View.OnClickListener() {
 
@@ -59,6 +93,30 @@ public class CreateEventActivity extends BaseActivity {
                 }
 
             });
+
+
+            lblDateAndTime = (TextView) findViewById(R.id.lblDateAndTime);
+            btnDate = (ImageButton) findViewById(R.id.imgbtnClock);
+            btnDate.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    new DatePickerDialog(CreateEventActivity.this, d, myCalendar
+                            .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                            myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                }
+            });
+
+            btnTime = (ImageButton) findViewById(R.id.imgbtnDay);
+            btnTime.setOnClickListener(new View.OnClickListener() {
+                public  void onClick(View v) {
+                    new TimePickerDialog(CreateEventActivity.this, t, myCalendar
+                            .get(Calendar.HOUR_OF_DAY), myCalendar
+                            .get(Calendar.MINUTE), true).show();
+                }
+            });
+
+            updateLabel();
+
+
 
         }
 
@@ -126,6 +184,7 @@ public class CreateEventActivity extends BaseActivity {
                 }
                 return true;
             }
+
         }
 
     private class MyTextWatcher implements TextWatcher {

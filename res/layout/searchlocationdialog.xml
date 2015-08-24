@@ -2,31 +2,36 @@
     android:id="@+id/layout_root"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="horizontal"
-    android:padding="10dp" >
+    android:orientation="horizontal" >
 
     <LinearLayout
-        android:id="@+id/dialogll"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" >
+            android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:layout_margin="8dp">
 
         <EditText
-            android:id="@+id/searchLocationTextField"
-            android:layout_width="297dp"
-            android:layout_height="wrap_content"
-            android:inputType="textPostalAddress"
-                android:background="@drawable/edittext">
+                android:id="@+id/findEventsQuery"
+                android:layout_marginTop="1dp"
+                android:layout_width="fill_parent"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:textSize="16sp"
+                android:autoText="false"
+                android:capitalize="none"
+                android:background="@drawable/edittext"
+                android:imeOptions="actionSearch"
+                android:hint="Find events"/>
 
-            <requestFocus />
-        </EditText>
+        <ImageButton
+                android:id="@+id/findEventsButton"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:src="@drawable/ic_action_search"
+                android:drawableLeft="@color/blue"/>
 
-        <Button
-            android:id="@+id/searchLocationOkButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="ok" />
     </LinearLayout>
+
 
 </LinearLayout>

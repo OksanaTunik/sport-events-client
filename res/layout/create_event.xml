@@ -1,83 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- the root view is now a LinearLayout, all other Views are children of this -->
-
-<ScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/scrollView2"
-        android:layout_width="match_parent"
-        android:fillViewport="true"
-        android:layout_height="match_parent" >
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".MainActivity">
+    <ScrollView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/scrollView2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
 
         <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
                 android:layout_margin="15dp"
 
                 >
 
-        <EditText
-                android:id="@+id/txtSport"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Sport"
-                android:textColor="#000"
-                android:textSize="20dp"
-                android:background="@drawable/edittext"
-                android:textColorHint="@color/grey"
-                android:inputType="text"
-                />
-
-        <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:weightSum="1"
-                android:layout_marginTop="10dp"
-                >
-
-                    <EditText
-                            android:id="@+id/txtTitle"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:ems="10"
-                            android:hint="Name"
-                            android:textColor="#000"
-                            android:textSize="20dp"
-                            android:background="@drawable/edittext"
-                            android:textColorHint="@color/grey"
-                            android:inputType="text"
-                            android:layout_weight="0.15"
-                            />
-
-                <ImageButton
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/imgClock"
-                        android:layout_weight="0.85"
-                        android:background="@drawable/clock"
-                        />
-
-
-        </LinearLayout>
-
-        <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="fill_parent"
-                android:layout_height="292dp"
-                android:layout_marginTop="10dp">
+            <EditText
+                    android:id="@+id/txtSport"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Sport"
+                    android:textColor="#000"
+                    android:textSize="20dp"
+                    android:background="@drawable/edittext"
+                    android:textColorHint="@color/grey"
+                    android:inputType="text"
+                    />
 
             <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:weightSum="1">
+                    android:layout_weight="0.25"
+                    android:layout_marginTop="10dp"
+                    >
+
+                <EditText
+                        android:id="@+id/txtTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="Name"
+                        android:textColor="#000"
+                        android:textSize="20dp"
+                        android:background="@drawable/edittext"
+                        android:textColorHint="@color/grey"
+                        android:inputType="text"
+                        android:layout_weight="0.33"
+                        />
+
+                <ImageButton
+                        android:layout_width="match_parent"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/imgbtnClock"
+                        android:layout_weight="0.85"
+                        android:background="@drawable/clock"
+                        />
+
+                    <ImageButton
+                            android:layout_width="match_parent"
+                            android:layout_height="fill_parent"
+                            android:id="@+id/imgbtnDay"
+                            android:layout_weight="0.85"
+                            android:background="@drawable/clock"
+                            />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="292dp"
+                    android:layout_marginTop="10dp">
+
+                <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="1">
 
 
                     <ImageButton
                             android:layout_width="wrap_content"
-                            android:layout_height="50dp"
+                            android:layout_height="fill_parent"
                             android:id="@+id/imgLocation"
                             android:src="@drawable/location"
                             android:layout_weight="0.15"/>
@@ -97,7 +109,7 @@
 
                             />
 
-            </LinearLayout>
+                </LinearLayout>
 
 
                 <EditText
@@ -111,14 +123,24 @@
                         android:background="@drawable/edittext"
                         android:textColorHint="@color/grey"
                         android:inputType="textMultiLine"
+                        android:layout_marginTop="15dp"
                         android:lines="8"
                         android:minLines="4"
                         />
 
+                    <TextView
+                            android:id="@+id/lblDateAndTime"
+                            android:layout_width="fill_parent"
+                            android:layout_height="47px"
+                            android:background="#ff000099"
+                            android:textStyle="bold">
+                    </TextView>
+
+
+            </LinearLayout>
+
 
         </LinearLayout>
 
-
-</LinearLayout>
-
-</ScrollView>
+    </ScrollView>
+</RelativeLayout>

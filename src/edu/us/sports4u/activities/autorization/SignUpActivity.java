@@ -29,6 +29,8 @@ public class SignUpActivity extends BaseActivity {
         btnSignup = (Button) this.findViewById(R.id.btnSignup);
         btnLogin = (Button) this.findViewById(R.id.btnLogin);
 
+        txtEmail.requestFocus();
+
         btnSignup.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {

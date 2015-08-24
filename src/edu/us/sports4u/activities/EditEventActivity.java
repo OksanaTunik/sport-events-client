@@ -29,7 +29,7 @@ public class  EditEventActivity extends BaseActivity {
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            setContentView(R.layout.new_event);
+            setContentView(R.layout.create_event);
 
             Intent intent = getIntent();
             String sport = intent.getStringExtra("SportName");

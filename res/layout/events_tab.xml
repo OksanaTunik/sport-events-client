@@ -70,7 +70,7 @@
                 android:layout_weight="1"
                 android:scrollbars="vertical"
                 android:layout_margin="8dp"
-                android:divider="@color/blue"
+                android:divider="@color/white"
                 android:dividerHeight="1dip"
                 android:listSelector="@drawable/list_selector"
                 android:cacheColorHint="#00000000"
@@ -79,11 +79,8 @@
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="New Button"
+                android:text="New event"
                 android:id="@+id/create"
                 android:layout_gravity="right"/>
-
-
     </LinearLayout>
-
 </LinearLayout>
