@@ -102,17 +102,18 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
 
-        <Button
+        <com.facebook.login.widget.LoginButton
+                xmlns:fb="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/btnFacebook"
                 android:layout_width="fill_parent"
                 android:layout_height="40dp"
-                android:background="@color/facebook"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginLeft="15dp"
-                android:textColor="#fff"
-                android:textStyle="bold"
-                android:text="Facebook" />
+                android:textSize="18dp"
+                fb:login_text="Sign up with Facebook"/>
 
 
         <Button

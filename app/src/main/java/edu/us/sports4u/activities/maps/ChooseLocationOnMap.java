@@ -30,9 +30,13 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.GoogleMap.OnMarkerDragListener;
 import com.google.android.gms.maps.GoogleMap.OnMapClickListener;
 import com.google.android.gms.maps.GoogleMap.OnMapLongClickListener;
+import android.location.Address;
+import android.location.Geocoder;
+import android.os.Bundle;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Locale;
 
 public class ChooseLocationOnMap extends FragmentActivity implements LocationListener, OnMapClickListener {
     private SupportMapFragment mapFragment;
@@ -40,7 +44,6 @@ public class ChooseLocationOnMap extends FragmentActivity implements LocationLis
     double latitude;
     double longitude;
     Marker selectedLocation;
-    public List<Address> addresses = null;
     LatLng latLng;
     MarkerOptions markerOptions;
     String latLongString = "Unknown";
@@ -50,6 +53,10 @@ public class ChooseLocationOnMap extends FragmentActivity implements LocationLis
     String addressText;
     GoogleMap mMap;
     Marker marker;
+    TextView address;
+
+    Geocoder geocoder;
+    List<Address> addresses;
 
     private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
 
@@ -77,6 +84,8 @@ public class ChooseLocationOnMap extends FragmentActivity implements LocationLis
                 (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
 
         googleMap = supportMapFragment.getMap();
+
+        address = (TextView) findViewById(R.id.address);
 
         googleMap.setMyLocationEnabled(true);
         googleMap.setOnMapClickListener(this);
@@ -131,11 +140,86 @@ public class ChooseLocationOnMap extends FragmentActivity implements LocationLis
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         googleMap.animateCamera(CameraUpdateFactory.zoomTo(15));
         locationTv.setText("Latitude:" + latitude + ", Longitude:" + longitude);
+
+        try {
+            geocoder = new Geocoder(ChooseLocationOnMap.this, Locale.ENGLISH);
+            addresses = geocoder.getFromLocation(latitude, longitude, 1);
+            StringBuilder str = new StringBuilder();
+            if (geocoder.isPresent()) {
+                Toast.makeText(getApplicationContext(),
+                        "geocoder present", Toast.LENGTH_SHORT).show();
+                Address returnAddress = addresses.get(0);
+
+                String localityString = returnAddress.getLocality();
+                String city = returnAddress.getCountryName();
+                String street=returnAddress.getSubAdminArea();
+
+                str.append(localityString + " ");
+                str.append(city + "" + street + "");
+
+                address.setText(str);
+                Toast.makeText(getApplicationContext(), str,
+                        Toast.LENGTH_SHORT).show();
+
+            } else {
+                Toast.makeText(getApplicationContext(),
+                        "geocoder not present", Toast.LENGTH_SHORT).show();
+            }
+
+
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+
+            Log.e("tag", e.getMessage());
+        }
+
     }
 
     @Override
     public void onMapClick(LatLng latLng) {
         marker.setPosition(latLng);
         googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+
+        TextView locationTv = (TextView) findViewById(R.id.latlongLocation);
+        double latitude = latLng.latitude;
+        double longitude = latLng.longitude;
+        latLng = new LatLng(latitude, longitude);
+        //googleMap.addMarker(new MarkerOptions().position(latLng));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+        googleMap.animateCamera(CameraUpdateFactory.zoomTo(15));
+        locationTv.setText("Latitude:" + latitude + ", Longitude:" + longitude);
+
+        try {
+            geocoder = new Geocoder(ChooseLocationOnMap.this, Locale.ENGLISH);
+            addresses = geocoder.getFromLocation(latitude, longitude, 1);
+            StringBuilder str = new StringBuilder();
+            if (geocoder.isPresent()) {
+                Toast.makeText(getApplicationContext(),
+                        "geocoder present", Toast.LENGTH_SHORT).show();
+                Address returnAddress = addresses.get(0);
+
+                String localityString = returnAddress.getLocality();
+                String city = returnAddress.getCountryName();
+                String street=returnAddress.getSubAdminArea();
+
+                str.append(localityString + " ");
+                str.append(city + "" + street + "");
+
+                address.setText(str);
+                Toast.makeText(getApplicationContext(), str,
+                        Toast.LENGTH_SHORT).show();
+
+            } else {
+                Toast.makeText(getApplicationContext(),
+                        "geocoder not present", Toast.LENGTH_SHORT).show();
+            }
+
+
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+
+            Log.e("tag", e.getMessage());
+        }
     }
+
 }

@@ -38,6 +38,7 @@
         android:theme="@style/AppTheme" >
 
         <uses-library android:name="com.google.android.maps" />
+
         <activity android:name="edu.us.sports4u.activities.autorization.LogInActivity" android:windowSoftInputMode="stateHidden" />
         <activity android:name="edu.us.sports4u.activities.autorization.SignUpActivity"  android:windowSoftInputMode="stateHidden"/>
         <activity android:name="edu.us.sports4u.activities.ListEventActivity"  />
@@ -46,6 +47,7 @@
         <activity android:name="edu.us.sports4u.activities.DetailEventActivity" />
         <activity android:name="edu.us.sports4u.activities.MainTabActivity"  />
         <activity android:name="edu.us.sports4u.activities.maps.ChooseLocationOnMap" />
+        <activity android:name="edu.us.sports4u.activities.Interests"/>
 
         <activity android:name="edu.us.sports4u.activities.StartActivity" android:windowSoftInputMode="stateHidden">
             <intent-filter>
@@ -54,8 +56,16 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="edu.us.sports4u.activities.Interests"/>
+        <activity android:name="com.facebook.FacebookActivity"
+                  android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+                  android:theme="@android:style/Theme.Translucent.NoTitleBar"
+                  android:label="@string/app_name" />
 
+        <provider android:authorities="com.facebook.app.FacebookContentProvider1525226247769160"
+                  android:name="com.facebook.FacebookContentProvider"
+                  android:exported="true" />
+
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id" />
         <meta-data android:name="com.google.android.geo.API_KEY" android:value="@string/google_maps_key"/>
 
         <!-- Meta data required for Google Play Services -->

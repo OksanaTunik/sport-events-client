@@ -14,7 +14,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
 import edu.us.sports4u.activities.maps.ChooseLocationOnMap;
-import edu.us.sports4u.activities.maps.MyLocationListener;
 import edu.us.sports4u.api.BaseActivity;
 import edu.us.sports4u.api.EventsApiClient;
 import edu.us.sports4u.entities.Event;

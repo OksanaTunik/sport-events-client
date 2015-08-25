@@ -1,12 +1,20 @@
 package edu.us.sports4u.activities.autorization;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import edu.us.sports4u.api.AccountApiClient;
 import edu.us.sports4u.api.BaseActivity;
 import edu.us.sports4u.R;
@@ -16,12 +24,21 @@ public class LogInActivity extends BaseActivity {
     EditText txtPassword;
     Button btnLogin;
     Button btnSignup;
+    LoginButton btnFacebook;
+    CallbackManager callbackManager;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        FacebookSdk.sdkInitialize(getApplicationContext());
+
         setContentView(R.layout.login);
+
+        callbackManager = CallbackManager.Factory.create();
+
+        btnFacebook = (LoginButton) findViewById(R.id.btnFacebook);
+        btnFacebook.setReadPermissions("user_friends");
 
         txtUserName = (EditText) findViewById(R.id.txtEmail);
         txtPassword = (EditText) findViewById(R.id.txtPwd);
@@ -44,6 +61,32 @@ public class LogInActivity extends BaseActivity {
                 LogInActivity.this.showSignup();
             }
         });
+
+        btnFacebook.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                // App code
+                Log.d("MOO", "FB LOGIN SUCCEEDED");
+            }
+
+            @Override
+            public void onCancel() {
+                // App code
+                Log.d("MOO", "FB LOGIN CANCELLED");
+            }
+
+            @Override
+            public void onError(FacebookException exception) {
+                // App code
+                Log.d("MOO", "FB LOGIN ERROR");
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
     protected void logIn() {
