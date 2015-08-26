@@ -14,6 +14,7 @@ import edu.us.sports4u.api.BaseActivity;
 import edu.us.sports4u.api.EventsApiClient;
 import edu.us.sports4u.entities.Event;
 import edu.us.sports4u.entities.ListEventsParams;
+import edu.us.sports4u.entities.UserAccount;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,6 +72,28 @@ public class EventsTab extends Fragment {
 
         new ListEventsTask().execute(params);
     }
+
+    // menu action bar
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.action_bar, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_save:
+
+                Intent intent = new Intent(getActivity(), CreateEventActivity.class);
+                startActivity(intent);
+
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
 
     private void showEvent() {
         Intent intent = new Intent(getActivity(), DetailEventActivity.class);

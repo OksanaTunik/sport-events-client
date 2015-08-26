@@ -33,14 +33,18 @@ public class CreateEventActivity extends BaseActivity {
         EditText txtSport;
         ImageButton locationBtn;
         TextView lblDateAndTime;
-    ImageButton btnDate;
-    ImageButton btnTime;
+        TextView tvTime;
+        TextView tvDate;
+        ImageButton btnDate;
+        ImageButton btnTime;
 
     private static final int BACK_FROM_LOCATION_CHOOSING = 1;
     private static final int BACK_FROM_SPECIFYING_DAYS = 2;
 
+
     //Date and Time
-    DateFormat fmtDateAndTime = DateFormat.getDateTimeInstance();
+    DateFormat fmtDateAndTime = DateFormat.getTimeInstance();
+    DateFormat fmtDate = DateFormat.getDateInstance();
     final Calendar myCalendar = Calendar.getInstance();
 
     DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
@@ -49,7 +53,7 @@ public class CreateEventActivity extends BaseActivity {
             myCalendar.set(Calendar.YEAR, year);
             myCalendar.set(Calendar.MONTH, monthOfYear);
             myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-            updateLabel();
+            updateDate();
         }
     };
 
@@ -57,13 +61,17 @@ public class CreateEventActivity extends BaseActivity {
         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
             myCalendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
             myCalendar.set(Calendar.MINUTE, minute);
-            updateLabel();
+            updateTime();
         }
     };
 
-        private void updateLabel() {
-          lblDateAndTime.setText(fmtDateAndTime.format(myCalendar.getTime()));
+        private void updateDate() {
+            tvDate.setText(fmtDate.format(myCalendar.getTime()));
         }
+
+        private void updateTime() {
+            tvTime.setText(fmtDateAndTime.format(myCalendar.getTime()));
+         }
 
         @Override
         public void onCreate(Bundle savedInstanceState) {
@@ -94,7 +102,8 @@ public class CreateEventActivity extends BaseActivity {
             });
 
 
-            lblDateAndTime = (TextView) findViewById(R.id.lblDateAndTime);
+            tvDate = (TextView) findViewById(R.id.tvDate);
+            tvTime = (TextView) findViewById(R.id.tvTime);
             btnDate = (ImageButton) findViewById(R.id.imgbtnClock);
             btnDate.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
@@ -113,8 +122,8 @@ public class CreateEventActivity extends BaseActivity {
                 }
             });
 
-            updateLabel();
-
+            updateDate();
+            updateTime();
 
 
         }

@@ -117,7 +117,10 @@ public class ChooseLocationOnMap extends FragmentActivity implements LocationLis
                 .snippet("First Marker"));
 
         marker.showInfoWindow();
+
+
     }
+    
 
     private boolean isGooglePlayServicesAvailable() {
         int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
@@ -221,5 +224,6 @@ public class ChooseLocationOnMap extends FragmentActivity implements LocationLis
             Log.e("tag", e.getMessage());
         }
     }
+
 
 }

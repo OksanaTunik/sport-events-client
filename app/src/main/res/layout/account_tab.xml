@@ -18,7 +18,8 @@
             android:layout_width="fill_parent"
             android:layout_height="240dp"
             android:orientation="vertical"
-            android:weightSum="1">
+            android:weightSum="1"
+            android:background="@drawable/img_06_b">
 
         <!-- your image, you can set it later (see NavDrawerFrag) -->
 
@@ -67,50 +68,55 @@
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:padding="20dp"
-            android:background="#000000"/>
+            android:background="#ff3a78f3"/>
 
         <!-- your ListView is now a child View -->
 
-    <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:weightSum="1"
-
-            android:padding="10dp"
-            android:layout_margin="15dp">
-
-    <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/button1"
-            android:text="Sports"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:layout_gravity="left"/>
-
-    <edu.us.sports4u.activities.ChipsMultiAutoCompleteEditText
-            android:id="@+id/multiAutoCompleteTextView1"
-            android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="10dp"
-            android:ems="10"
-            android:background="@drawable/edittext"
-            android:layout_weight="0.04"/>
-
-            <Switch
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Allow notification"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:layout_marginTop="15dp"
-                    android:id="@+id/switch1" android:layout_gravity="center_horizontal" android:checked="false"/>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+                <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentRight="true"
+                        android:text="Sports"
+                        android:textColorHint="@color/blue"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:layout_gravity="left" android:layout_marginLeft="15dp" android:layout_marginTop="15dp"/>
+                <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="1"
+                        android:background="@color/white"
+                        android:padding="10dp"
+                        android:layout_marginRight="15dp" android:layout_marginLeft="15dp"
+                        android:layout_marginTop="10dp">
 
 
-</LinearLayout>
-        </LinearLayout></ScrollView>
+                <edu.us.sports4u.activities.ChipsMultiAutoCompleteEditText
+                        android:id="@+id/multiAutoCompleteTextView1"
+                        android:layout_width="match_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="10dp"
+                        android:ems="10"
+                        android:layout_weight="0.04"/>
+
+                        <Switch
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Allow notification"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:layout_marginTop="15dp"
+                                android:id="@+id/switch1" android:layout_gravity="center_horizontal" android:checked="false"/>
+
+
+                </LinearLayout>
+        </LinearLayout>
+</LinearLayout></ScrollView>
