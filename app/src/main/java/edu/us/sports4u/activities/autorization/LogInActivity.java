@@ -9,23 +9,24 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
-import com.facebook.FacebookSdk;
+import com.facebook.*;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import edu.us.sports4u.api.AccountApiClient;
 import edu.us.sports4u.api.BaseActivity;
 import edu.us.sports4u.R;
+import edu.us.sports4u.entities.UserAccount;
+import org.json.JSONObject;
 
 public class LogInActivity extends BaseActivity {
     EditText txtUserName;
     EditText txtPassword;
     Button btnLogin;
     Button btnSignup;
+
     LoginButton btnFacebook;
     CallbackManager callbackManager;
+    ProfileTracker profileTracker;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,7 +39,49 @@ public class LogInActivity extends BaseActivity {
         callbackManager = CallbackManager.Factory.create();
 
         btnFacebook = (LoginButton) findViewById(R.id.btnFacebook);
-        btnFacebook.setReadPermissions("user_friends");
+        btnFacebook.setReadPermissions("email,public_profile,user_location");
+
+        profileTracker = new ProfileTracker() {
+            @Override
+            protected void onCurrentProfileChanged(Profile profile, Profile profile2) {
+                Profile user = profile2;
+
+                // user logged out, nothing to do
+                if (user == null)
+                    return;
+
+                // `id` and `name` are taken from Profile
+                // `email` and `address` are taken from GraphAPI
+
+                GraphRequest graphRequest = GraphRequest.newMeRequest(AccessToken.getCurrentAccessToken(),
+                        new GraphRequest.GraphJSONObjectCallback() {
+                            @Override
+                            public void onCompleted(JSONObject jsonObj, GraphResponse response) {
+                                try {
+                                    JSONObject locationObj = jsonObj.getJSONObject("location");
+
+                                    String facebookId = jsonObj.getString("id");
+                                    String name = jsonObj.getString("name");
+                                    String email = jsonObj.getString("email");
+                                    String address = locationObj.getString("name");
+
+                                    BaseActivity.getUserAccount().setAddress(address);
+                                    LogInActivity.this.facebookSignIn(facebookId, email, name);
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        });
+
+                Bundle graphRequestParams = new Bundle();
+                graphRequestParams.putString("fields", "id,name,email,location");
+
+                graphRequest.setParameters(graphRequestParams);
+                graphRequest.executeAsync();
+            }
+        };
+
+        profileTracker.startTracking();
 
         txtUserName = (EditText) findViewById(R.id.txtEmail);
         txtPassword = (EditText) findViewById(R.id.txtPwd);
@@ -59,26 +102,6 @@ public class LogInActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 LogInActivity.this.showSignup();
-            }
-        });
-
-        btnFacebook.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-                // App code
-                Log.d("MOO", "FB LOGIN SUCCEEDED");
-            }
-
-            @Override
-            public void onCancel() {
-                // App code
-                Log.d("MOO", "FB LOGIN CANCELLED");
-            }
-
-            @Override
-            public void onError(FacebookException exception) {
-                // App code
-                Log.d("MOO", "FB LOGIN ERROR");
             }
         });
     }
@@ -111,30 +134,6 @@ public class LogInActivity extends BaseActivity {
             setContentView(R.layout.waiting);
 
             new SignInTask().execute(username, password);
-        }
-    }
-
-    boolean isEmailValid(CharSequence email) {
-        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
-    }
-
-    public class SignInTask extends AsyncTask<String, Void, String> {
-        @Override
-        protected String doInBackground(String... params) {
-            return AccountApiClient.logIn(params[0], params[1]);
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            if (result != null) {
-                storeApiKey(result);
-                showTabs();
-//                chooseKindOfSportActivity();
-//                showNewEvent();
-            } else {
-                Toast.makeText(getApplicationContext(), "Wrong username/password", Toast.LENGTH_SHORT).show();
-                showLogin();
-            }
         }
     }
 }

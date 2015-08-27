@@ -13,6 +13,7 @@ import edu.us.sports4u.activities.DetailEventActivity;
 import edu.us.sports4u.api.BaseActivity;
 import edu.us.sports4u.api.EventsApiClient;
 import edu.us.sports4u.entities.Event;
+import edu.us.sports4u.entities.EventsStorage;
 import edu.us.sports4u.entities.ListEventsParams;
 import edu.us.sports4u.entities.UserAccount;
 
@@ -196,11 +197,12 @@ public class EventsTab extends Fragment {
             List<Event> events = new ArrayList<Event>();
 
             try {
-                return EventsApiClient.getEvents(BaseActivity.readApiKey(), params[0].query, params[0].address, params[0].radius, params[0].sports);
+                events = EventsApiClient.getEvents(BaseActivity.readApiKey(), params[0].query, params[0].address, params[0].radius, params[0].sports);
             } catch (Exception e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
+
+            EventsStorage.setEvents(events);
 
             return events;
         }

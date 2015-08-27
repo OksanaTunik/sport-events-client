@@ -120,7 +120,7 @@ public class ChooseLocationOnMap extends FragmentActivity implements LocationLis
 
 
     }
-    
+
 
     private boolean isGooglePlayServicesAvailable() {
         int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);

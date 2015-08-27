@@ -35,6 +35,30 @@ public class AccountApiClient extends BaseApiClient {
         return result;
     }
 
+    public static String facebookSignIn(String facebookId, String email, String displayName) {
+        List<NameValuePair> data = new ArrayList<NameValuePair>();
+        data.add(new BasicNameValuePair("name", displayName));
+        data.add(new BasicNameValuePair("email", email));
+        data.add(new BasicNameValuePair("facebook_id", facebookId));
+
+        String url = getUrl("/users/facebook_sign_in");
+
+        JSONObject res = HttpClientHelper.post(url, data);
+        String result = null;
+
+        try {
+            if (res.getBoolean("success")) {
+                result = res.getString("api_key");
+            } else {
+                result = null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+
     public static String logIn(String email, String password) {
         List<NameValuePair> data = new ArrayList<NameValuePair>();
         data.add(new BasicNameValuePair("email", email));

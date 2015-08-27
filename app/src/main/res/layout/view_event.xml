@@ -117,6 +117,23 @@
                     android:layout_marginTop="15dp"
                     android:src="@drawable/join"
                     android:layout_marginLeft="15dp" android:layout_marginRight="15dp"/>
+
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" android:layout_marginLeft="15dp" android:layout_marginRight="15dp"
+                android:background="@color/white" android:layout_marginTop="15dp">
+            <TextView
+                    android:id="@+id/tvOrganizer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Activity organizer"
+                    android:textColorHint="@color/blue"
+                    android:textSize="20dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="15dp" android:layout_marginRight="15dp"/>
+        </LinearLayout>
         <TextView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -127,6 +144,7 @@
 
     android:layout_marginTop="15dp"
     android:layout_marginLeft="15dp" android:layout_marginRight="15dp"/>
+
         <TextView
     android:id="@+id/tvDescription"
     android:layout_width="match_parent"

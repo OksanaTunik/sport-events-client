@@ -14,7 +14,9 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.AsyncTask;
 import android.os.Environment;
+import android.widget.Toast;
 import edu.us.sports4u.activities.*;
 import edu.us.sports4u.activities.autorization.LogInActivity;
 import edu.us.sports4u.activities.autorization.SignUpActivity;
@@ -193,5 +195,71 @@ public abstract class BaseActivity extends Activity {
 //        }
 //
 //        return apiKey;
+    }
+
+    public class SignUpTask extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... params) {
+            return AccountApiClient.signUp(params[0], params[1], params[2]);
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            if (result != null) {
+                storeApiKey(result);
+                showTabs();
+            } else {
+                Toast.makeText(getApplicationContext(), "User with these credentials already exists", Toast.LENGTH_SHORT).show();
+                showSignup();
+            }
+        }
+    }
+
+    public class SignInTask extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... params) {
+            return AccountApiClient.logIn(params[0], params[1]);
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            if (result != null) {
+                storeApiKey(result);
+                showTabs();
+//                chooseKindOfSportActivity();
+//                showNewEvent();
+            } else {
+                Toast.makeText(getApplicationContext(), "Wrong username/password", Toast.LENGTH_SHORT).show();
+                showLogin();
+            }
+        }
+    }
+
+    public class FacebookSignInTask extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... params) {
+            return AccountApiClient.facebookSignIn(params[0], params[1], params[2]);
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            if (result != null) {
+                storeApiKey(result);
+                showTabs();
+//                chooseKindOfSportActivity();
+//                showNewEvent();
+            } else {
+                Toast.makeText(getApplicationContext(), "Wrong username/password", Toast.LENGTH_SHORT).show();
+                showLogin();
+            }
+        }
+    }
+
+    protected void facebookSignIn(String facebookId, String email, String name) {
+        new FacebookSignInTask().execute(facebookId, email, name);
+    }
+
+    protected static boolean isEmailValid(CharSequence email) {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 }
