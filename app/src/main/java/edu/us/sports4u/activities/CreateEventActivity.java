@@ -115,25 +115,20 @@ public class CreateEventActivity extends BaseActivity {
 
             btnTime = (ImageButton) findViewById(R.id.imgbtnDay);
             btnTime.setOnClickListener(new View.OnClickListener() {
-                public  void onClick(View v) {
+                public void onClick(View v) {
                     new TimePickerDialog(CreateEventActivity.this, t, myCalendar
                             .get(Calendar.HOUR_OF_DAY), myCalendar
                             .get(Calendar.MINUTE), true).show();
                 }
             });
 
-            updateDate();
             updateTime();
+            updateDate();
 
 
         }
 
-        @Override
-        public boolean onCreateOptionsMenu(Menu menu) {
-            getMenuInflater().inflate(R.menu.save_event_menu, menu);
-            return true;
 
-        }
 
         @Override
         public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -142,9 +137,15 @@ public class CreateEventActivity extends BaseActivity {
             }
         }
 
+    @Override
+        public boolean onCreateOptionsMenu(Menu menu) {
+            getMenuInflater().inflate(R.menu.save_event_menu, menu);
+            return true;
+
+        }
+
         public boolean onOptionsItemSelected(MenuItem item) {
             switch (item.getItemId()) {
-
                 case R.id.menu_save:
                     String title = txtTitle.getText().toString();
                     String description = txtDescription.getText().toString();

@@ -1,28 +1,34 @@
 package edu.us.sports4u.activities.tabs;
 
+import android.app.AlarmManager;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.*;
 import android.widget.*;
 import edu.us.sports4u.R;
-import edu.us.sports4u.activities.CreateEventActivity;
-import edu.us.sports4u.activities.DetailEventActivity;
+import edu.us.sports4u.activities.*;
 import edu.us.sports4u.api.BaseActivity;
 import edu.us.sports4u.api.EventsApiClient;
 import edu.us.sports4u.entities.Event;
 import edu.us.sports4u.entities.EventsStorage;
 import edu.us.sports4u.entities.ListEventsParams;
-import edu.us.sports4u.entities.UserAccount;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class EventsTab extends Fragment {
     protected EventAdapter adapter;
     protected ListView lvMain;
+    private PendingIntent pendingIntent;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -58,6 +64,27 @@ public class EventsTab extends Fragment {
                 EventsTab.this.runSearch(fragmentView);
             }
         });
+
+        long now = new Date().getTime();
+        now += (5 * 1000);
+
+//        Calendar calendar = Calendar.getInstance();
+//
+//        calendar.set(Calendar.MONTH, 6);
+//        calendar.set(Calendar.YEAR, 2013);
+//        calendar.set(Calendar.DAY_OF_MONTH, 13);
+//
+//        calendar.set(Calendar.HOUR_OF_DAY, 20);
+//        calendar.set(Calendar.MINUTE, 48);
+//        calendar.set(Calendar.SECOND, 0);
+//        calendar.set(Calendar.AM_PM, Calendar.PM);
+        // now = calendar.getTimeInMillis();
+
+        Intent myIntent = new Intent(getActivity(), NotificationStarter.class);
+        pendingIntent = PendingIntent.getBroadcast(getActivity(), 0, myIntent,0);
+
+        AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
+        alarmManager.set(AlarmManager.RTC, now, pendingIntent);
 
         runSearch(fragmentView);
 
@@ -167,8 +194,11 @@ public class EventsTab extends Fragment {
             Event event = getItem(position);
 
             ((TextView) view.findViewById(R.id.title)).setText(event.getTitle());
-            ((TextView) view.findViewById(R.id.description)).setText(event.getDescription());
-            ((TextView) view.findViewById(R.id.startsAt)).setText(event.getStartsAt().toString());
+            ((TextView) view.findViewById(R.id.participants)).setText(event.getDescription());
+            String originalString = event.getStartsAt().toString();
+            // Date date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(originalString);
+           // String newString = new SimpleDateFormat("HH:mm").format(originalString);
+            ((TextView) view.findViewById(R.id.startsAt)).setText( event.getStartsAt().toString());
 
             view.setTag(event.getId());
 
@@ -222,4 +252,73 @@ public class EventsTab extends Fragment {
             return null;
         }
     }
+
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item
+                .getMenuInfo();
+
+        Event selectedItem = (Event) adapter.getItem(info.position);
+        switch (item.getItemId()) {
+            case R.id.edit:
+                Toast.makeText(getActivity(), "edit", Toast.LENGTH_LONG).show();
+
+
+                return true;
+            case R.id.delete:
+                Toast.makeText(getActivity(), "delete", Toast.LENGTH_LONG)
+                        .show();
+
+                //     new DeleteEventTask().execute(token, selectedItem.getId());
+
+                adapter.remove(selectedItem);
+                adapter.notifyDataSetChanged();
+
+                return true;
+            default:
+                return super.onContextItemSelected((android.view.MenuItem) item);
+        }
+    }
+
+    public void showNotification(){
+
+        // define sound URI, the sound to be played when there's a notification
+        Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+
+        // intent triggered, you can add other intent for other actions
+        Intent intent = new Intent(getActivity(), MainTabActivity.class);
+        PendingIntent pIntent = PendingIntent.getActivity(getActivity(), 0, intent, 0);
+
+        // this is it, we'll build the notification!
+        // in the addAction method, if you don't want any icon, just set the first param to 0
+        Notification mNotification = new Notification.Builder(getActivity())
+
+                .setContentTitle("New Post!")
+                .setContentText("Here's an awesome update for you!")
+                .setSmallIcon(R.drawable.running)
+                .setContentIntent(pIntent)
+                .setSound(soundUri)
+
+                .addAction(R.drawable.running, "View", pIntent)
+                .addAction(0, "Remind", pIntent)
+
+                .build();
+
+        NotificationManager notificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
+
+        // If you want to hide the notification after it was selected, do the code below
+        // myNotification.flags |= Notification.FLAG_AUTO_CANCEL;
+
+        notificationManager.notify(0, mNotification);
+    }
+
+    public void cancelNotification(int notificationId){
+
+        if (Context.NOTIFICATION_SERVICE!=null) {
+            String ns = Context.NOTIFICATION_SERVICE;
+            NotificationManager nMgr = (NotificationManager) getActivity().getSystemService(ns);
+            nMgr.cancel(notificationId);
+        }
+    }
+
+
 }

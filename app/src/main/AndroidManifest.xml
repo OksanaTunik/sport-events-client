@@ -12,6 +12,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -34,20 +35,20 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo"
-        android:label="Sport4U"
+        android:title="Sports4U"
         android:theme="@style/AppTheme" >
 
         <uses-library android:name="com.google.android.maps" />
 
         <activity android:name="edu.us.sports4u.activities.autorization.LogInActivity" android:windowSoftInputMode="stateHidden" />
         <activity android:name="edu.us.sports4u.activities.autorization.SignUpActivity"  android:windowSoftInputMode="stateHidden"/>
-        <activity android:name="edu.us.sports4u.activities.ListEventActivity"  />
-        <activity android:name="edu.us.sports4u.activities.ChooseKindOfSportActivity" />
-        <activity android:name="edu.us.sports4u.activities.CreateEventActivity"  />
-        <activity android:name="edu.us.sports4u.activities.DetailEventActivity" />
-        <activity android:name="edu.us.sports4u.activities.MainTabActivity"  />
-        <activity android:name="edu.us.sports4u.activities.maps.ChooseLocationOnMap" />
-        <activity android:name="edu.us.sports4u.activities.Interests"/>
+        <activity android:name="edu.us.sports4u.activities.ListEventActivity" android:windowSoftInputMode="stateHidden" />
+        <activity android:name="edu.us.sports4u.activities.ChooseKindOfSportActivity" android:windowSoftInputMode="stateHidden"/>
+        <activity android:name="edu.us.sports4u.activities.CreateEventActivity" android:windowSoftInputMode="stateHidden" />
+        <activity android:name="edu.us.sports4u.activities.DetailEventActivity" android:windowSoftInputMode="stateHidden"/>
+        <activity android:name="edu.us.sports4u.activities.MainTabActivity" android:windowSoftInputMode="stateHidden" />
+        <activity android:name="edu.us.sports4u.activities.maps.ChooseLocationOnMap" android:windowSoftInputMode="stateHidden"/>
+        <activity android:name="edu.us.sports4u.activities.Interests" android:windowSoftInputMode="stateHidden"/>
 
         <activity android:name="edu.us.sports4u.activities.StartActivity" android:windowSoftInputMode="stateHidden">
             <intent-filter>
@@ -70,6 +71,9 @@
 
         <!-- Meta data required for Google Play Services -->
         <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+
+
+        <receiver android:name=".activities.NotificationStarter"/>
     </application>
 
 </manifest>

@@ -8,55 +8,93 @@
 
     <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:weightSum="0.5" android:id="@+id/linearLayout">
-        <ImageView
-                android:id="@+id/imageView1"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:src="@drawable/ic_launcher"
-                android:layout_alignBottom="@+id/description"/>
-    </LinearLayout>
-    <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:weightSum="0.5" android:layout_toRightOf="@+id/linearLayout"
-            android:layout_toEndOf="@+id/linearLayout"
-            android:layout_marginLeft="10dp">
+            android:layout_height="wrap_content">
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="32dp"
+                android:layout_height="wrap_content"
+                android:weightSum="0.5" android:id="@+id/linearLayout">
+            <ImageView android:id="@+id/imageView" android:layout_width="match_parent" android:layout_height="27dp"
+                       android:layout_alignParentLeft="true" android:layout_alignParentTop="true"
+                       android:src="@drawable/ic_launcher" android:layout_alignBottom="@+id/participants"/>
+            <ImageView
+                    android:id="@+id/imageView1"
+                    android:layout_width="21dp"
+                    android:layout_height="21dp"
+                    android:layout_gravity="center"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:src="@drawable/guests"
+                    android:layout_alignBottom="@+id/participants" android:layout_marginTop="12dp"/>
+        </LinearLayout>
         <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
-            <TextView
-                    android:id="@+id/title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/imageView1"
-                    android:text="Title of the event"
-                    android:textColor="@color/blue"
-                    android:textSize="16sp" />
-            <TextView
-                    android:id="@+id/startsAt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/title"
-                    android:layout_marginTop="10dp"
-                    android:layout_toRightOf="@+id/imageView1"
-                    android:text="starts at"
-                    android:textSize="16sp" />
-            <TextView
-                    android:id="@+id/description"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/startsAt"
-                    android:layout_toRightOf="@+id/imageView1"
-                    android:layout_alignLeft="@+id/textView1"
-                    android:text="description of the event"
-                    android:textStyle="italic"/>
+                android:layout_height="wrap_content"
+                android:weightSum="0.5" android:layout_toRightOf="@+id/linearLayout"
+                android:layout_toEndOf="@+id/linearLayout"
+                android:layout_marginLeft="10dp">
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+                <TextView
+                        android:id="@+id/title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/imageView1"
+                        android:text="Title of the event"
+                        android:textColor="@color/blue"
+                        android:textSize="14sp" android:textStyle="bold"/>
+                <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content">
+                    <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content" android:layout_weight="0.33">
+                        <ImageView android:id="@+id/imageView2" android:layout_width="17dp" android:layout_height="17dp"
+                                   android:layout_alignParentLeft="true" android:layout_alignParentTop="true"
+                                   android:src="@drawable/clock" android:layout_alignBottom="@+id/participants"
+                                   android:layout_gravity="bottom|center"/>
+                        <TextView
+                                android:id="@+id/startsAt"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/title"
+                                android:layout_marginTop="10dp"
+                                android:layout_toRightOf="@+id/imageView1"
+                                android:text="starts at"
+                                android:textSize="13sp" android:layout_weight="0.5" android:layout_marginLeft="2dp"
+                                android:textColor="@color/textHint"/>
+                    </LinearLayout>
+                    <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content" android:layout_weight="0.23">
+                        <ImageView android:id="@+id/imageView3" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                   android:layout_alignParentLeft="true" android:layout_alignParentTop="true"
+                                   android:src="@drawable/location" android:layout_alignBottom="@+id/participants"
+                                   android:layout_gravity="center_vertical|bottom"/>
+                        <TextView android:id="@+id/tvlocation" android:layout_width="wrap_content"
+                                  android:layout_height="wrap_content" android:layout_below="@+id/title"
+                                  android:layout_marginTop="10dp" android:layout_toRightOf="@+id/imageView1"
+                                  android:text="location" android:textSize="13sp" android:layout_weight="0.5"
+                                  android:layout_marginLeft="2dp" android:textColor="@color/textHint"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <TextView
+                        android:id="@+id/participants"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/startsAt"
+                        android:layout_toRightOf="@+id/imageView1"
+                        android:layout_alignLeft="@+id/textView1"
+                        android:text="participants"
+                        android:textColor="@color/textHint" android:layout_marginTop="1dp"/>
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 

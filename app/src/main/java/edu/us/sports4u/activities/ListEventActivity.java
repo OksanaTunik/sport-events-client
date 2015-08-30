@@ -15,7 +15,7 @@ import edu.us.sports4u.entities.ListEventsParams;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListEventActivity extends BaseActivity {
+public class ListEventActivity extends BaseActivity {/*
     ListView lvMain = null;
 
     EventAdapter adapter;
@@ -137,7 +137,7 @@ public class ListEventActivity extends BaseActivity {
             Event event = getItem(position);
             ((TextView) view.findViewById(R.id.title)).setText(event
                     .getTitle());
-            ((TextView) view.findViewById(R.id.description)).setText(event
+            ((TextView) view.findViewById(R.id.participents)).setText(event
                     .getDescription());
 
             view.setTag(event.getId());
@@ -208,7 +208,7 @@ public class ListEventActivity extends BaseActivity {
             default:
                 return super.onContextItemSelected((android.view.MenuItem) item);
         }
-    }
+    }*/
 
 }
 

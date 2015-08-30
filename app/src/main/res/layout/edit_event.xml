@@ -34,6 +34,9 @@
                     android:inputType="text"
                     />
 
+            <TextView android:id="@+id/textView5" android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:ems="10" android:hint="Name of your event" android:textColorHint="@color/blue"
+                      android:layout_marginTop="10dp" android:textColor="#000" android:textSize="20dp"/>
             <EditText
                     android:id="@+id/txtTitle"
                     android:layout_width="match_parent"
@@ -42,7 +45,6 @@
                     android:hint="Title"
                     android:textColor="#000"
                     android:textSize="20dp"
-                    android:layout_marginTop="10dp"
                     android:background="@drawable/edittext"
                     android:textColorHint="@color/grey"
                     android:inputType="text"
@@ -52,7 +54,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Date"
+                    android:hint="Choose date and time"
 
                     android:textColorHint="@color/blue"
                     android:layout_marginTop="10dp"
@@ -79,12 +81,12 @@
                         >
 
                     <ImageButton
-                            android:layout_width="match_parent"
+                            android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:id="@+id/imgbtnDay"
                             android:layout_weight="0.95"
-                            android:background="@drawable/calendar159"
-                            />
+                            android:background="@drawable/calendar"
+                            android:layout_marginLeft="10dp"/>
                     <TextView
                             android:id="@+id/tvDate"
                             android:layout_width="match_parent"
@@ -106,7 +108,7 @@
                               android:layout_marginBottom="10dp">
                     <ImageButton android:layout_width="match_parent" android:layout_height="fill_parent"
                                  android:id="@+id/imgbtnClock" android:layout_weight="0.95"
-                                 android:background="@drawable/clock"/>
+                                 android:background="@drawable/clock" android:layout_marginLeft="10dp"/>
                     <TextView android:id="@+id/tvTime" android:layout_width="match_parent"
                               android:layout_height="wrap_content" android:ems="10"
                               android:hint="Time"
@@ -125,7 +127,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
-                        android:hint="Event location"
+                        android:hint="Set event location"
                         android:textColorHint="@color/blue"
                         android:textColor="#000"
                         android:textSize="20dp"
@@ -140,7 +142,7 @@
 
                     <EditText
                             android:id="@+id/txtAddress"
-                            android:layout_width="312dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:ems="10"
                             android:hint="Event location"
@@ -150,13 +152,18 @@
                             android:textColorHint="@color/grey"
                             android:inputType="text"
 
-                            />
+                            android:layout_weight="0.3"/>
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:id="@+id/textView7" android:layout_weight="0.3"/>
                     <ImageButton
                             android:layout_width="wrap_content"
                             android:layout_height="fill_parent"
                             android:id="@+id/imgLocation"
                             android:src="@drawable/location"
-                            android:layout_weight="0.15"/>
+                            android:layout_weight="0.3" android:background="@null"/>
 
                 </LinearLayout>
                 <TextView
@@ -164,7 +171,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
-                        android:hint="Description"
+                        android:hint="Describe your event briefly"
                         android:textColorHint="@color/blue"
                         android:textSize="20dp"
 

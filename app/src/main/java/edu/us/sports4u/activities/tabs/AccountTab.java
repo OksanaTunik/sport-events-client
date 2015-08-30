@@ -8,6 +8,7 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -18,12 +19,14 @@ import android.widget.*;
 import edu.us.sports4u.R;
 import edu.us.sports4u.activities.ChipsMultiAutoCompleteEditText;
 import edu.us.sports4u.activities.autorization.LogInActivity;
+import edu.us.sports4u.api.AccountApiClient;
 import edu.us.sports4u.api.BaseActivity;
 import edu.us.sports4u.entities.UserAccount;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.List;
+
+import static edu.us.sports4u.api.BaseActivity.*;
 
 public class AccountTab extends Fragment {
     // new class level members
@@ -62,7 +65,7 @@ public class AccountTab extends Fragment {
         String[] item = getResources().getStringArray(R.array.country);
 
         Log.i("", "Country Count : " + item.length);
-        mu.setAdapter(new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_dropdown_item_1line, item));
+        mu.setAdapter(new ArrayAdapter<>(this.getActivity(), android.R.layout.simple_dropdown_item_1line, item));
         mu.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
 
        /* btnDone.setOnClickListener(new View.OnClickListener() {
@@ -90,6 +93,7 @@ public class AccountTab extends Fragment {
         });*/
 
         btnAddImage = (ImageButton) fragmentView.findViewById(R.id.btnAddImage);
+
         btnAddImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
@@ -103,7 +107,7 @@ public class AccountTab extends Fragment {
     }
 
     protected void signOut() {
-        BaseActivity.clearApiKey();
+        clearApiKey();
         Intent activity = new Intent(getActivity(), LogInActivity.class);
         startActivity(activity);
     }
@@ -124,9 +128,11 @@ public class AccountTab extends Fragment {
         switch (item.getItemId()) {
             case R.id.settings:
                 return true;
+
             case R.id.sign_out:
                 AccountTab.this.signOut();
                 return true;
+
             case R.id.menu_save:
                 String name = txtName.getText().toString();
                 String address = txtAddress.getText().toString();
@@ -134,14 +140,14 @@ public class AccountTab extends Fragment {
                 UserAccount newAccount = new UserAccount();
                 newAccount.setName(name);
                 newAccount.setAddress(address);
-                BaseActivity.setUserAccount(newAccount);
+                updateAccount(newAccount);
 
                 return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
-
 
     private void selectImage() {
         final CharSequence[] items = { "Take Photo", "Choose from Library",
@@ -168,6 +174,7 @@ public class AccountTab extends Fragment {
                 }
             }
         });
+
         builder.show();
     }
 
@@ -197,8 +204,6 @@ public class AccountTab extends Fragment {
             fo = new FileOutputStream(destination);
             fo.write(bytes.toByteArray());
             fo.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -233,4 +238,23 @@ public class AccountTab extends Fragment {
         btnAddImage.setImageBitmap(bm);
     }
 
+    private void updateAccount(UserAccount newAccount) {
+        setUserAccount(newAccount);
+        AccountApiClient.update(newAccount);
+        new UpdateUserAccountTask().execute(newAccount);
+    }
+
+    public class UpdateUserAccountTask extends AsyncTask<UserAccount, Void, Boolean> {
+        @Override
+        protected Boolean doInBackground(UserAccount... params) {
+            return AccountApiClient.update(params[0]);
+        }
+
+        @Override
+        protected void onPostExecute(Boolean result) {
+            if (!result) {
+                Toast.makeText(getActivity().getApplicationContext(), "Could not update your account", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
 }

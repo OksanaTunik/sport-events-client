@@ -134,6 +134,7 @@ public class LogInActivity extends BaseActivity {
             setContentView(R.layout.waiting);
 
             new SignInTask().execute(username, password);
+            new FetchUserAccountTask().execute(readApiKey());
         }
     }
 }

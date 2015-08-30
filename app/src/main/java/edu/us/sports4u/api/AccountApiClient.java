@@ -1,8 +1,11 @@
 package edu.us.sports4u.api;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
+import android.text.TextUtils;
+import edu.us.sports4u.entities.UserAccount;
 import edu.us.sports4u.http.HttpClientHelper;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -10,6 +13,64 @@ import org.json.JSONObject;
 
 
 public class AccountApiClient extends BaseApiClient {
+    public static UserAccount fetch(String apiKey) {
+        List<NameValuePair> data = new ArrayList<NameValuePair>();
+        data.add(new BasicNameValuePair("api_key", apiKey));
+
+        String url = getUrl("/users");
+
+        JSONObject res = HttpClientHelper.get(url, data);
+        UserAccount result = null;
+
+        try {
+            if (res.getBoolean("success")) {
+                UserAccount acc = new UserAccount();
+
+                acc.setName(res.getString("name"));
+                acc.setAddress(res.getString("address"));
+                acc.setEmail(res.getString("email"));
+                acc.setFacebookId(res.getString("facebook_id"));
+
+                List<String> sports = new ArrayList<>();
+                String[] pieces = res.getString("sports").split(",");
+
+                Collections.addAll(sports, pieces);
+
+                acc.setSportFavorites(sports);
+
+                result = acc;
+            } else {
+                result = null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+
+    public static boolean update(UserAccount newAccount) {
+        List<NameValuePair> data = new ArrayList<NameValuePair>();
+        data.add(new BasicNameValuePair("api_key", newAccount.getApiKey()));
+        data.add(new BasicNameValuePair("name", newAccount.getName()));
+        data.add(new BasicNameValuePair("email", newAccount.getEmail()));
+        data.add(new BasicNameValuePair("address", newAccount.getAddress()));
+        data.add(new BasicNameValuePair("sports", TextUtils.join(",", newAccount.getSportFavorites())));
+
+        String url = getUrl("/users/sign_up");
+
+        JSONObject res = HttpClientHelper.post(url, data);
+        boolean result = false;
+
+        try {
+            result = res.getBoolean("success");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+
     public static String signUp(String email, String password, String displayName) {
         List<NameValuePair> data = new ArrayList<NameValuePair>();
         data.add(new BasicNameValuePair("name", displayName));

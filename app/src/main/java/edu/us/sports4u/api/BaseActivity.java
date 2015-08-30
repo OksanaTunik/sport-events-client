@@ -22,7 +22,7 @@ import edu.us.sports4u.activities.autorization.LogInActivity;
 import edu.us.sports4u.activities.autorization.SignUpActivity;
 import edu.us.sports4u.entities.UserAccount;
 
-public abstract class BaseActivity extends Activity {
+public class BaseActivity extends Activity {
     protected static String apiKey;
     protected static UserAccount userAccount;
 
@@ -215,19 +215,26 @@ public abstract class BaseActivity extends Activity {
         }
     }
 
+    protected void afterSigningIn(String apiKey) {
+        storeApiKey(apiKey);
+
+        UserAccount account = AccountApiClient.fetch(apiKey);
+        setUserAccount(account);
+    }
+
     public class SignInTask extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... params) {
-            return AccountApiClient.logIn(params[0], params[1]);
+            String apiKey = AccountApiClient.logIn(params[0], params[1]);
+            afterSigningIn(apiKey);
+
+            return apiKey;
         }
 
         @Override
         protected void onPostExecute(String result) {
             if (result != null) {
-                storeApiKey(result);
                 showTabs();
-//                chooseKindOfSportActivity();
-//                showNewEvent();
             } else {
                 Toast.makeText(getApplicationContext(), "Wrong username/password", Toast.LENGTH_SHORT).show();
                 showLogin();
@@ -238,16 +245,16 @@ public abstract class BaseActivity extends Activity {
     public class FacebookSignInTask extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... params) {
-            return AccountApiClient.facebookSignIn(params[0], params[1], params[2]);
+            String apiKey = AccountApiClient.facebookSignIn(params[0], params[1], params[2]);
+            afterSigningIn(apiKey);
+
+            return apiKey;
         }
 
         @Override
         protected void onPostExecute(String result) {
             if (result != null) {
-                storeApiKey(result);
                 showTabs();
-//                chooseKindOfSportActivity();
-//                showNewEvent();
             } else {
                 Toast.makeText(getApplicationContext(), "Wrong username/password", Toast.LENGTH_SHORT).show();
                 showLogin();
@@ -257,9 +264,68 @@ public abstract class BaseActivity extends Activity {
 
     protected void facebookSignIn(String facebookId, String email, String name) {
         new FacebookSignInTask().execute(facebookId, email, name);
+        new FetchUserAccountTask().execute(readApiKey());
     }
 
     protected static boolean isEmailValid(CharSequence email) {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
+
+    public class JoinEventTask extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... params) {
+            return EventsApiClient.join(params[0], params[1]);
+        }
+
+        @Override
+        protected void onPostExecute(String eventId) {
+            if (eventId != null) {
+                getUserAccount().joinEvent(eventId);
+            } else {
+                Toast.makeText(getApplicationContext(), "Could not join event", Toast.LENGTH_SHORT).show();
+                showLogin();
+            }
+        }
+    }
+
+    public class LeaveEventTask extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... params) {
+            return EventsApiClient.leave(params[0], params[1]);
+        }
+
+        @Override
+        protected void onPostExecute(String eventId) {
+            if (eventId != null) {
+                getUserAccount().leaveEvent(eventId);
+            } else {
+                Toast.makeText(getApplicationContext(), "Could not leave event", Toast.LENGTH_SHORT).show();
+                showLogin();
+            }
+        }
+    }
+
+    protected void joinEvent(String eventId, String apiKey) {
+        new JoinEventTask().execute(eventId, apiKey);
+    }
+
+    protected void leaveEvent(String eventId, String apiKey) {
+        new LeaveEventTask().execute(eventId, apiKey);
+    }
+
+    public class FetchUserAccountTask extends AsyncTask<String, Void, UserAccount> {
+        @Override
+        protected UserAccount doInBackground(String... params) {
+            return AccountApiClient.fetch(params[0]);
+        }
+
+        @Override
+        protected void onPostExecute(UserAccount result) {
+            if (result != null) {
+                setUserAccount(result);
+            } else {
+                Toast.makeText(getApplicationContext(), "Could not fetch your account", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }

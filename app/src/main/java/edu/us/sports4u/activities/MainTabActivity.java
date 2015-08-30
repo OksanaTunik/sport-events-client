@@ -1,11 +1,19 @@
 package edu.us.sports4u.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.view.Menu;
+import android.view.MenuItem;
 import edu.us.sports4u.R;
+import edu.us.sports4u.activities.autorization.LogInActivity;
+import edu.us.sports4u.api.BaseActivity;
+import edu.us.sports4u.entities.Event;
+
+import java.util.Date;
 
 public class MainTabActivity extends FragmentActivity {
     ViewPager tab;
@@ -62,5 +70,31 @@ public class MainTabActivity extends FragmentActivity {
         //    Intent listCalendar = new Intent(this, ListCalendarActivity.class);
         actionBar.addTab(actionBar.newTab().setText("Messages").setTabListener(tabListener));
         actionBar.addTab(actionBar.newTab().setText("Options").setTabListener(tabListener));
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.create_event_menu, menu);
+        return true;
+
+    }
+
+    protected void signOut() {
+        BaseActivity.clearApiKey();
+        Intent activity = new Intent(this, LogInActivity.class);
+        startActivity(activity);
+    }
+
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.settings:
+                return true;
+            case R.id.sign_out:
+                MainTabActivity.this.signOut();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

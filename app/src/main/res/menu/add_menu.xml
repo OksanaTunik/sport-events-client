@@ -1,0 +1,9 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/add_event"
+          android:icon="@drawable/fab"
+          android:title="Add event"
+            android:showAsAction="always"
+            />
+
+</menu>

@@ -21,17 +21,18 @@
                 android:layout_marginTop="25dp" android:layout_marginBottom="15dp"/>
         <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
                       android:orientation="horizontal"
-                android:background="@color/blue" android:padding="19dp">
+                      android:padding="19dp" android:background="@drawable/background"
+                      android:focusableInTouchMode="false" android:focusable="false" android:layout_gravity="center">
 
 
             <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical" android:layout_marginTop="15dp">
 
 
-                <EditText
-                        android:layout_width="103dp"
+                <TextView
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:adjustViewBounds="true"
                         android:inputType="date"
@@ -68,11 +69,10 @@
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent" android:layout_weight="0.5">
                         <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="0.5"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
                                 android:id="@+id/imgClock"
-                                android:src="@drawable/clock"/>
+                                android:src="@drawable/calendar159"/>
                     </LinearLayout>
                     <LinearLayout
                             android:orientation="vertical"
@@ -83,7 +83,8 @@
                                 android:layout_height="fill_parent"
                                 android:textAppearance="?android:attr/textAppearanceLarge"
                                 android:text="5:00 pm"
-                                android:id="@+id/tvTime" android:layout_weight="0.5"/>
+                                android:id="@+id/tvTime" android:layout_weight="0.5" android:textColor="@color/white"
+                                android:layout_marginLeft="16dp"/>
                     </LinearLayout>
                 </LinearLayout>
 
@@ -102,12 +103,29 @@
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceLarge"
                             android:text="Krakow"
-                            android:id="@+id/tvlocation" android:layout_weight="0.5"/>
+                            android:id="@+id/tvlocation" android:layout_weight="0.5" android:textColor="@color/white"
+                            android:layout_marginLeft="16dp"/>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-        <ImageButton
-                    android:id="@+id/btnJoin"
+
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+            <ImageButton
+                        android:id="@+id/btnJoin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:background="#f30000"
+                        android:textAllCaps="true"
+                        android:textSize="35dp"
+                        android:layout_marginTop="15dp"
+                        android:src="@drawable/join"
+                        android:layout_marginLeft="15dp" android:layout_marginRight="15dp"/>
+            <ImageButton
+                    android:id="@+id/btnLeave"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -115,24 +133,34 @@
                     android:textAllCaps="true"
                     android:textSize="35dp"
                     android:layout_marginTop="15dp"
-                    android:src="@drawable/join"
+                    android:src="@drawable/leave"
                     android:layout_marginLeft="15dp" android:layout_marginRight="15dp"/>
-
+        </LinearLayout>
+        <TextView
+                android:id="@+id/tvOrganizer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Activity organizer"
+                android:textColorHint="@color/blue"
+                android:textSize="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="15dp" android:layout_marginRight="15dp"/>
         <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content" android:layout_marginLeft="15dp" android:layout_marginRight="15dp"
-                android:background="@color/white" android:layout_marginTop="15dp">
-            <TextView
-                    android:id="@+id/tvOrganizer"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="Activity organizer"
-                    android:textColorHint="@color/blue"
-                    android:textSize="20dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginLeft="15dp" android:layout_marginRight="15dp"/>
+                android:background="@color/white">
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" android:weightSum="1">
+                <ImageView
+                        android:layout_width="37dp"
+                        android:layout_height="37dp"
+                        android:id="@+id/imageView4"
+                android:background="@drawable/guests"/>
+            </LinearLayout>
         </LinearLayout>
         <TextView
     android:layout_width="match_parent"

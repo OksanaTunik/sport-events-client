@@ -121,14 +121,14 @@ public class CalendarTab extends Fragment {
             Event event = getItem(position);
 
             if (event.getGroup() != null) {
-                TextView groupTitle = (TextView) view.findViewById(R.id.groupTitle);
+                TextView groupTitle = (TextView) view.findViewById(R.id.title);
                 groupTitle.setVisibility(View.VISIBLE);
                 groupTitle.setText(event.getGroup());
             }
 
             ((TextView) view.findViewById(R.id.title)).setText(event.getTitle());
             ((TextView) view.findViewById(R.id.startsAt)).setText(event.getStartsAt().toString());
-            ((TextView) view.findViewById(R.id.visitors)).setText("Who's going: unknown");
+            ((TextView) view.findViewById(R.id.participants)).setText("Who's going: unknown");
 
             view.setTag(event.getId());
 

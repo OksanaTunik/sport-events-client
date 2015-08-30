@@ -119,9 +119,46 @@ public class EventsApiClient extends BaseApiClient {
         return result;
     }*/
 
-    public static void deleteEvent(String apiKey,Event event) throws Exception
-    {
+    public static String join(String eventId, String apiKey) {
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
 
+        params.add(new BasicNameValuePair("api_key", apiKey));
+        params.add(new BasicNameValuePair("event_id", eventId));
+
+        String result = null;
+
+        try {
+            String url = getUrl("/events/join");
+            JSONObject res = HttpClientHelper.get(url, params);
+
+            if (res.getBoolean("success"))
+                result = eventId;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+
+    public static String leave(String eventId, String apiKey) {
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+
+        params.add(new BasicNameValuePair("api_key", apiKey));
+        params.add(new BasicNameValuePair("event_id", eventId));
+
+        String result = null;
+
+        try {
+            String url = getUrl("/events/leave");
+            JSONObject res = HttpClientHelper.get(url, params);
+
+            if (res.getBoolean("success"))
+                result = eventId;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return result;
     }
 
     private static Event convertEvent(JSONObject json) throws JSONException, ParseException {
