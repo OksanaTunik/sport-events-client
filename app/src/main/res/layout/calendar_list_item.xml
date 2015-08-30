@@ -9,7 +9,9 @@
         <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:divider="@color/blue"
+                android:background="#f7f4f4" android:dividerPadding="5dp">
                 <LinearLayout
                         android:orientation="vertical"
                         android:layout_width="32dp"
@@ -25,8 +27,9 @@
                                 android:layout_gravity="center"
                                 android:layout_alignParentLeft="true"
                                 android:layout_alignParentTop="true"
-                                android:src="@drawable/ic_launcher"
-                                android:layout_alignBottom="@+id/participants" android:layout_marginTop="14dp"/>
+                                android:src="@drawable/guests"
+                                android:layout_alignBottom="@+id/participants" android:layout_marginTop="12dp"
+                                android:background="@null"/>
                 </LinearLayout>
                 <LinearLayout
                         android:orientation="vertical"
@@ -92,7 +95,7 @@
                                         android:layout_below="@+id/startsAt"
                                         android:layout_toRightOf="@+id/imageView1"
                                         android:layout_alignLeft="@+id/textView1"
-                                        android:text="participents"
+                                        android:text="participants"
                                         android:textColor="@color/textHint" android:layout_marginTop="1dp"/>
                         </LinearLayout>
                 </LinearLayout>

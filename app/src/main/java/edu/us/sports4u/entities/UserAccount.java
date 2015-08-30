@@ -3,7 +3,9 @@ package edu.us.sports4u.entities;
 import android.graphics.Bitmap;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Oksana on 09.08.2015.
@@ -16,14 +18,14 @@ public class UserAccount {
     private String address;
     private Bitmap photo;
     private List<String> sports;
-    private List<String> eventIds;
+    private Set<String> eventIds;
 
     public UserAccount() {
         name = "";
         address = "";
         photo = null;
         sports = new ArrayList<>();
-        eventIds = new ArrayList<>();
+        eventIds = new HashSet<>();
     }
 
     public String getName() {
@@ -66,7 +68,7 @@ public class UserAccount {
         this.eventIds.remove(eventId);
     }
 
-    public List<String> getEventIds() {
+    public Set<String> getEventIds() {
         return this.eventIds;
     }
 

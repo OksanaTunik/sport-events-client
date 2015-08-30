@@ -21,6 +21,8 @@ import edu.us.sports4u.entities.Event;
 import edu.us.sports4u.entities.EventsStorage;
 import edu.us.sports4u.entities.ListEventsParams;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -53,8 +55,7 @@ public class EventsTab extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> arg0, View view, int position, long id) {
                 String eventId = (String) view.getTag();
-                Toast.makeText(getActivity().getBaseContext(), eventId, Toast.LENGTH_LONG).show();
-                showEvent();
+                showEvent(eventId);
             }
         });
 
@@ -64,27 +65,6 @@ public class EventsTab extends Fragment {
                 EventsTab.this.runSearch(fragmentView);
             }
         });
-
-        long now = new Date().getTime();
-        now += (5 * 1000);
-
-//        Calendar calendar = Calendar.getInstance();
-//
-//        calendar.set(Calendar.MONTH, 6);
-//        calendar.set(Calendar.YEAR, 2013);
-//        calendar.set(Calendar.DAY_OF_MONTH, 13);
-//
-//        calendar.set(Calendar.HOUR_OF_DAY, 20);
-//        calendar.set(Calendar.MINUTE, 48);
-//        calendar.set(Calendar.SECOND, 0);
-//        calendar.set(Calendar.AM_PM, Calendar.PM);
-        // now = calendar.getTimeInMillis();
-
-        Intent myIntent = new Intent(getActivity(), NotificationStarter.class);
-        pendingIntent = PendingIntent.getBroadcast(getActivity(), 0, myIntent,0);
-
-        AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
-        alarmManager.set(AlarmManager.RTC, now, pendingIntent);
 
         runSearch(fragmentView);
 
@@ -122,9 +102,9 @@ public class EventsTab extends Fragment {
         }
     }
 
-
-    private void showEvent() {
+    private void showEvent(String eventId) {
         Intent intent = new Intent(getActivity(), DetailEventActivity.class);
+        intent.putExtra("eventId", eventId);
         startActivity(intent);
     }
 
@@ -195,10 +175,9 @@ public class EventsTab extends Fragment {
 
             ((TextView) view.findViewById(R.id.title)).setText(event.getTitle());
             ((TextView) view.findViewById(R.id.participants)).setText(event.getDescription());
-            String originalString = event.getStartsAt().toString();
-            // Date date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(originalString);
-           // String newString = new SimpleDateFormat("HH:mm").format(originalString);
-            ((TextView) view.findViewById(R.id.startsAt)).setText( event.getStartsAt().toString());
+
+            String startsAt = new SimpleDateFormat("dd/MM/yyyy HH:mm").format(event.getStartsAt());
+            ((TextView) view.findViewById(R.id.startsAt)).setText(startsAt);
 
             view.setTag(event.getId());
 
@@ -217,9 +196,23 @@ public class EventsTab extends Fragment {
         }
 
         @Override
-        protected void onPostExecute(List<Event> result) {
+        protected void onPostExecute(List<Event> events) {
             // binding
-            bindEvents(result);
+            bindEvents(events);
+
+            for (Event e : events) {
+                long notificationTime = e.getStartsAt().getTime();
+                long now = new Date().getTime();
+
+                if (notificationTime < now)
+                    continue;
+
+                Intent myIntent = new Intent(getActivity(), NotificationStarter.class);
+                pendingIntent = PendingIntent.getBroadcast(getActivity(), 0, myIntent, 0);
+
+                AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
+                alarmManager.set(AlarmManager.RTC, notificationTime, pendingIntent);
+            }
         }
 
         @Override
@@ -235,21 +228,6 @@ public class EventsTab extends Fragment {
             EventsStorage.setEvents(events);
 
             return events;
-        }
-    }
-
-    class DeleteEventsTask extends AsyncTask<String, Void, Void> {
-        @Override
-        protected Void doInBackground(String... params) {
-            // TODO Auto-generated method stub
-            try {
-
-            } catch (Exception e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-
-            return null;
         }
     }
 
@@ -279,46 +257,11 @@ public class EventsTab extends Fragment {
         }
     }
 
-    public void showNotification(){
-
-        // define sound URI, the sound to be played when there's a notification
-        Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-
-        // intent triggered, you can add other intent for other actions
-        Intent intent = new Intent(getActivity(), MainTabActivity.class);
-        PendingIntent pIntent = PendingIntent.getActivity(getActivity(), 0, intent, 0);
-
-        // this is it, we'll build the notification!
-        // in the addAction method, if you don't want any icon, just set the first param to 0
-        Notification mNotification = new Notification.Builder(getActivity())
-
-                .setContentTitle("New Post!")
-                .setContentText("Here's an awesome update for you!")
-                .setSmallIcon(R.drawable.running)
-                .setContentIntent(pIntent)
-                .setSound(soundUri)
-
-                .addAction(R.drawable.running, "View", pIntent)
-                .addAction(0, "Remind", pIntent)
-
-                .build();
-
-        NotificationManager notificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
-
-        // If you want to hide the notification after it was selected, do the code below
-        // myNotification.flags |= Notification.FLAG_AUTO_CANCEL;
-
-        notificationManager.notify(0, mNotification);
-    }
-
-    public void cancelNotification(int notificationId){
-
-        if (Context.NOTIFICATION_SERVICE!=null) {
+    public void cancelNotification(int notificationId) {
+        if (Context.NOTIFICATION_SERVICE != null) {
             String ns = Context.NOTIFICATION_SERVICE;
             NotificationManager nMgr = (NotificationManager) getActivity().getSystemService(ns);
             nMgr.cancel(notificationId);
         }
     }
-
-
 }

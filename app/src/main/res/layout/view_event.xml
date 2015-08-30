@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- the root view is now a LinearLayout, all other Views are children of this -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".MainActivity">
+    <ScrollView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/scrollView2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/background_app"
+            >
+<LinearLayout
                android:layout_width="wrap_content" android:layout_height="wrap_content"
               android:background="@color/background_app" android:orientation="vertical">
 
@@ -37,7 +50,7 @@
                         android:adjustViewBounds="true"
                         android:inputType="date"
                         android:ems="10"
-                        android:id="@+id/etDay"
+                        android:id="@+id/tvStartsAtDay"
                         android:textColor="@color/white"
                         android:text="29th"
                         android:textSize="34dp"
@@ -45,7 +58,7 @@
 
 
                 <TextView android:textAppearance="?android:attr/textAppearanceLarge" android:text="November"
-                          android:textColor="@color/white" android:id="@+id/textView" android:layout_width="wrap_content"
+                          android:textColor="@color/white" android:id="@+id/tvStartsAtMonth" android:layout_width="wrap_content"
                           android:layout_height="wrap_content" android:layout_weight="0.33"
                           android:adjustViewBounds="true"/>
 
@@ -83,7 +96,7 @@
                                 android:layout_height="fill_parent"
                                 android:textAppearance="?android:attr/textAppearanceLarge"
                                 android:text="5:00 pm"
-                                android:id="@+id/tvTime" android:layout_weight="0.5" android:textColor="@color/white"
+                                android:id="@+id/tvStartsAtTime" android:layout_weight="0.5" android:textColor="@color/white"
                                 android:layout_marginLeft="16dp"/>
                     </LinearLayout>
                 </LinearLayout>
@@ -97,13 +110,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/imgLocation"
-                            android:src="@drawable/clock"/>
+                            android:src="@drawable/clock_white"/>
                     <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceLarge"
                             android:text="Krakow"
-                            android:id="@+id/tvlocation" android:layout_weight="0.5" android:textColor="@color/white"
+                            android:id="@+id/tvAddress" android:layout_weight="0.5" android:textColor="@color/white"
                             android:layout_marginLeft="16dp"/>
                 </LinearLayout>
             </LinearLayout>
@@ -191,3 +204,5 @@
 
 
 </LinearLayout>
+        </ScrollView>
+    </RelativeLayout>

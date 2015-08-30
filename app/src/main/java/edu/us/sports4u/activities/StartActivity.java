@@ -36,20 +36,4 @@ public class StartActivity extends BaseActivity {
             Log.e("MOO", "No internet connection");
         }
     }*/
-
-    public class RestoreSessionTask extends AsyncTask<String, Void, Boolean> {
-        @Override
-        protected Boolean doInBackground(String... params) {
-            return AccountApiClient.checkLogIn(params[0]);
-        }
-
-        @Override
-        protected void onPostExecute(Boolean result) {
-            if (result) {
-                showTabs();
-            } else {
-                showSignup();
-            }
-        }
-    }
 }

@@ -328,4 +328,24 @@ public class BaseActivity extends Activity {
             }
         }
     }
+
+    public class RestoreSessionTask extends AsyncTask<String, Void, Boolean> {
+        @Override
+        protected Boolean doInBackground(String... params) {
+            String apiKey = params[0];
+            Boolean result = AccountApiClient.checkLogIn(apiKey);
+            afterSigningIn(apiKey);
+
+            return result;
+        }
+
+        @Override
+        protected void onPostExecute(Boolean result) {
+            if (result) {
+                showTabs();
+            } else {
+                showSignup();
+            }
+        }
+    }
 }

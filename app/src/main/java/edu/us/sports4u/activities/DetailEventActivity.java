@@ -12,6 +12,7 @@ import edu.us.sports4u.R;
 import edu.us.sports4u.api.BaseActivity;
 import edu.us.sports4u.entities.Event;
 import edu.us.sports4u.entities.EventsStorage;
+import edu.us.sports4u.entities.UserAccount;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -27,21 +28,22 @@ public class DetailEventActivity extends BaseActivity {
     ImageButton btnJoin;
     ImageButton btnLeave;
     TextView tvTime;
-    TextView tvDate;
+    TextView tvDay;
+    TextView tvMonth;
     String eventId = null;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.view_event);
-      //  Event event = new Event(getTaskId(),getTitle());
 
-        tvDate = (TextView) findViewById(R.id.tvDate);
+        setContentView(R.layout.view_event);
+
         tvTitle = (TextView) findViewById(R.id.tvTitle);
         tvDescription = (TextView) findViewById(R.id.tvDescription);
-        tvAddress = (TextView) findViewById(R.id.tvlocation);
-        tvTime = (TextView) findViewById(R.id.tvTime);
-        tvDate = (TextView) findViewById(R.id.tvDate);
+        tvAddress = (TextView) findViewById(R.id.tvAddress);
+        tvTime = (TextView) findViewById(R.id.tvStartsAtTime);
+        tvDay = (TextView) findViewById(R.id.tvStartsAtDay);
+        tvMonth = (TextView) findViewById(R.id.tvStartsAtMonth);
         btnJoin = (ImageButton) findViewById(R.id.btnJoin);
         btnLeave = (ImageButton) findViewById(R.id.btnLeave);
 
@@ -67,11 +69,11 @@ public class DetailEventActivity extends BaseActivity {
 
     private void switchJoinButton() {
         if (isEventJoined()) {
-            btnJoin.setVisibility(View.INVISIBLE);
+            btnJoin.setVisibility(View.GONE);
             btnLeave.setVisibility(View.VISIBLE);
         } else {
             btnJoin.setVisibility(View.VISIBLE);
-            btnLeave.setVisibility(View.INVISIBLE);
+            btnLeave.setVisibility(View.GONE);
         }
     }
 
@@ -81,24 +83,30 @@ public class DetailEventActivity extends BaseActivity {
 
     private void joinEvent() {
         super.joinEvent(this.eventId, readApiKey());
+        BaseActivity.getUserAccount().joinEvent(this.eventId);
         switchJoinButton();
     }
 
     private void leaveEvent() {
         super.leaveEvent(this.eventId, readApiKey());
+        BaseActivity.getUserAccount().leaveEvent(this.eventId);
         switchJoinButton();
     }
 
     private void populateData(Event event)
     {
         Date startsAt = event.getStartsAt();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
-        String startsAtStr = dateFormat.format(startsAt);
+        //SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+        //String startsAtStr = dateFormat.format(startsAt);
 
         tvTitle.setText(event.getTitle());
-        tvDate.setText(startsAtStr);
+        tvDay.setText(new SimpleDateFormat("dd").format(startsAt));
+        tvMonth.setText(new SimpleDateFormat("MMM").format(startsAt));
+        tvTime.setText(new SimpleDateFormat("HH:mm").format(startsAt));
         tvDescription.setText(event.getDescription());
         tvAddress.setText(event.getAddress());
+
+        switchJoinButton();
     }
 
     public void showEventEdit(String eventId)

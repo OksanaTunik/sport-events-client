@@ -16,6 +16,7 @@ import edu.us.sports4u.api.EventsApiClient;
 import edu.us.sports4u.entities.Event;
 import edu.us.sports4u.entities.ListEventsParams;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -115,20 +116,16 @@ public class CalendarTab extends Fragment {
             View view = convertView;
 
             if (view == null) {
-                view = lInflater.inflate(R.layout.calendar_list_item, parent, false);
+                view = lInflater.inflate(R.layout.events_list_item, parent, false);
             }
 
             Event event = getItem(position);
 
-            if (event.getGroup() != null) {
-                TextView groupTitle = (TextView) view.findViewById(R.id.title);
-                groupTitle.setVisibility(View.VISIBLE);
-                groupTitle.setText(event.getGroup());
-            }
-
             ((TextView) view.findViewById(R.id.title)).setText(event.getTitle());
-            ((TextView) view.findViewById(R.id.startsAt)).setText(event.getStartsAt().toString());
-            ((TextView) view.findViewById(R.id.participants)).setText("Who's going: unknown");
+            ((TextView) view.findViewById(R.id.participants)).setText(event.getDescription());
+
+            String startsAt = new SimpleDateFormat("dd/MM/yyyy HH:mm").format(event.getStartsAt());
+            ((TextView) view.findViewById(R.id.startsAt)).setText(startsAt);
 
             view.setTag(event.getId());
 

@@ -180,5 +180,4 @@ public class EventsApiClient extends BaseApiClient {
 
         return event;
     }
-
 }

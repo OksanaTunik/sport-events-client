@@ -23,6 +23,7 @@ public class MainTabActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
 
         tabAdapter = new TabPagerAdapter(getSupportFragmentManager());
@@ -71,11 +72,12 @@ public class MainTabActivity extends FragmentActivity {
         actionBar.addTab(actionBar.newTab().setText("Messages").setTabListener(tabListener));
         actionBar.addTab(actionBar.newTab().setText("Options").setTabListener(tabListener));
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.create_event_menu, menu);
-        return true;
 
+        return true;
     }
 
     protected void signOut() {
@@ -83,7 +85,6 @@ public class MainTabActivity extends FragmentActivity {
         Intent activity = new Intent(this, LogInActivity.class);
         startActivity(activity);
     }
-
 
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

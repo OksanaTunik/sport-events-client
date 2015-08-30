@@ -13,12 +13,12 @@
             <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content" android:layout_marginTop="60dp">
+                    android:layout_height="wrap_content" android:layout_marginTop="45dp">
                 <ImageView
                         android:id="@+id/textView4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="25dp"
+                        android:layout_marginTop="20dp"
                         android:layout_marginRight="15dp"
                         android:layout_marginLeft="95dp"
                         android:gravity="center"

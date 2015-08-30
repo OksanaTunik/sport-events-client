@@ -58,6 +58,9 @@ public class AccountTab extends Fragment {
         txtName = (EditText) fragmentView.findViewById(R.id.txtName);
         txtAddress = (EditText) fragmentView.findViewById(R.id.txtAddress);
 
+        txtName.setText(getUserAccount().getName());
+        txtAddress.setText(getUserAccount().getAddress());
+
        // Button signOutBtn = (Button) fragmentView.findViewById(R.id.btnSignout);
 
         mu = (ChipsMultiAutoCompleteEditText) fragmentView.findViewById(R.id.multiAutoCompleteTextView1);
