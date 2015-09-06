@@ -169,6 +169,17 @@ public class EventsApiClient extends BaseApiClient {
         String sport = json.get("sport").toString();
         String group = json.get("group").toString();
 
+        JSONArray visitorsList = json.getJSONArray("visitors");
+        List<String> visitors = new ArrayList<>();
+
+        for (int i = 0; i < visitorsList.length(); i++) {
+            JSONObject visitorObj = visitorsList.getJSONObject(i);
+
+            visitors.add(visitorObj.get("name").toString());
+        }
+
+        String participants = TextUtils.join(",", visitors);
+
         if (group.isEmpty() || group.equals("null"))
             group = null;
 
@@ -176,7 +187,7 @@ public class EventsApiClient extends BaseApiClient {
         Date plannedAt = format.parse(json.get("starts_at").toString());
         Date createdAt = format.parse(json.get("created_at").toString());
 
-        Event event = new Event(id, title, description, address, sport, createdAt, plannedAt, group);
+        Event event = new Event(id, title, description, address, sport, createdAt, plannedAt, group, participants);
 
         return event;
     }

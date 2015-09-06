@@ -150,6 +150,7 @@ public class EventsTab extends Fragment {
                     return element;
                 }
             }
+
             return null;
         }
 
@@ -178,6 +179,8 @@ public class EventsTab extends Fragment {
 
             String startsAt = new SimpleDateFormat("dd/MM/yyyy HH:mm").format(event.getStartsAt());
             ((TextView) view.findViewById(R.id.startsAt)).setText(startsAt);
+
+            ((TextView) view.findViewById(R.id.participants)).setText(event.getParticipants());
 
             view.setTag(event.getId());
 

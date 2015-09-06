@@ -38,7 +38,7 @@
                         android:weightSum="0.5" android:layout_toRightOf="@+id/linearLayout"
                         android:layout_toEndOf="@+id/linearLayout"
                         android:layout_marginLeft="10dp">
-                        <LinearLayout
+                        <LinearLaayout
                                 android:orientation="vertical"
                                 android:layout_width="fill_parent"
                                 android:layout_height="fill_parent">
@@ -97,7 +97,7 @@
                                         android:layout_alignLeft="@+id/textView1"
                                         android:text="participants"
                                         android:textColor="@color/textHint" android:layout_marginTop="1dp"/>
-                        </LinearLayout>
+                        </LinearLaayout>
                 </LinearLayout>
         </LinearLayout>
 

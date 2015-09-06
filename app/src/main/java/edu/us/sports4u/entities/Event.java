@@ -9,10 +9,11 @@ public class Event {
     protected String address;
     protected String sport;
     protected String group;
+    protected String participants;
     protected Float lat, lng;
     protected Date createdAt, startsAt;
 
-    public Event(String id, String title, String description, String address, String sport, Date startsAt, Date createdAt, String group) {
+    public Event(String id, String title, String description, String address, String sport, Date startsAt, Date createdAt, String group, String participants) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -21,6 +22,7 @@ public class Event {
         this.startsAt = startsAt;
         this.createdAt = createdAt;
         this.group = group;
+        this.participants = participants;
     }
 
     public Event(String title, String description, String address, String sport, Date startsAt) {
@@ -116,5 +118,13 @@ public class Event {
 
     public void setGroup(String group) {
         this.group = group;
+    }
+
+    public String getParticipants() {
+        return participants;
+    }
+
+    public void setParticipants(String participants) {
+        this.participants = participants;
     }
 }
