@@ -6,6 +6,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -175,12 +176,16 @@ public class EventsTab extends Fragment {
             Event event = getItem(position);
 
             ((TextView) view.findViewById(R.id.title)).setText(event.getTitle());
-            ((TextView) view.findViewById(R.id.participants)).setText(event.getDescription());
+//            ((TextView) view.findViewById(R.id.tvDescription)).setText(event.getDescription());
 
             String startsAt = new SimpleDateFormat("dd/MM/yyyy HH:mm").format(event.getStartsAt());
             ((TextView) view.findViewById(R.id.startsAt)).setText(startsAt);
-
             ((TextView) view.findViewById(R.id.participants)).setText(event.getParticipants());
+
+            String sportUri = String.format("drawable/sport_%s", event.getSport());
+            int sportId = getResources().getIdentifier(sportUri, null, getActivity().getPackageName());
+            Drawable sportImg = getResources().getDrawable(sportId);
+            ((ImageView) view.findViewById(R.id.sportImage)).setImageDrawable(sportImg);
 
             view.setTag(event.getId());
 

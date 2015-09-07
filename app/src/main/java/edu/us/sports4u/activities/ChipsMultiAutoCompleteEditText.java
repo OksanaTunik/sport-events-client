@@ -11,13 +11,11 @@ import android.text.SpannableStringBuilder;
 import android.text.TextWatcher;
 import android.text.style.ImageSpan;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
 import edu.us.sports4u.R;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.MultiAutoCompleteTextView;
 import android.widget.TextView;
 
@@ -117,43 +115,43 @@ public class ChipsMultiAutoCompleteEditText extends MultiAutoCompleteTextView im
         public void setFlags(TextView textView,String country){
             country = country.trim();
             if(country.equals("Running")){
-                textView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.running, 0);
+                textView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.sport_running, 0);
             }
             else if(country.equals("Tennis")){
-                textView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.tennis, 0);
+                textView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.sport_tennis, 0);
             }
             else if(country.equals("Skiing")){
-                textView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.skiing, 0);
+                textView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.sport_skiing, 0);
             }
             else if(country.equals("Table tennis")){
-                textView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.tabletennis, 0);
+                textView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.sport_tabletennis, 0);
             }
             else if(country.equals("Volleyball")){
-                textView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.volleyball, 0);
+                textView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.sport_volleyball, 0);
             }
             else if(country.equals("Weightlifter")){
-                textView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.weightlifter, 0);
+                textView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.sport_weightlifting, 0);
             }
             else if(country.equals("Snowboarding")){
-                textView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.snowboard, 0);
+                textView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.sport_snowboard, 0);
             }
             else if(country.equals("Swimming")){
-                textView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.swimming, 0);
+                textView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.sport_swimming, 0);
             }
             else if(country.equals("Football")){
-                textView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.football, 0);
+                textView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.sport_football, 0);
             }
             else if(country.equals("Climbing")){
-                textView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.climbing, 0);
+                textView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.sport_climbing, 0);
             }
             else if(country.equals("Ice scating")){
-                textView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ski, 0);
+                textView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.sport_ski, 0);
             }
             else if(country.equals("Basketball")){
-                textView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.basketball, 0);
+                textView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.sport_basketball, 0);
             }
             else if(country.equals("Cycling")){
-                textView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.bicycle, 0);
+                textView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.sport_bicycle, 0);
             }
 
 

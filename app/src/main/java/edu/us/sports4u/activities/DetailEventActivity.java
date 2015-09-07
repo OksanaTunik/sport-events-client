@@ -2,6 +2,7 @@ package edu.us.sports4u.activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -36,13 +38,14 @@ public class DetailEventActivity extends BaseActivity {
     TextView tvTitle;
     TextView tvDescription;
     TextView tvAddress;
-    TextView tvSport;
-    ImageButton btnJoin;
-    ImageButton btnLeave;
+    ImageView sportImage;
+    Button btnJoin;
+    Button btnLeave;
     Button btnShare;
     TextView tvTime;
     TextView tvDay;
     TextView tvMonth;
+    TextView tvParticipants;
     String eventId = null;
     Event event;
 
@@ -54,15 +57,24 @@ public class DetailEventActivity extends BaseActivity {
 
         setContentView(R.layout.view_event);
 
+        sportImage = (ImageView) findViewById(R.id.sportImage);
         tvTitle = (TextView) findViewById(R.id.tvTitle);
         tvDescription = (TextView) findViewById(R.id.tvDescription);
         tvAddress = (TextView) findViewById(R.id.tvAddress);
         tvTime = (TextView) findViewById(R.id.tvStartsAtTime);
         tvDay = (TextView) findViewById(R.id.tvStartsAtDay);
         tvMonth = (TextView) findViewById(R.id.tvStartsAtMonth);
-        btnJoin = (ImageButton) findViewById(R.id.btnJoin);
-        btnLeave = (ImageButton) findViewById(R.id.btnLeave);
+        tvParticipants = (TextView) findViewById(R.id.participants);
+        btnJoin = (Button) findViewById(R.id.btnJoin);
+        btnLeave = (Button) findViewById(R.id.btnLeave);
         btnShare = (Button) findViewById(R.id.btnShare);
+
+       /* int identifier = getResources().getIdentifier("sport_running", "drawable", getPackageName());
+        sportImage.setImageResource(identifier);*/
+
+        if (getUserAccount().getFacebookId() == null) {
+            btnShare.setVisibility(View.GONE);
+        }
 
         btnJoin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -133,6 +145,12 @@ public class DetailEventActivity extends BaseActivity {
         tvTime.setText(new SimpleDateFormat("HH:mm").format(startsAt));
         tvDescription.setText(event.getDescription());
         tvAddress.setText(event.getAddress());
+        tvParticipants.setText(event.getParticipants());
+
+        String sportUri = String.format("drawable/sport_%s", event.getSport());
+        int sportId = getResources().getIdentifier(sportUri, null, getPackageName());
+        Drawable sportImg = getResources().getDrawable(sportId);
+        sportImage.setImageDrawable(sportImg);
 
         switchJoinButton();
     }

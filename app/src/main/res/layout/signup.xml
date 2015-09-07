@@ -2,7 +2,7 @@
     <ScrollView
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="fill_parent"
             android:fillViewport="true"
             android:background="@drawable/start_page_background1">
 
@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
 
             android:orientation="vertical"
-            android:layout_marginTop="30dp">
+            android:layout_marginTop="20dp">
 
         <EditText
                 android:id="@+id/txtDisplayName"
@@ -137,7 +137,7 @@
                         android:layout_gravity="bottom"
                         android:textStyle="bold"
                         android:layout_alignParentBottom="true"
-                        android:textAppearance="?android:attr/textAppearanceLarge" android:layout_marginTop="80dp"/>
+                        android:textAppearance="?android:attr/textAppearanceLarge" android:layout_marginTop="25dp"/>
             </LinearLayout>
         </LinearLayout>
 

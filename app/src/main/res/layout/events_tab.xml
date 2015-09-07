@@ -32,10 +32,10 @@
                         android:layout_weight="1"
                         android:layout_height="fill_parent"
                         android:singleLine="true"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:autoText="false"
                         android:capitalize="none"
-                        android:background="@drawable/edittext"
+                        android:background="@drawable/style_list_item"
                         android:imeOptions="actionSearch"
                         android:hint="Find events"/>
 
@@ -74,7 +74,8 @@
                 android:dividerHeight="23dip"
                 android:listSelector="@drawable/list_selector"
                 android:cacheColorHint="#00000000"
-                android:fadeScrollbars="true" android:layout_marginTop="7dp"/>
+                android:fadeScrollbars="true" android:layout_marginTop="7dp" android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"/>
         <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"

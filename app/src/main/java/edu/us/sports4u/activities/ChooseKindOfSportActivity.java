@@ -86,18 +86,18 @@ public class ChooseKindOfSportActivity extends Activity {
         listTasks.add("Skating");
 
         listImageTasks = new ArrayList<Integer>();
-        listImageTasks.add(R.drawable.running);
-        listImageTasks.add(R.drawable.ski);
-        listImageTasks.add(R.drawable.skiing);
-        listImageTasks.add(R.drawable.snowboard);
-        listImageTasks.add(R.drawable.swimming);
-        listImageTasks.add(R.drawable.tabletennis);
-        listImageTasks.add(R.drawable.tennis);
-        listImageTasks.add(R.drawable.volleyball);
-        listImageTasks.add(R.drawable.weightlifter);
-        listImageTasks.add(R.drawable.football);
-        listImageTasks.add(R.drawable.climbing);
-        listImageTasks.add(R.drawable.bicycle);
-        listImageTasks.add(R.drawable.basketball);
+        listImageTasks.add(R.drawable.sport_running);
+        listImageTasks.add(R.drawable.sport_ski);
+        listImageTasks.add(R.drawable.sport_skiing);
+        listImageTasks.add(R.drawable.sport_snowboard);
+        listImageTasks.add(R.drawable.sport_swimming);
+        listImageTasks.add(R.drawable.sport_tabletennis);
+        listImageTasks.add(R.drawable.sport_tennis);
+        listImageTasks.add(R.drawable.sport_volleyball);
+        listImageTasks.add(R.drawable.sport_weightlifting);
+        listImageTasks.add(R.drawable.sport_football);
+        listImageTasks.add(R.drawable.sport_climbing);
+        listImageTasks.add(R.drawable.sport_bicycle);
+        listImageTasks.add(R.drawable.sport_basketball);
     }
 }

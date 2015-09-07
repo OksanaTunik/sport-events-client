@@ -29,11 +29,11 @@ public class NotificationStarter extends BroadcastReceiver
 
                 .setContentTitle("New Post!")
                 .setContentText("Here's an awesome update for you!")
-                .setSmallIcon(R.drawable.running)
+                .setSmallIcon(R.drawable.sport_running)
                 .setContentIntent(pIntent)
                 .setSound(soundUri)
 
-                .addAction(R.drawable.running, "View", pIntent)
+                .addAction(R.drawable.sport_running, "View", pIntent)
                 .addAction(0, "Remind", pIntent)
 
                 .build();
