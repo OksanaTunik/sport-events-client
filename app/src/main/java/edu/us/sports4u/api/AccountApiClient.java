@@ -158,34 +158,4 @@ public class AccountApiClient extends BaseApiClient {
 
         return result;
     }
-
-  /*  public static boolean addEvent(String apiKey, String title, String description, String address, String sport) {
-        String url = getUrl("/events/create");
-        boolean result = false;
-        String boundary = "-------------" + System.currentTimeMillis();
-
-        try {
-            MultipartEntityBuilder entityBuilder = MultipartEntityBuilder.create();
-
-            entityBuilder.setBoundary(boundary);
-            entityBuilder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
-
-            entityBuilder.addTextBody("api_key", apiKey);
-            entityBuilder.addTextBody("title", title);
-            entityBuilder.addTextBody("description", description);
-            entityBuilder.addTextBody("address", title);
-            entityBuilder.addTextBody("sport", description);
-
-            HttpEntity entity = entityBuilder.build();
-
-            JSONObject res = HttpClientHelper.post(url, entity, boundary);
-
-            result = res.getBoolean("success");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return result;
-    }*/
-
 }

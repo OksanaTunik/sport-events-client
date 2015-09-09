@@ -65,9 +65,8 @@ public class AccountTab extends Fragment {
 
         mu = (ChipsMultiAutoCompleteEditText) fragmentView.findViewById(R.id.multiAutoCompleteTextView1);
 
-        String[] item = getResources().getStringArray(R.array.country);
+        String[] item = getResources().getStringArray(R.array.sports);
 
-        Log.i("", "Country Count : " + item.length);
         mu.setAdapter(new ArrayAdapter<>(this.getActivity(), android.R.layout.simple_dropdown_item_1line, item));
         mu.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
 

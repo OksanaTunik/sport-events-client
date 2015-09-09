@@ -1,66 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:map="http://schemas.android.com/apk/res-auto"
         android:id="@+id/root_container"
-        android:layout_height="match_parent"
-        android:layout_width="match_parent">
-
-
-    <FrameLayout
-            android:id="@+id/map_container"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-
-        <fragment
-                android:id="@+id/map"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:name="com.google.android.gms.maps.SupportMapFragment"/>
-
-    </FrameLayout>
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent"
+        android:orientation="vertical">
 
 
     <TextView
             android:id="@+id/latlongLocation"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:gravity="bottom"
-            android:layout_alignParentBottom="true"
             android:background="#ff058fff"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
             android:textColor="#ffffffff"
             android:paddingLeft="5dp"
-            android:paddingRight="5dp" />
+            android:paddingRight="5dp"/>
 
-        <TextView
-                android:id="@+id/address"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:gravity="bottom"
-                android:layout_alignParentBottom="true"
-                android:background="#ff058fff"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:textColor="#ffffffff"
-                android:layout_margin="85dp"
-                android:textColorHint="@color/white"
-                android:text="Your address"
-                android:paddingRight="5dp" />
+    <TextView
+            android:id="@+id/address"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#ff058fff"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:textColor="#ffffffff"
+            android:textColorHint="@color/white"
+            android:text="Your address"
+            android:layout_marginTop="5dp"
+            android:paddingRight="5dp"/>
 
 
-        <EditText
-                android:id="@+id/find"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:gravity="bottom"
-                android:background="@color/blue"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:textColor="#ffffffff"
-                android:text="Enter address..."
-                android:layout_marginTop="35dp"
-                android:paddingRight="5dp" />
-</FrameLayout>
+    <EditText
+            android:id="@+id/find"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/blue"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:textColor="#ffffffff"
+            android:text="Enter address..."
+            android:layout_marginTop="5dp"
+            android:paddingRight="5dp"/>
+
+    <fragment
+            android:id="@+id/map"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginTop="5dp"
+            android:name="com.google.android.gms.maps.SupportMapFragment"/>
+</LinearLayout>

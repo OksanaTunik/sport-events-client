@@ -96,29 +96,6 @@ public class EventsApiClient extends BaseApiClient {
         return result;
     }
 
-   /* public static Event updateEvent(String apiKey,Event event) throws Exception {
-        List<NameValuePair> params = new ArrayList<NameValuePair>();
-
-        params.add(new BasicNameValuePair("title", event.getTitle()));
-        params.add(new BasicNameValuePair("description", event.getDescription()));
-        params.add(new BasicNameValuePair("address", event.getAddress()));
-        params.add(new BasicNameValuePair("sport", event.getSport()));
-        params.add(new BasicNameValuePair("api_key", apiKey));
-        String url = getUrl("/events/update");
-
-        JSONObject res = HttpClientHelper.put(url, params);
-
-        boolean result = false;
-
-        try {
-            result = res.getBoolean("success");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return result;
-    }*/
-
     public static String join(String eventId, String apiKey) {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
 

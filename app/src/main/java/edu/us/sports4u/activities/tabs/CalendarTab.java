@@ -36,7 +36,6 @@ public class CalendarTab extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> arg0, View view, int position, long id) {
                 String eventId = (String) view.getTag();
-                Toast.makeText(getActivity().getBaseContext(), eventId, Toast.LENGTH_LONG).show();
 
                 showCalendar();
             }
@@ -124,7 +123,11 @@ public class CalendarTab extends Fragment {
             ((TextView) view.findViewById(R.id.title)).setText(event.getTitle());
             ((TextView) view.findViewById(R.id.participants)).setText(event.getDescription());
 
-
+            if (event.getGroup() != null) {
+                TextView groupTitle = (TextView) view.findViewById(R.id.groupTitle);
+                groupTitle.setVisibility(View.VISIBLE);
+                groupTitle.setText(event.getGroup());
+            }
 
             String startsAt = new SimpleDateFormat("dd/MM/yyyy HH:mm").format(event.getStartsAt());
             ((TextView) view.findViewById(R.id.startsAt)).setText(startsAt);

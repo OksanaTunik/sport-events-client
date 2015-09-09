@@ -6,100 +6,117 @@
                 android:layout_weight="1"
                 android:layout_margin="10dp">
 
+    <TextView
+            android:id="@+id/groupTitle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="6sp"
+            android:layout_marginRight="6sp"
+            android:background="#ddd"
+            android:padding="10sp"
+            android:layout_toRightOf="@+id/image"
+            android:text="title"
+            android:textAllCaps="true"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:visibility="gone"/>
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" android:background="@drawable/style_list_item">
         <LinearLayout
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content" android:background="@drawable/style_list_item">
-                <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:weightSum="0.5"
-                        android:id="@+id/linearLayout">
-                        <ImageView android:id="@+id/sportImage"
-                                   android:layout_width="32dp"
-                                   android:layout_height="32dp"
-                                   android:layout_alignParentLeft="true"
-                                   android:layout_alignParentTop="true"
-                                   android:layout_alignBottom="@+id/participants"/>
+                android:layout_height="wrap_content"
+                android:weightSum="0.5"
+                android:id="@+id/linearLayout">
+            <ImageView android:id="@+id/sportImage"
+                       android:layout_width="32dp"
+                       android:layout_height="32dp"
+                       android:layout_alignParentLeft="true"
+                       android:layout_alignParentTop="true"
+                       android:layout_alignBottom="@+id/participants"
+                       android:background="#7fbebebe"/>
 
-                        <TextView
-                                android:id="@+id/title"
-                                android:layout_width="fill_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_toRightOf="@+id/imageView1"
-                                android:text="Title of the event"
-                                android:textColor="@color/blue"
-                                android:textSize="14sp"
-                                android:textStyle="bold" android:layout_gravity="center_vertical" android:paddingLeft="8dp"
-                                android:paddingTop="8dp"/>
-                </LinearLayout>
-
-                <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:weightSum="0.5" android:layout_toRightOf="@+id/linearLayout"
-                        android:layout_toEndOf="@+id/linearLayout"
-                        >
-                        <LinearLayout
-                                android:orientation="vertical"
-                                android:layout_width="fill_parent"
-                                android:layout_height="fill_parent">
-
-                                <LinearLayout
-                                        android:orientation="horizontal"
-                                        android:layout_width="fill_parent"
-                                        android:layout_height="wrap_content" android:paddingBottom="5dp">
-                                        <LinearLayout
-                                                android:orientation="horizontal"
-                                                android:layout_width="fill_parent"
-                                                android:layout_height="wrap_content" android:layout_weight="0.20"
-                                                android:layout_marginLeft="35dp">
-                                                <ImageView android:id="@+id/imageView2" android:layout_width="17dp" android:layout_height="17dp"
-                                                           android:layout_alignParentLeft="true" android:layout_alignParentTop="true"
-                                                           android:src="@drawable/clock" android:layout_alignBottom="@+id/participants"
-                                                           android:layout_gravity="bottom|center"/>
-                                                <TextView
-                                                        android:id="@+id/startsAt"
-                                                        android:layout_width="wrap_content"
-                                                        android:layout_height="wrap_content"
-                                                        android:layout_below="@+id/title"
-                                                        android:layout_marginTop="10dp"
-                                                        android:layout_toRightOf="@+id/imageView1"
-                                                        android:text="starts at"
-                                                        android:textSize="13sp" android:layout_weight="0.5" android:layout_marginLeft="2dp"
-                                                        android:textColor="@color/textHint"/>
-                                        </LinearLayout>
-                                        <LinearLayout
-                                                android:orientation="horizontal"
-                                                android:layout_width="fill_parent"
-                                                android:layout_height="wrap_content" android:layout_weight="0.23">
-                                                <ImageView android:id="@+id/imageView3" android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                                           android:layout_alignParentLeft="true" android:layout_alignParentTop="true"
-                                                           android:src="@drawable/location" android:layout_alignBottom="@+id/participants"
-                                                           android:layout_gravity="center_vertical|bottom"/>
-                                                <TextView android:id="@+id/tvlocation" android:layout_width="wrap_content"
-                                                          android:layout_height="wrap_content" android:layout_below="@+id/title"
-                                                          android:layout_marginTop="10dp" android:layout_toRightOf="@+id/imageView1"
-                                                          android:text="location" android:textSize="13sp" android:layout_weight="0.5"
-                                                          android:layout_marginLeft="6dp" android:textColor="@color/textHint"/>
-                                        </LinearLayout>
-                                </LinearLayout>
-                                <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent"
-                                              android:layout_height="wrap_content" android:paddingBottom="5dp" android:weightSum="1"
-                                              android:layout_marginLeft="5dp">
-                                        <TextView
-                                                android:id="@+id/participants"
-                                                android:layout_width="fill_parent"
-                                                android:layout_height="wrap_content"
-                                                android:layout_toRightOf="@+id/imageView1"
-                                                android:text="participants"
-                                                android:textColor="@color/textHint" android:layout_gravity="center_vertical|bottom"
-                                                android:paddingLeft="10dp" android:paddingTop="4dp" android:layout_marginLeft="4dp"/>
-                                </LinearLayout>
-                        </LinearLayout>
-                </LinearLayout>
+            <TextView
+                    android:id="@+id/title"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/imageView1"
+                    android:text="Title of the event"
+                    android:textColor="@color/blue"
+                    android:textSize="14sp"
+                    android:textStyle="bold" android:layout_gravity="center_vertical" android:paddingLeft="8dp"
+                    android:paddingTop="8dp"/>
         </LinearLayout>
 
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="0.5" android:layout_toRightOf="@+id/linearLayout"
+                android:layout_toEndOf="@+id/linearLayout">
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content" android:paddingBottom="5dp">
+                    <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content" android:layout_weight="0.20"
+                            android:layout_marginLeft="35dp">
+                        <ImageView android:id="@+id/imageView2" android:layout_width="17dp" android:layout_height="17dp"
+                                   android:layout_alignParentLeft="true" android:layout_alignParentTop="true"
+                                   android:src="@drawable/clock" android:layout_alignBottom="@+id/participants"
+                                   android:layout_gravity="bottom|center"/>
+                        <TextView
+                                android:id="@+id/startsAt"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/title"
+                                android:layout_marginTop="10dp"
+                                android:layout_toRightOf="@+id/imageView1"
+                                android:text="starts at"
+                                android:textSize="13sp" android:layout_weight="0.5" android:layout_marginLeft="2dp"
+                                android:textColor="@color/textHint"/>
+                    </LinearLayout>
+                    <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content" android:layout_weight="0.23">
+                        <ImageView android:id="@+id/imageView3" android:layout_width="wrap_content"
+                                   android:layout_height="wrap_content"
+                                   android:layout_alignParentLeft="true" android:layout_alignParentTop="true"
+                                   android:src="@drawable/location" android:layout_alignBottom="@+id/participants"
+                                   android:layout_gravity="center_vertical|bottom"/>
+                        <TextView android:id="@+id/tvlocation" android:layout_width="wrap_content"
+                                  android:layout_height="wrap_content" android:layout_below="@+id/title"
+                                  android:layout_marginTop="10dp" android:layout_toRightOf="@+id/imageView1"
+                                  android:text="location" android:textSize="13sp" android:layout_weight="0.5"
+                                  android:layout_marginLeft="6dp" android:textColor="@color/textHint"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent"
+                              android:layout_height="wrap_content" android:paddingBottom="5dp" android:weightSum="1"
+                              android:layout_marginLeft="5dp">
+                    <TextView
+                            android:id="@+id/participants"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/imageView1"
+                            android:text="participants"
+                            android:textColor="@color/textHint" android:layout_gravity="center_vertical|bottom"
+                            android:paddingLeft="10dp" android:paddingTop="4dp" android:layout_marginLeft="4dp"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
 </RelativeLayout>

@@ -34,7 +34,6 @@ public class  EditEventActivity extends BaseActivity {
             Intent intent = getIntent();
             String sport = intent.getStringExtra("SportName");
             txtSport = (EditText) findViewById(R.id.txtSport);
-            Toast.makeText(EditEventActivity.this, sport, Toast.LENGTH_SHORT).show();
             txtSport.setText(sport);
             txtSport.addTextChangedListener(new MyTextWatcher());
 

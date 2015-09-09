@@ -239,30 +239,6 @@ public class EventsTab extends Fragment {
         }
     }
 
-    public boolean onContextItemSelected(MenuItem item) {
-        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item
-                .getMenuInfo();
-
-        Event selectedItem = (Event) adapter.getItem(info.position);
-        switch (item.getItemId()) {
-            case R.id.edit:
-                Toast.makeText(getActivity(), "edit", Toast.LENGTH_LONG).show();
-
-
-                return true;
-            case R.id.delete:
-                Toast.makeText(getActivity(), "delete", Toast.LENGTH_LONG)
-                        .show();
-
-                adapter.remove(selectedItem);
-                adapter.notifyDataSetChanged();
-
-                return true;
-            default:
-                return super.onContextItemSelected((android.view.MenuItem) item);
-        }
-    }
-
     public void cancelNotification(int notificationId) {
         if (Context.NOTIFICATION_SERVICE != null) {
             String ns = Context.NOTIFICATION_SERVICE;

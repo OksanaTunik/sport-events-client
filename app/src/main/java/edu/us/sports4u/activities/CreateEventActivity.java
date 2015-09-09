@@ -80,7 +80,6 @@ public class CreateEventActivity extends BaseActivity {
         Intent intent = getIntent();
         String sport = intent.getStringExtra("SportName");
         txtSport = (EditText) findViewById(R.id.txtSport);
-        Toast.makeText(CreateEventActivity.this, sport, Toast.LENGTH_SHORT).show();
         txtSport.setText(sport);
         txtSport.addTextChangedListener(new MyTextWatcher());
 
@@ -90,7 +89,6 @@ public class CreateEventActivity extends BaseActivity {
         locationBtn = (ImageButton) findViewById(R.id.imgLocation);
 
         locationBtn.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CreateEventActivity.this, ChooseLocationOnMap.class);

@@ -1,4 +1,4 @@
-package edu.us.sports4u;
+package edu.us.sports4u.activities;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import edu.us.sports4u.R;
 
 import java.util.ArrayList;
 

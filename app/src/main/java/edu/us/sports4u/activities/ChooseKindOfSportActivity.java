@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Toast;
-import edu.us.sports4u.ImageAdapter;
 import edu.us.sports4u.R;
 
 import java.util.ArrayList;
@@ -47,7 +46,6 @@ public class ChooseKindOfSportActivity extends Activity {
 
                 Intent intent = new Intent(ChooseKindOfSportActivity.this, CreateEventActivity.class);
 
-                Toast.makeText(ChooseKindOfSportActivity.this, mAdapter.getItem(position), Toast.LENGTH_SHORT).show();
                 String nameOfSport=mAdapter.getItem(position);
                 intent.putExtra("SportName", nameOfSport);
                 startActivity(intent);
