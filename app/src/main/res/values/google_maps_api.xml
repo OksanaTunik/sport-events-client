@@ -10,5 +10,5 @@ Info on required fingerprint:
     https://console.developers.google.com/project/wsandroid-maps-api-v2/apiui/credential
     --></string>
 
-    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyBJ-cvBEQXxeQSEd8JxX3ba5R_tn13ToFQ</string>
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyAKx6HvJW2z72cU9jLE6a8HqHLcWtPYvFI</string>
 </resources>

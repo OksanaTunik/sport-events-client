@@ -20,7 +20,7 @@ android {
     buildToolsVersion "22.0.1"
 
     defaultConfig {
-        applicationId "edu.us.sports4u.app"
+        applicationId "edu.us.sports4u"
         minSdkVersion 16
         targetSdkVersion 21
         versionCode 1
