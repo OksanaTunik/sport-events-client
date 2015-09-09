@@ -116,13 +116,15 @@ public class CalendarTab extends Fragment {
             View view = convertView;
 
             if (view == null) {
-                view = lInflater.inflate(R.layout.events_list_item, parent, false);
+                view = lInflater.inflate(R.layout.calendar_list_item, parent, false);
             }
 
             Event event = getItem(position);
 
             ((TextView) view.findViewById(R.id.title)).setText(event.getTitle());
             ((TextView) view.findViewById(R.id.participants)).setText(event.getDescription());
+
+
 
             String startsAt = new SimpleDateFormat("dd/MM/yyyy HH:mm").format(event.getStartsAt());
             ((TextView) view.findViewById(R.id.startsAt)).setText(startsAt);

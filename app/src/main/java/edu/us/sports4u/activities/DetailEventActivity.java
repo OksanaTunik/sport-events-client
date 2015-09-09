@@ -103,8 +103,6 @@ public class DetailEventActivity extends BaseActivity {
         event = EventsStorage.getEventById(eventId);
 
         populateData(event);
-
-        //facebook
     }
 
     private void switchJoinButton() {
@@ -162,23 +160,6 @@ public class DetailEventActivity extends BaseActivity {
         startActivity(intent);
     }
 
-    // menu action bar
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.edit_menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.menu_edit:
-                showEventEdit(eventId);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
 
     private void shareViaFacebook() {
         String link = "http://google.com/";

@@ -33,7 +33,7 @@
                 <ImageView android:layout_width="37dp"
                            android:layout_height="37dp"
                            android:id="@+id/sportImage"
-                           android:background="@drawable/guests"/>
+                           android:layout_marginRight="10dp"/>
                 <TextView
                         android:id="@+id/tvTitle"
                         android:layout_width="fill_parent"
@@ -243,9 +243,9 @@
                               android:layout_width="match_parent"
                               android:textColor="@color/blue"
                               android:textSize="20sp" android:textStyle="bold"
-                              android:gravity="center" android:background="@color/white"
+                              android:background="@color/white"
                               android:layout_height="fill_parent"
-                              android:padding="5dp"/>
+                              android:padding="5dp" android:gravity="left"/>
                 </LinearLayout>
             </LinearLayout>
 

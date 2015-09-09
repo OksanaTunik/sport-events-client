@@ -20,7 +20,7 @@ public class TabPagerAdapter extends FragmentStatePagerAdapter {
         tabs = new ArrayList<Fragment>();
         tabs.add(new EventsTab());
         tabs.add(new CalendarTab());
-        tabs.add(new MessagesTab());
+      //  tabs.add(new MessagesTab());
         tabs.add(new AccountTab());
     }
 

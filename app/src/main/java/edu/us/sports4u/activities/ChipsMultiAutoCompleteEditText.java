@@ -112,45 +112,45 @@ public class ChipsMultiAutoCompleteEditText extends MultiAutoCompleteTextView im
         }
 
         /* this method set country flag image in textview's drawable component, this logic is not optimize, you need to change as per your requirement*/
-        public void setFlags(TextView textView,String country){
-            country = country.trim();
-            if(country.equals("Running")){
+        public void setFlags(TextView textView,String sport){
+            sport = sport.trim();
+            if(sport.equals("Running")){
                 textView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.sport_running, 0);
             }
-            else if(country.equals("Tennis")){
+            else if(sport.equals("Tennis")){
                 textView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.sport_tennis, 0);
             }
-            else if(country.equals("Skiing")){
+            else if(sport.equals("Skiing")){
                 textView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.sport_skiing, 0);
             }
-            else if(country.equals("Table tennis")){
+            else if(sport.equals("Table tennis")){
                 textView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.sport_tabletennis, 0);
             }
-            else if(country.equals("Volleyball")){
+            else if(sport.equals("Volleyball")){
                 textView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.sport_volleyball, 0);
             }
-            else if(country.equals("Weightlifter")){
+            else if(sport.equals("Weightlifter")){
                 textView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.sport_weightlifting, 0);
             }
-            else if(country.equals("Snowboarding")){
+            else if(sport.equals("Snowboarding")){
                 textView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.sport_snowboard, 0);
             }
-            else if(country.equals("Swimming")){
+            else if(sport.equals("Swimming")){
                 textView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.sport_swimming, 0);
             }
-            else if(country.equals("Football")){
+            else if(sport.equals("Football")){
                 textView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.sport_football, 0);
             }
-            else if(country.equals("Climbing")){
+            else if(sport.equals("Climbing")){
                 textView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.sport_climbing, 0);
             }
-            else if(country.equals("Ice scating")){
+            else if(sport.equals("Ice scating")){
                 textView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.sport_ski, 0);
             }
-            else if(country.equals("Basketball")){
+            else if(sport.equals("Basketball")){
                 textView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.sport_basketball, 0);
             }
-            else if(country.equals("Cycling")){
+            else if(sport.equals("Cycling")){
                 textView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.sport_bicycle, 0);
             }
 

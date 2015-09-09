@@ -69,7 +69,7 @@ public class MainTabActivity extends FragmentActivity {
         //    Intent listEvent = new Intent(this, ListEventActivity.class);
         actionBar.addTab(actionBar.newTab().setText("Calendar").setTabListener(tabListener));
         //    Intent listCalendar = new Intent(this, ListCalendarActivity.class);
-        actionBar.addTab(actionBar.newTab().setText("Messages").setTabListener(tabListener));
+      //  actionBar.addTab(actionBar.newTab().setText("Messages").setTabListener(tabListener));
         actionBar.addTab(actionBar.newTab().setText("Options").setTabListener(tabListener));
     }
 

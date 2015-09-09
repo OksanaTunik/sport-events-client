@@ -75,7 +75,6 @@ public class EventsTab extends Fragment {
     private void runSearch(View fragmentView) {
         ListEventsParams params = new ListEventsParams();
         params.address = BaseActivity.getUserAccount().getAddress();
-        //params.radius = 10000.f;
         params.query = ((EditText) fragmentView.findViewById(R.id.findEventsQuery)).getText().toString();
         params.addSports(BaseActivity.getUserAccount().getSportFavorites());
 
@@ -176,7 +175,8 @@ public class EventsTab extends Fragment {
             Event event = getItem(position);
 
             ((TextView) view.findViewById(R.id.title)).setText(event.getTitle());
-//            ((TextView) view.findViewById(R.id.tvDescription)).setText(event.getDescription());
+            ((TextView) view.findViewById(R.id.tvlocation)).setText(event.getAddress());
+            ((TextView) view.findViewById(R.id.participants)).setText(event.getParticipants());
 
             String startsAt = new SimpleDateFormat("dd/MM/yyyy HH:mm").format(event.getStartsAt());
             ((TextView) view.findViewById(R.id.startsAt)).setText(startsAt);
@@ -253,8 +253,6 @@ public class EventsTab extends Fragment {
             case R.id.delete:
                 Toast.makeText(getActivity(), "delete", Toast.LENGTH_LONG)
                         .show();
-
-                //     new DeleteEventTask().execute(token, selectedItem.getId());
 
                 adapter.remove(selectedItem);
                 adapter.notifyDataSetChanged();
