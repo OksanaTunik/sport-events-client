@@ -6,7 +6,7 @@ import android.net.NetworkInfo;
 
 public class BaseApiClient {
 //    protected static String publicUrl = "http://sport-events.herokuapp.com";
-    protected static String publicUrl = "http://192.168.0.145:3000";
+    protected static String publicUrl = "http://192.168.0.169:3000";
     public final static String apiUrl = publicUrl + "/api";
 
     public static String getUrl(String postfix) {

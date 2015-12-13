@@ -37,6 +37,7 @@ public class CreateEventActivity extends BaseActivity {
     TextView tvDate;
     ImageButton btnDate;
     ImageButton btnTime;
+    Date startsAt;
 
     private static final int BACK_FROM_LOCATION_CHOOSING = 1;
     private static final int BACK_FROM_SPECIFYING_DAYS = 2;
@@ -52,6 +53,7 @@ public class CreateEventActivity extends BaseActivity {
             myCalendar.set(Calendar.YEAR, year);
             myCalendar.set(Calendar.MONTH, monthOfYear);
             myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+            startsAt = myCalendar.getTime();
             updateDate();
         }
     };
@@ -60,6 +62,7 @@ public class CreateEventActivity extends BaseActivity {
         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
             myCalendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
             myCalendar.set(Calendar.MINUTE, minute);
+            startsAt = myCalendar.getTime();
             updateTime();
         }
     };
@@ -99,7 +102,7 @@ public class CreateEventActivity extends BaseActivity {
 
         tvDate = (TextView) findViewById(R.id.tvDate);
         tvTime = (TextView) findViewById(R.id.tvTime);
-        btnDate = (ImageButton) findViewById(R.id.imgbtnClock);
+        btnDate = (ImageButton) findViewById(R.id.imgbtnDay);
         btnDate.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 new DatePickerDialog(CreateEventActivity.this, d, myCalendar
@@ -108,7 +111,7 @@ public class CreateEventActivity extends BaseActivity {
             }
         });
 
-        btnTime = (ImageButton) findViewById(R.id.imgbtnDay);
+        btnTime = (ImageButton) findViewById(R.id.imgbtnClock);
         btnTime.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 new TimePickerDialog(CreateEventActivity.this, t, myCalendar
@@ -124,7 +127,9 @@ public class CreateEventActivity extends BaseActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
         if (resultCode == Activity.RESULT_OK) {
+            txtAddress.setText(data.getExtras().getString("address"));
         }
     }
 
@@ -152,7 +157,7 @@ public class CreateEventActivity extends BaseActivity {
                 if (txtAddress.getText().length() == 0)
                     txtAddress.setError("please enter the address");
 
-                Event event = new Event(title, description, address, sport, new Date());
+                Event event = new Event(title, description, address, sport, startsAt);
                 new SaveEventTask().execute(event);
                 return true;
 

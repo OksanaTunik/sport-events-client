@@ -3,6 +3,7 @@ package edu.us.sports4u.http;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import org.apache.http.HttpEntity;
@@ -15,6 +16,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.protocol.HTTP;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -55,7 +57,7 @@ public class HttpClientHelper {
         JSONObject jObject = null;
 
         try {
-            httppost.setEntity(new UrlEncodedFormEntity(data));
+            httppost.setEntity(new UrlEncodedFormEntity(data, HTTP.UTF_8));
             HttpResponse response = httpclient.execute(httppost);
             BufferedReader reader = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
             StringBuilder body = new StringBuilder();

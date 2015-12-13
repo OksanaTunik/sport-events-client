@@ -81,6 +81,7 @@ public class EventsApiClient extends BaseApiClient {
         params.add(new BasicNameValuePair("description", event.getDescription()));
         params.add(new BasicNameValuePair("address", event.getAddress()));
         params.add(new BasicNameValuePair("sport", event.getSport()));
+        params.add(new BasicNameValuePair("starts_at", event.getStartsAt().toString()));
         params.add(new BasicNameValuePair("api_key", apiKey));
         String url = getUrl("/events/create");
         JSONObject res = HttpClientHelper.post(url, params);

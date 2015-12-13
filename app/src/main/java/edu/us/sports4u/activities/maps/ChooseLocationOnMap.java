@@ -72,6 +72,20 @@ public class ChooseLocationOnMap extends FragmentActivity implements LocationLis
         supportMapFragment.getMapAsync(this);
 
         address = (TextView) findViewById(R.id.address);
+
+        ((Button) findViewById(R.id.confirmBtn)).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ChooseLocationOnMap.this.finishWithResult();
+            }
+        });
+    }
+
+    private void finishWithResult() {
+        Intent returnIntent = new Intent();
+        returnIntent.putExtra("address", address.getText());
+        setResult(Activity.RESULT_OK, returnIntent);
+        finish();
     }
 
     private boolean isGooglePlayServicesAvailable() {
@@ -113,14 +127,14 @@ public class ChooseLocationOnMap extends FragmentActivity implements LocationLis
     }
 
     private void updateAddress(LatLng location) {
-        TextView locationTv = (TextView) findViewById(R.id.latlongLocation);
+        //TextView locationTv = (TextView) findViewById(R.id.latlongLocation);
         double latitude = location.latitude;
         double longitude = location.longitude;
         LatLng latLng = new LatLng(latitude, longitude);
         //googleMap.addMarker(new MarkerOptions().position(latLng));
 //        googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
 //        googleMap.animateCamera(CameraUpdateFactory.zoomTo(15));
-        locationTv.setText("Latitude:" + latitude + ", Longitude:" + longitude);
+        //locationTv.setText("Latitude:" + latitude + ", Longitude:" + longitude);
 
         try {
             geocoder = new Geocoder(ChooseLocationOnMap.this, Locale.ENGLISH);
@@ -132,7 +146,10 @@ public class ChooseLocationOnMap extends FragmentActivity implements LocationLis
 
                 String localityString = returnAddress.getLocality();
                 String city = returnAddress.getCountryName();
-                String street=returnAddress.getSubAdminArea();
+                String street = returnAddress.getSubAdminArea();
+
+                if (street == null)
+                    street = "";
 
                 String pieces[] = { localityString, city, street };
                 String addr = TextUtils.join(", ", pieces).toString();
