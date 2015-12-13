@@ -115,13 +115,15 @@ public class CalendarTab extends Fragment {
             View view = convertView;
 
             if (view == null) {
-                view = lInflater.inflate(R.layout.calendar_list_item, parent, false);
+                view = lInflater.inflate(R.layout.calendar_list_item_new, parent, false);
             }
 
             Event event = getItem(position);
 
             ((TextView) view.findViewById(R.id.title)).setText(event.getTitle());
-            ((TextView) view.findViewById(R.id.participants)).setText(event.getDescription());
+            ((TextView) view.findViewById(R.id.description)).setText(event.getDescription());
+
+            ((TextView) view.findViewById(R.id.participants)).setText(event.getParticipants());
 
             if (event.getGroup() != null) {
                 TextView groupTitle = (TextView) view.findViewById(R.id.groupTitle);

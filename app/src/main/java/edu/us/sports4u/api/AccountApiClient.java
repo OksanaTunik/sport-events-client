@@ -1,15 +1,15 @@
 package edu.us.sports4u.api;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import android.text.TextUtils;
 import edu.us.sports4u.entities.UserAccount;
 import edu.us.sports4u.http.HttpClientHelper;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 
 public class AccountApiClient extends BaseApiClient {

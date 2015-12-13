@@ -13,17 +13,18 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.*;
 import android.widget.*;
 import edu.us.sports4u.R;
 import edu.us.sports4u.activities.ChipsMultiAutoCompleteEditText;
 import edu.us.sports4u.activities.autorization.LogInActivity;
 import edu.us.sports4u.api.AccountApiClient;
-import edu.us.sports4u.api.BaseActivity;
 import edu.us.sports4u.entities.UserAccount;
 
-import java.io.*;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
 
 import static edu.us.sports4u.api.BaseActivity.*;

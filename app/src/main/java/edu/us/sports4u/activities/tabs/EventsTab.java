@@ -1,28 +1,26 @@
 package edu.us.sports4u.activities.tabs;
 
 import android.app.AlarmManager;
-import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.media.RingtoneManager;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.*;
 import android.widget.*;
 import edu.us.sports4u.R;
-import edu.us.sports4u.activities.*;
+import edu.us.sports4u.activities.CreateEventActivity;
+import edu.us.sports4u.activities.DetailEventActivity;
+import edu.us.sports4u.activities.NotificationStarter;
 import edu.us.sports4u.api.BaseActivity;
 import edu.us.sports4u.api.EventsApiClient;
 import edu.us.sports4u.entities.Event;
 import edu.us.sports4u.entities.EventsStorage;
 import edu.us.sports4u.entities.ListEventsParams;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -178,8 +176,9 @@ public class EventsTab extends Fragment {
             ((TextView) view.findViewById(R.id.tvlocation)).setText(event.getAddress());
             ((TextView) view.findViewById(R.id.participants)).setText(event.getParticipants());
 
-            String startsAt = new SimpleDateFormat("dd/MM/yyyy HH:mm").format(event.getStartsAt());
+            String startsAt = new SimpleDateFormat("dd/MM HH:mm").format(event.getStartsAt());
             ((TextView) view.findViewById(R.id.startsAt)).setText(startsAt);
+
             ((TextView) view.findViewById(R.id.participants)).setText(event.getParticipants());
 
             String sportUri = String.format("drawable/sport_%s", event.getSport());
