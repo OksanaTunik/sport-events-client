@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:layout_weight="1"
+
+                android:orientation="vertical">
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" android:layout_marginBottom="10dp">
+        <TextView
+                android:id="@+id/groupTitle"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#ddd"
+                android:padding="10sp"
+                android:layout_toRightOf="@+id/image"
+                android:text="title"
+                android:textAllCaps="true"
+                android:visibility="gone"/>
+    </LinearLayout>
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" android:background="#10cccccc" android:padding="5dp">
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content"
+                      android:layout_height="wrap_content" android:weightSum="0.5" android:id="@+id/linearLayout2">
+            <TableLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+                <TableRow
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent">
+                    <TextView android:id="@+id/startsAt" android:layout_width="wrap_content" android:layout_height="fill_parent"
+                              android:layout_below="@+id/title"
+                              android:layout_toRightOf="@+id/imageView1" android:text="starts at" android:textSize="13sp"
+                              android:textColor="@color/textHint" android:textStyle="bold" android:layout_marginLeft="5dp"/>
+                </TableRow>
+            </TableLayout>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="0.5"
+                android:id="@+id/linearLayout" android:layout_marginLeft="10dp">
+
+            <TableLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+                <TableRow
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent">
+                    <TextView android:id="@+id/title" android:layout_width="fill_parent" android:layout_height="wrap_content"
+                              android:layout_toRightOf="@+id/imageView1" android:text="Title of the event"
+                              android:textColor="@color/blue" android:textSize="14sp"
+                              android:textStyle="bold"/>
+                </TableRow>
+                <TableRow
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent" android:layout_marginTop="5dp">
+                    <TextView android:id="@+id/description" android:layout_width="fill_parent"
+                              android:layout_height="wrap_content" android:layout_below="@+id/title"
+                              android:layout_toRightOf="@+id/imageView1" android:text="Description" android:textSize="14sp"
+                              android:textColor="@color/textHint" android:textStyle="italic"/>
+                </TableRow>
+                <TableRow
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent">
+                    <TextView android:id="@+id/participants" android:layout_width="fill_parent"
+                              android:layout_height="wrap_content" android:layout_toRightOf="@+id/imageView1"
+                              android:text="participants" android:textColor="@color/textHint"
+                              android:layout_marginTop="5dp" android:textSize="14sp"/>
+                </TableRow>
+            </TableLayout>
+        </LinearLayout>
+
+        <ImageView android:id="@+id/sportImage"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_alignParentLeft="true"
+                   android:layout_alignParentTop="true"
+                   android:layout_alignBottom="@+id/participants"
+                   android:background="#7fbebebe" android:layout_gravity="right"/>
+    </LinearLayout>
+
+</LinearLayout>

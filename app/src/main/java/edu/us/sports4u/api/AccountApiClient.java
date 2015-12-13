@@ -1,15 +1,15 @@
 package edu.us.sports4u.api;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import android.text.TextUtils;
 import edu.us.sports4u.entities.UserAccount;
 import edu.us.sports4u.http.HttpClientHelper;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 
 public class AccountApiClient extends BaseApiClient {
@@ -57,7 +57,7 @@ public class AccountApiClient extends BaseApiClient {
         data.add(new BasicNameValuePair("address", newAccount.getAddress()));
         data.add(new BasicNameValuePair("sports", TextUtils.join(",", newAccount.getSportFavorites())));
 
-        String url = getUrl("/users/sign_up");
+        String url = getUrl("/users/update");
 
         JSONObject res = HttpClientHelper.post(url, data);
         boolean result = false;

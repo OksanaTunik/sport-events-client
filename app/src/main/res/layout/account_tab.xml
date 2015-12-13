@@ -18,49 +18,114 @@
 
         <!-- some divider thing -->
         <LinearLayout
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content" android:background="@drawable/background"
+                >
                 <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="209dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp">
+                        android:orientation="horizontal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        >
+
                         <ImageButton
                                 android:id="@+id/btnAddImage"
-                                android:layout_width="188dp"
-                                android:layout_height="168dp"
-                                android:padding="15dp"
+                                android:layout_width="fill_parent"
+                                android:layout_height="fill_parent"
                                 android:layout_gravity="center"
                                 android:src="@drawable/profile"
-                                android:layout_weight="2.50" android:background="@null"/>
+                                android:layout_weight="4.80" android:background="@null"/>
                 </LinearLayout>
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical|center_horizontal"
-                    android:layout_marginRight="15dp">
-                <EditText
-                        android:id="@+id/txtName"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:hint="Name"
-                        android:textColorHint="@color/blue"
-                        android:background="@color/white" android:padding="10dp"/>
-                <EditText
-                        android:id="@+id/txtAddress"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-
-                        android:textColorHint="@color/blue"
-                        android:hint="Address"
-                        android:layout_gravity="center" android:background="@color/white"
-                        android:layout_marginTop="10dp" android:padding="10dp"/>
-            </LinearLayout>
+                <LinearLayout android:orientation="vertical" android:layout_width="fill_parent"
+                              android:layout_height="wrap_content">
+                        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent"
+                                      android:layout_height="wrap_content" android:weightSum="1" android:paddingTop="10dp"
+                                      android:paddingBottom="10dp" android:layout_weight="1"
+                                      android:layout_marginRight="20dp" android:layout_marginLeft="20dp">
+                                <LinearLayout
+                                        android:orientation="vertical"
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="fill_parent" android:layout_marginLeft="85dp"
+                                        android:layout_marginRight="85dp">
+                                        <EditText android:id="@+id/txtName" android:layout_width="fill_parent"
+                                                android:layout_height="wrap_content" android:gravity="center" android:textAllCaps="true"
+                                                android:textSize="20dp" android:layout_weight="0.5"
+                                                  android:textColor="@color/white" android:layout_gravity="center_vertical"
+                                                android:layout_marginRight="5dp" android:hint="Name"
+                                                  android:textColorHint="@color/white"/>
+                                </LinearLayout>
+                                <LinearLayout
+                                        android:orientation="horizontal"
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="fill_parent" android:layout_marginLeft="25dp"
+                                        android:layout_marginRight="25dp">
+                                        <EditText android:id="@+id/txtAge" android:layout_width="fill_parent"
+                                                  android:layout_height="fill_parent" android:gravity="center|right"
+                                                  android:paddingLeft="15dp" android:textAllCaps="true" android:textSize="15dp"
+                                                  android:layout_weight="0.2" android:layout_marginLeft="5dp" android:hint="Age"
+                                                  android:textColor="@color/white"
+                                                  android:textColorHint="@color/white"/>
+                                        <TextView android:id="@+id/editText" android:layout_width="fill_parent"
+                                                  android:layout_height="fill_parent" android:gravity="center"
+                                                  android:paddingLeft="15dp" android:textAllCaps="true" android:textSize="20dp"
+                                                  android:layout_weight="0.4" android:layout_marginLeft="5dp" android:hint="/"
+                                                  android:textColor="@color/white" android:text="/"/>
+                                        <EditText android:id="@+id/txtAddress" android:layout_width="fill_parent"
+                                                android:layout_height="fill_parent" android:gravity="left|center"
+                                                  android:paddingLeft="15dp"
+                                                android:textAllCaps="true" android:textSize="15dp" android:layout_weight="0.2"
+                                                android:layout_marginLeft="5dp" android:hint="Address"
+                                                  android:textColor="@color/white"
+                                                  android:textColorHint="@color/white"/>
+                                </LinearLayout>
+                        </LinearLayout>
+                </LinearLayout>
+                <LinearLayout android:orientation="vertical" android:layout_width="fill_parent"
+                              android:layout_height="wrap_content">
+                        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent"
+                                      android:layout_height="fill_parent" android:weightSum="1" android:paddingTop="10dp"
+                                      android:paddingBottom="10dp" android:layout_weight="1" android:layout_marginLeft="15dp"
+                                      android:layout_marginRight="15dp">
+                                <Button android:id="@+id/button" android:layout_width="fill_parent"
+                                        android:layout_height="wrap_content" android:gravity="center" android:textAllCaps="false"
+                                        android:textSize="15dp" android:layout_weight="0.5"
+                                        android:background="@drawable/buttons_style" android:text="Friend request"
+                                        android:textColor="@color/white" android:layout_gravity="center_vertical"
+                                        android:layout_marginRight="5dp"/>
+                                <Button android:id="@+id/button3" android:layout_width="fill_parent"
+                                        android:layout_height="wrap_content" android:gravity="center" android:text="Send message"
+                                        android:background="@color/com_facebook_blue" android:textColor="@color/white"
+                                        android:drawableLeft="@drawable/com_facebook_button_icon" android:paddingLeft="15dp"
+                                        android:textAllCaps="false" android:textSize="15dp" android:layout_weight="0.5"
+                                        android:layout_marginLeft="5dp"/>
+                        </LinearLayout>
+                </LinearLayout>
         </LinearLayout>
+     <!--   <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_marginRight="15dp">
+        <EditText
+                android:id="@+id/txtName"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:hint="Name"
+                android:textColorHint="@color/blue"
+                android:padding="10dp"/>
+        <EditText
+                android:id="@+id/txtAddress"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+
+                android:textColorHint="@color/blue"
+                android:hint="Address"
+                android:layout_gravity="center"
+                android:padding="10dp"/>
+    </LinearLayout>-->
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"

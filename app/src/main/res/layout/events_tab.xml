@@ -9,13 +9,13 @@
                   android:orientation="vertical"
                   android:layout_width="fill_parent"
                   android:layout_height="fill_parent"
-                  android:background="@color/white">
+                  android:background="@color/background_app">
 
         <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
+                android:background="@color/background_app"
                 android:padding="0dp" android:weightSum="1">
 
 
@@ -29,7 +29,7 @@
                         android:id="@+id/findEventsQuery"
                         android:layout_marginTop="1dp"
                         android:layout_width="fill_parent"
-                        android:layout_weight="1"
+                        android:layout_weight="0.2"
                         android:layout_height="fill_parent"
                         android:singleLine="true"
                         android:textSize="14sp"
@@ -39,12 +39,12 @@
                         android:imeOptions="actionSearch"
                         android:hint="Find events"/>
 
-                <ImageButton
-                        android:id="@+id/findEventsButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
-                        android:src="@drawable/ic_action_search"
-                        android:drawableLeft="@color/blue"/>
+                <ImageButton android:id="@+id/findEventsButton" android:layout_width="fill_parent"
+                        android:layout_height="wrap_content" android:gravity="center" android:textAllCaps="true"
+                        android:textSize="20dp" android:layout_weight="0.9" android:background="@drawable/buttons_style"
+                        android:text="JOIN" android:textColor="@color/white" android:layout_gravity="center_vertical"
+                             android:src="@drawable/ic_action_search"
+                             android:layout_marginLeft="5dp"/>
 
             </LinearLayout>
 
@@ -69,11 +69,14 @@
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
                 android:scrollbars="vertical"
-                android:divider="@color/blue"
-                android:dividerHeight="1dip"
                 android:listSelector="@drawable/list_selector"
                 android:cacheColorHint="#00000000"
-                android:fadeScrollbars="true" android:layout_marginLeft="4dp" android:layout_marginRight="4dp"/>
+                android:fadeScrollbars="true"
+                android:layout_marginRight="10dp" android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+
+                android:divider="@android:color/transparent"
+                android:dividerHeight="14.0sp"/>
         <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
@@ -82,7 +85,7 @@
                     android:gravity="center" android:textAllCaps="true" android:textSize="20dp"
                     android:layout_weight="0.5" android:background="@drawable/buttons_style" android:text="CREATE EVENT"
                     android:textColor="@color/white" android:layout_gravity="center_vertical"
-                    android:layout_marginRight="5dp"/>
+                    />
 
         </LinearLayout>
 
