@@ -184,7 +184,14 @@ public class EventsTab extends Fragment {
 
             String sportUri = String.format("drawable/sport_%s", event.getSport());
             int sportId = getResources().getIdentifier(sportUri, null, getActivity().getPackageName());
-            Drawable sportImg = getResources().getDrawable(sportId);
+            Drawable sportImg = null;
+
+            try {
+                sportImg = getResources().getDrawable(sportId);
+            } catch (Exception e) {
+                sportImg = getResources().getDrawable(R.drawable.sport_running);
+            }
+
             ((ImageView) view.findViewById(R.id.sportImage)).setImageDrawable(sportImg);
 
             view.setTag(event.getId());
