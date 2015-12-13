@@ -57,7 +57,7 @@ public class AccountApiClient extends BaseApiClient {
         data.add(new BasicNameValuePair("address", newAccount.getAddress()));
         data.add(new BasicNameValuePair("sports", TextUtils.join(",", newAccount.getSportFavorites())));
 
-        String url = getUrl("/users/sign_up");
+        String url = getUrl("/users/update");
 
         JSONObject res = HttpClientHelper.post(url, data);
         boolean result = false;

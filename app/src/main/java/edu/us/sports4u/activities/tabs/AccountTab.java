@@ -58,6 +58,8 @@ public class AccountTab extends Fragment {
         txtName = (EditText) fragmentView.findViewById(R.id.txtName);
         txtAddress = (EditText) fragmentView.findViewById(R.id.txtAddress);
 
+        // txtSports = fragmentView.findViewById(R.id.multiAutoCompleteTextView1);
+
         txtName.setText(getUserAccount().getName());
         txtAddress.setText(getUserAccount().getAddress());
 
@@ -138,10 +140,12 @@ public class AccountTab extends Fragment {
             case R.id.menu_save:
                 String name = txtName.getText().toString();
                 String address = txtAddress.getText().toString();
+                List<String> sports = mu.getChips();
 
                 UserAccount newAccount = new UserAccount();
                 newAccount.setName(name);
                 newAccount.setAddress(address);
+                newAccount.setSportFavorites(sports);
                 updateAccount(newAccount);
 
                 return true;
@@ -241,8 +245,8 @@ public class AccountTab extends Fragment {
     }
 
     private void updateAccount(UserAccount newAccount) {
+        newAccount.setApiKey(BaseActivity.readApiKey());
         setUserAccount(newAccount);
-        AccountApiClient.update(newAccount);
         new UpdateUserAccountTask().execute(newAccount);
     }
 

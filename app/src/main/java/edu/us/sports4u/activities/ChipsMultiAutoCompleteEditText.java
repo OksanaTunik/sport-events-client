@@ -19,6 +19,10 @@ import android.widget.AdapterView;
 import android.widget.MultiAutoCompleteTextView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 
 /**
  * Created by Oksana on 17.08.2015.
@@ -71,13 +75,22 @@ public class ChipsMultiAutoCompleteEditText extends MultiAutoCompleteTextView im
         }
     };
 
+    public List<String> getChips() {
+        String chips[] = getText().toString().trim().split(",");
+        List<String> result = new ArrayList<>();
+
+        Collections.addAll(result, chips);
+
+        return result;
+    }
+
     /*This function has whole logic for chips generate*/
     public void setChips() {
         if (getText().toString().contains(",")) {
             SpannableStringBuilder ssb = new SpannableStringBuilder(getText());
 
             // split string wich comma
-            String chips[] = getText().toString().trim().split(",");
+            List<String> chips = getChips();
             int x = 0;
 
             // loop will generate ImageSpan for every country name separated by comma

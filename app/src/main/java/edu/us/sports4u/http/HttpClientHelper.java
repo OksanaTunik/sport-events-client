@@ -69,9 +69,7 @@ public class HttpClientHelper {
             }
 
             jObject = new JSONObject(body.toString());
-        } catch (ClientProtocolException e) {
-        } catch (IOException e) {
-        } catch (JSONException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
