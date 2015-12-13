@@ -47,12 +47,18 @@
                                         android:layout_width="fill_parent"
                                         android:layout_height="fill_parent" android:layout_marginLeft="85dp"
                                         android:layout_marginRight="85dp">
-                                        <EditText android:id="@+id/txtName" android:layout_width="fill_parent"
-                                                android:layout_height="wrap_content" android:gravity="center" android:textAllCaps="true"
-                                                android:textSize="20dp" android:layout_weight="0.5"
-                                                  android:textColor="@color/white" android:layout_gravity="center_vertical"
-                                                android:layout_marginRight="5dp" android:hint="Name"
-                                                  android:textColorHint="@color/white"/>
+                                        <EditText android:id="@+id/txtName"
+                                                  android:layout_width="fill_parent"
+                                                  android:layout_height="wrap_content"
+                                                  android:gravity="center"
+                                                  android:textAllCaps="true"
+                                                  android:textSize="20dp"
+                                                  android:layout_weight="0.5"
+                                                  android:textColor="@color/grey"
+                                                  android:layout_gravity="center_vertical"
+                                                  android:layout_marginRight="5dp"
+                                                  android:hint="Name"
+                                                  android:textColorHint="@color/grey"/>
                                 </LinearLayout>
                                 <LinearLayout
                                         android:orientation="horizontal"
@@ -63,8 +69,8 @@
                                                   android:layout_height="fill_parent" android:gravity="center|right"
                                                   android:paddingLeft="15dp" android:textAllCaps="true" android:textSize="15dp"
                                                   android:layout_weight="0.2" android:layout_marginLeft="5dp" android:hint="Age"
-                                                  android:textColor="@color/white"
-                                                  android:textColorHint="@color/white"/>
+                                                  android:textColor="@color/grey"
+                                                  android:textColorHint="@color/grey"/>
                                         <TextView android:id="@+id/editText" android:layout_width="fill_parent"
                                                   android:layout_height="fill_parent" android:gravity="center"
                                                   android:paddingLeft="15dp" android:textAllCaps="true" android:textSize="20dp"
@@ -75,31 +81,31 @@
                                                   android:paddingLeft="15dp"
                                                 android:textAllCaps="true" android:textSize="15dp" android:layout_weight="0.2"
                                                 android:layout_marginLeft="5dp" android:hint="Address"
-                                                  android:textColor="@color/white"
-                                                  android:textColorHint="@color/white"/>
+                                                  android:textColor="@color/grey"
+                                                  android:textColorHint="@color/grey"/>
                                 </LinearLayout>
                         </LinearLayout>
                 </LinearLayout>
-                <LinearLayout android:orientation="vertical" android:layout_width="fill_parent"
-                              android:layout_height="wrap_content">
-                        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent"
-                                      android:layout_height="fill_parent" android:weightSum="1" android:paddingTop="10dp"
-                                      android:paddingBottom="10dp" android:layout_weight="1" android:layout_marginLeft="15dp"
-                                      android:layout_marginRight="15dp">
-                                <Button android:id="@+id/button" android:layout_width="fill_parent"
-                                        android:layout_height="wrap_content" android:gravity="center" android:textAllCaps="false"
-                                        android:textSize="15dp" android:layout_weight="0.5"
-                                        android:background="@drawable/buttons_style" android:text="Friend request"
-                                        android:textColor="@color/white" android:layout_gravity="center_vertical"
-                                        android:layout_marginRight="5dp"/>
-                                <Button android:id="@+id/button3" android:layout_width="fill_parent"
-                                        android:layout_height="wrap_content" android:gravity="center" android:text="Send message"
-                                        android:background="@color/com_facebook_blue" android:textColor="@color/white"
-                                        android:drawableLeft="@drawable/com_facebook_button_icon" android:paddingLeft="15dp"
-                                        android:textAllCaps="false" android:textSize="15dp" android:layout_weight="0.5"
-                                        android:layout_marginLeft="5dp"/>
-                        </LinearLayout>
-                </LinearLayout>
+                <!--<LinearLayout android:orientation="vertical" android:layout_width="fill_parent"-->
+                              <!--android:layout_height="wrap_content">-->
+                        <!--<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent"-->
+                                      <!--android:layout_height="fill_parent" android:weightSum="1" android:paddingTop="10dp"-->
+                                      <!--android:paddingBottom="10dp" android:layout_weight="1" android:layout_marginLeft="15dp"-->
+                                      <!--android:layout_marginRight="15dp">-->
+                                <!--<Button android:id="@+id/button" android:layout_width="fill_parent"-->
+                                        <!--android:layout_height="wrap_content" android:gravity="center" android:textAllCaps="false"-->
+                                        <!--android:textSize="15dp" android:layout_weight="0.5"-->
+                                        <!--android:background="@drawable/buttons_style" android:text="Friend request"-->
+                                        <!--android:textColor="@color/white" android:layout_gravity="center_vertical"-->
+                                        <!--android:layout_marginRight="5dp"/>-->
+                                <!--<Button android:id="@+id/button3" android:layout_width="fill_parent"-->
+                                        <!--android:layout_height="wrap_content" android:gravity="center" android:text="Send message"-->
+                                        <!--android:background="@color/com_facebook_blue" android:textColor="@color/white"-->
+                                        <!--android:drawableLeft="@drawable/com_facebook_button_icon" android:paddingLeft="15dp"-->
+                                        <!--android:textAllCaps="false" android:textSize="15dp" android:layout_weight="0.5"-->
+                                        <!--android:layout_marginLeft="5dp"/>-->
+                        <!--</LinearLayout>-->
+                <!--</LinearLayout>-->
         </LinearLayout>
      <!--   <LinearLayout
             android:orientation="horizontal"

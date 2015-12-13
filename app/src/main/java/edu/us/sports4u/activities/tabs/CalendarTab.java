@@ -36,8 +36,7 @@ public class CalendarTab extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> arg0, View view, int position, long id) {
                 String eventId = (String) view.getTag();
-
-                showCalendar();
+                showCalendar(eventId);
             }
         });
 
@@ -51,8 +50,9 @@ public class CalendarTab extends Fragment {
         return fragmentView;
     }
 
-    private void showCalendar() {
+    private void showCalendar(String eventId) {
         Intent intent = new Intent(getActivity(), DetailEventActivity.class);
+        intent.putExtra("eventId", eventId);
         startActivity(intent);
     }
 

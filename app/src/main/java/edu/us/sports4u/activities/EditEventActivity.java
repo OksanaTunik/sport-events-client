@@ -91,9 +91,8 @@ public class  EditEventActivity extends BaseActivity {
 
             @Override
             protected void onPostExecute(Boolean res) {
-                if(res)
+                if (res)
                     showEventList();
-
             }
 
             @Override

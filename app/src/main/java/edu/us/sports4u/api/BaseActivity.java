@@ -61,7 +61,7 @@ public class BaseActivity extends Activity {
     }
 
     public void showEventList() {
-        Intent intent = getIntent(ListEventActivity.class);
+        Intent intent = getIntent(MainTabActivity.class);
         startActivity(intent);
     }
 

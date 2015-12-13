@@ -5,6 +5,7 @@ import edu.us.sports4u.entities.UserAccount;
 import edu.us.sports4u.http.HttpClientHelper;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -35,8 +36,13 @@ public class AccountApiClient extends BaseApiClient {
                 String[] pieces = res.getString("sports").split(",");
 
                 Collections.addAll(sports, pieces);
-
                 acc.setSportFavorites(sports);
+
+                JSONArray eventIds = res.getJSONArray("events");
+
+                for (int i = 0; i < eventIds.length(); i++) {
+                    acc.joinEvent(eventIds.getString(i));
+                }
 
                 result = acc;
             } else {

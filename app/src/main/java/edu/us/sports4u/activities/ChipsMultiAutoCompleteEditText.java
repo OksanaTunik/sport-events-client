@@ -5,10 +5,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
-import android.text.Editable;
-import android.text.Spannable;
-import android.text.SpannableStringBuilder;
-import android.text.TextWatcher;
+import android.text.*;
 import android.text.style.ImageSpan;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -62,7 +59,7 @@ public class ChipsMultiAutoCompleteEditText extends MultiAutoCompleteTextView im
         public void onTextChanged(CharSequence s, int start, int before, int count) {
             if (count >= 1) {
                 if (s.charAt(start) == ',')
-                    setChips(); // generate chips
+                    updateChips(); // generate chips
             }
         }
 
@@ -84,8 +81,13 @@ public class ChipsMultiAutoCompleteEditText extends MultiAutoCompleteTextView im
         return result;
     }
 
+    public void setChips(List<String> chips) {
+        setText(TextUtils.join(",", chips));
+        updateChips();
+    }
+
     /*This function has whole logic for chips generate*/
-    public void setChips() {
+    public void updateChips() {
         if (getText().toString().contains(",")) {
             SpannableStringBuilder ssb = new SpannableStringBuilder(getText());
 
@@ -129,7 +131,7 @@ public class ChipsMultiAutoCompleteEditText extends MultiAutoCompleteTextView im
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        setChips(); // call generate chips when user select any item from auto complete
+        updateChips(); // call generate chips when user select any item from auto complete
     }
 
     /* this method set country flag image in textview's drawable component, this logic is not optimize, you need to change as per your requirement*/

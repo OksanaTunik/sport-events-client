@@ -19,6 +19,7 @@ import edu.us.sports4u.R;
 import edu.us.sports4u.activities.ChipsMultiAutoCompleteEditText;
 import edu.us.sports4u.activities.autorization.LogInActivity;
 import edu.us.sports4u.api.AccountApiClient;
+import edu.us.sports4u.api.BaseActivity;
 import edu.us.sports4u.entities.UserAccount;
 
 import java.io.ByteArrayOutputStream;
@@ -68,10 +69,14 @@ public class AccountTab extends Fragment {
 
         mu = (ChipsMultiAutoCompleteEditText) fragmentView.findViewById(R.id.multiAutoCompleteTextView1);
 
-        String[] item = getResources().getStringArray(R.array.sports);
+        String[] sports = getResources().getStringArray(R.array.sports);
 
-        mu.setAdapter(new ArrayAdapter<>(this.getActivity(), android.R.layout.simple_dropdown_item_1line, item));
+        // List<String> sports = getUserAccount().getSportFavorites();
+
+        mu.setAdapter(new ArrayAdapter<>(this.getActivity(), android.R.layout.simple_dropdown_item_1line, sports));
         mu.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
+
+        // mu.setChips(sports);
 
        /* btnDone.setOnClickListener(new View.OnClickListener() {
             @Override
